@@ -19,7 +19,8 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->_render('welcome/views/welcome_message.html.twig');
+		$this->load->library('Twig');
+		$this->twig->display('welcome_message.html.twig');
 	}
 }
 

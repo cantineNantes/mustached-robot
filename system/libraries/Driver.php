@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2006 - 2012, EllisLab, Inc.
+ * @copyright	Copyright (c) 2006 - 2011, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -30,7 +30,7 @@
 class CI_Driver_Library {
 
 	protected $valid_drivers	= array();
-	protected $lib_name;
+	protected static $lib_name;
 
 	// The first time a child is used it won't exist, so we instantiate it
 	// subsequents calls will go straight to the proper child.

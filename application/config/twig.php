@@ -1,5 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
- 
-$config['template_dir'] = APPPATH.'modules';
+/*
+| -------------------------------------------------------------------
+| TWIG TEMPLATE
+| -------------------------------------------------------------------
+|
+ */
+$config['template_dir'] = APPPATH.'views';
+$config['cache_dir']    = BASEPATH.'cache/twig';
 
-$config['cache_dir'] = APPPATH.'cache/twig';
+/* End of file twig.php */
+/* Location: ./application/config/twig.php */

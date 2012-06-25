@@ -34,6 +34,7 @@ class Template extends DataMapper {
 	//   Configure your relationships below
 	// --------------------------------------------------------------------
 
+
 	// Insert related models that Template can have just one of.
 	var $has_one = array();
 

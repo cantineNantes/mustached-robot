@@ -8,7 +8,7 @@
 * Set the environment variable ENVTYPE to "development" or "production" ```SetEnv ENVTYPE development	``` (see http://docstore.mik.ua/orelly/linux/apache/ch04_06.htm)
 * Set up a database called mustached (check application/config/development/database.php to get the full configuration)
 
-## Usage
+## Developers
 
 ### Modules
 
@@ -31,7 +31,7 @@ We use Sensio Lab's [Twig](http://twig.sensiolabs.org) as a template engine.
 
 ### Controllers 
 
-Controllers must extends MX_Controller. To call a view from within a controller, just call ```$this->_render('template_name');``` (without .html.twig extension). This will call the template called 'template_name.html.twig' located in the views directory of the same module.
+Controllers must extend MX_Controller. To call a view from within a controller, just call ```$this->_render('template_name');``` (without .html.twig extension). This will call the template called 'template_name.html.twig' located in the views directory of the same module.
 
 ### Views 
 

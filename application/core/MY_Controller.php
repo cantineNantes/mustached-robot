@@ -47,5 +47,7 @@ class MY_Controller extends MX_Controller {
 
 }
 
+//require(APPPATH.'core/Public_Controller.php');
+
 /* End of file MY_Controller.php */
 /* Location: ./application/core/MY_Controller.php */

@@ -79,10 +79,11 @@ Todo next :
 
 ### Admin
 
+* [Show a list of the logs per day](mustached.local/admin/logger)
+
 Todo :
 
 * Create admin accounts
-* Show a list of the logs per day
 * Access to statistics / timeline
 
 ### Dashboard

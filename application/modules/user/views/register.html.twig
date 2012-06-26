@@ -3,6 +3,8 @@
 	
 
 {% block content %}
+
+	<h1>Créer un compte</h1>
 	
 	{{ form_open('user/register') | raw }}
 
@@ -18,8 +20,8 @@
 	{{ lang('user.fields.companyName', 'companies') | raw }}
 	{{ form_input({"name": "company", "id": "companies" }, '') | raw }}
 
-	{{ lang('user.fields.skills', 'skills') | raw }}
-	{{ form_input({"name": "skills", "id": "skills" }, '') | raw }}
+	{# lang('user.fields.skills', 'skills') | raw #}
+	{# form_input({"name": "skills", "id": "skills" }, '') | raw #}
 
 	{{ form_submit({'name': 'submit', 'value': lang('form.fields.submit'), 'class': 'btn btn-primary'}) | raw }}
 

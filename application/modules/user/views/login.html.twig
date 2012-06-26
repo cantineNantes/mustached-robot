@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+	<h1>Connexion</h1>
+	
+	--> {{ lang('user.fields.email') }}
+	{{ form_open('user/login') | raw }}
+
+	{{ lang('user.fields.email', 'email') | raw }}
+	{{ form_input({"name": "email" }, '') | raw }}
+
+
+	{{ form_submit({'name': 'submit', 'value': lang('user.login.submitLabel'), 'class': 'btn btn-primary'}) | raw }}
+
+	{{ form_close() | raw }}
+
+{% endblock %}

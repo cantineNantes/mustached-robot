@@ -16,8 +16,18 @@ if ( ! function_exists('msg_error'))
 	}
 }
 
+/* Help display a generic message */
+if ( ! function_exists('user_message'))
+{
+	function user_message($type, $content )
+	{
+		return array('type' => $type, 'content' => $content);
+	}
+}
+
+
 /* Help set flash message */
-if ( ! function_exists('msg_error'))
+if ( ! function_exists('set_flashmessage'))
 {
 	function set_flashmessage($message)
 	{

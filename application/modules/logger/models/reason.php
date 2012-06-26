@@ -19,14 +19,14 @@
  * @author		Phil DeJarnett
  * @link		http://www.overzealous.com
  */
-class Log extends DataMapper {
+class Reason extends DataMapper {
 
 
 	// Uncomment and edit these two if the class has a model name that
 	//   doesn't convert properly using the inflector_helper.
 	// var $model = 'template';
 	
-	var $table = 'logs';
+	var $table = 'reasons';
 	// You can override the database connections with this option
 	// var $db_params = 'db_config_name';
 
@@ -37,7 +37,7 @@ class Log extends DataMapper {
 
 
 	// Insert related models that Template can have just one of.
-	var $has_one = array('user', 'reason');
+	//var $has_one = array('user', 'reason');
 
 	// Insert related models that Template can have more than one of.
 	//var $has_many = array();

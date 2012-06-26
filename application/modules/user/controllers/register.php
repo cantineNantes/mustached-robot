@@ -11,13 +11,26 @@ class Register extends Public_Controller {
 	{
 		$u = new User();
 
+		// Initialize reason dropdown menu
+		Datamapper::add_model_path( array( APPPATH.'modules/logger') );
+		
+		$r = new Reason();
+		$reasons = $r->order_by('order asc')->get()->all_to_array(array('id', 'name'));
+		$data['reasons'] = set_dropdown_array($reasons, 'id', 'name');
+
+		// Set default value to the form if the user is redirected from the login page
 		$data['email'] = urldecode($this->input->get('email'));
+		$data['reason_id'] = urldecode($this->input->get('reason_id'));
+		$data['public'] = urldecode($this->input->get('public'));
+
+
+
 
 		// If form has been POSTed
 		if($this->input->post())
 		{			
 			// Save the user from the POST values 
-			if($u->from_array($this->input->post(), array('firstname', 'lastname', 'email'), true))
+			if($u->from_array($this->input->post(), array('firstname', 'lastname', 'email', 'twitter'), true))
 			{		
 				// Search for the company		
 				$c = new Company();

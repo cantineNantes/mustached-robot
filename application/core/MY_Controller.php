@@ -20,6 +20,7 @@ class MY_Controller extends MX_Controller {
         $this->twig->add_function('form_close');
         $this->twig->add_function('form_label');
         $this->twig->add_function('form_input');
+        $this->twig->add_function('form_dropdown');
         $this->twig->add_function('form_textarea');
         $this->twig->add_function('form_checkbox');
         $this->twig->add_function('form_submit');

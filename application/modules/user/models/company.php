@@ -19,14 +19,14 @@
  * @author		Phil DeJarnett
  * @link		http://www.overzealous.com
  */
-class User extends DataMapper {
+class Company extends DataMapper {
 
 
 	// Uncomment and edit these two if the class has a model name that
 	//   doesn't convert properly using the inflector_helper.
 	// var $model = 'template';
 	
-	var $table = 'users';
+	var $table = 'companies';
 
 	// You can override the database connections with this option
 	// var $db_params = 'db_config_name';
@@ -38,7 +38,7 @@ class User extends DataMapper {
 
 
 	// Insert related models that Template can have just one of.
-	var $has_one = array('company');
+	// var $has_one = array('company');
 
 	// Insert related models that Template can have more than one of.
 	//var $has_many = array();
@@ -68,9 +68,9 @@ class User extends DataMapper {
 
 	
 	var $validation = array(
-		'email' => array(
+		'name' => array(
 			'rules' => array('required', 'trim', 'unique', 'max_length' => 120),
-			'label' => 'lang:user.fields.email'
+			'label' => 'lang:company.fields.name'
 		)
 	);
 	

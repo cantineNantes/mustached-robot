@@ -1,0 +1,13 @@
+	
+	<div id="error_explanation">
+    <div class="alert alert-error">
+    	Le formulait contient des erreurs :
+      	<ul>      	
+    	{% for error in errors %}
+      		<li>{{ error | raw }}</li>
+    	{% endfor %}
+    	</ul>
+    </div>
+  </div>
+
+  

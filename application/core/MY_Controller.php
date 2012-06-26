@@ -16,18 +16,29 @@ class MY_Controller extends MX_Controller {
         $this->twig->add_function('assets_js');
         $this->twig->add_function('lang');
 
+        $this->twig->add_function('form_open');
+        $this->twig->add_function('form_close');
+        $this->twig->add_function('form_label');
+        $this->twig->add_function('form_input');
+        $this->twig->add_function('form_textarea');
+        $this->twig->add_function('form_submit');
+        $this->twig->add_function('plural');
+
+
         if ( ENVIRONMENT == 'development' ){
             $this->output->enable_profiler(true);
         }
 
-        if($this->session->flashdata('msg'))
+        if($msg = $this->session->flashdata('msg'))
         {
-            $this->data['msg_type'] = $this->session->flashdata('msg_type');
-            $this->data['msg'] = $this->session->flashdata('msg');
+            $this->data['msg'] = array(
+                'type'    => $msg['type'],
+                'content' => $msg['content']
+            );
         }
         
         // add the modules to the model autoloader search path
-        Datamapper::add_model_path( array(  APPPATH.'modules/welcome' ) );
+        // Datamapper::add_model_path( array(  APPPATH.'modules/welcome' ) );
     }
 
     // Utility function called to output a template

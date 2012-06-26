@@ -36,6 +36,7 @@ class Twig
         $loader = new Twig_Loader_Filesystem($this->_template_dir);
         
         $this->_twig = new Twig_Environment($loader, array(
+            'autoescape' => 'html',
             //'cache' => $this->_cache_dir,
             //'debug' => $debug,
         ));

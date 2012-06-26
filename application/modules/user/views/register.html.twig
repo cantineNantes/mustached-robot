@@ -1,1 +1,28 @@
-register.html.twig
+{% extends 'base.html.twig' %}
+
+	
+
+{% block content %}
+	
+	{{ form_open('user/register') | raw }}
+
+	{{ lang('user.fields.firstname', 'firstname') | raw }}
+	{{ form_input({"name": "firstname" }, '') | raw }}
+
+	{{ lang('user.fields.lastname', 'lastname') | raw }}
+	{{ form_input({"name": "lastname" }, '') | raw }}
+
+	{{ lang('user.fields.email', 'email') | raw }}
+	{{ form_input({"name": "email" }, '') | raw }}
+
+	{{ lang('user.fields.companyName', 'companies') | raw }}
+	{{ form_input({"name": "company", "id": "companies" }, '') | raw }}
+
+	{{ lang('user.fields.skills', 'skills') | raw }}
+	{{ form_input({"name": "skills", "id": "skills" }, '') | raw }}
+
+	{{ form_submit({'name': 'submit', 'value': lang('form.fields.submit'), 'class': 'btn btn-primary'}) | raw }}
+
+	{{ form_close() | raw }}
+
+{% endblock %}

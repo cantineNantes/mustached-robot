@@ -37,7 +37,8 @@ class User extends DataMapper {
 
 
 	// Insert related models that Template can have just one of.
-	var $has_one = array('company');
+	var $has_one  = array('company');
+	var $has_many = array('log');
 
 	// Insert related models that Template can have more than one of.
 	//var $has_many = array();

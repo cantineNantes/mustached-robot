@@ -34,7 +34,7 @@ We use CodeIgniter's [Modular Extensions HMVC](https://bitbucket.org/wiredesignz
 
 We use [Datamapper](http://datamapper.wanwizard.eu/) ORM. 
 
-Tip: To load a model of a module from another module, use ``` Datamapper::add_model_path( array( APPPATH.'modules/[module_name]') ); in the controller.
+Tip: To load a model of a module from another module, use ```Datamapper::add_model_path( array( APPPATH.'modules/[module_name]') ); in the controller.
 
 ### Database ###
 
@@ -62,6 +62,32 @@ Assets are located in the /assets directory. You can use .less for css and .coff
 
 The javascript and css assets are minified, stored in the /assets/cache directory and sent on the browser. They are generated on-the-fly if on the the files has been modified. 
 
+## Project status
 
+### User
 
+A visitor can register and login :
 
+* [Register](http://mustached.local/user/register)
+* [Login](http://mustached.local/logger/front)
+
+Todo next :
+
+* Tweet with the coworking space account when the user logs in
+* Allow users to login on their private account and update their information
+* Add skills to the user profiles
+
+### Admin
+
+Todo :
+
+* Create admin accounts
+* Show a list of the logs per day
+* Access to statistics / timeline
+
+### Dashboard
+
+Todo :
+
+* Create the public coworker dashboard
+* Create the public calendar dashboard

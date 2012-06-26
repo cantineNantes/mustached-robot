@@ -1,0 +1,17 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+
+{% block content %}
+
+	{% for date, log in logs %}
+		<h2>{{ date }}</h2>
+		<ul>
+		{% for single_log in log %}
+			<li><abbr class="timeago" title="{{ single_log.start }}">{{ single_log.start|date('d/m/Y') }}</abbr> {{ single_log.user.name }} {{ lang('admin.userCameFor') }} {{ single_log.reason }}</li>		
+		{% endfor %}
+		</ul>
+	{% endfor %}	
+
+{% endblock %}

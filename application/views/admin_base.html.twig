@@ -10,7 +10,6 @@
     <!-- Le styles -->
 
     {{ assets_css(['bootstrap.css', 'main.less'])}}
-    <link href="http://mustached.local/assets/css/autoSuggest.css" rel="stylesheet">
 
     <style>
       body {
@@ -41,12 +40,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Mustached Robot</a>
+          <a class="brand" href="#">Mustached Robot | Admin</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="{{ site_url('logger/front')}}">Log me</a></li>
-              <li><a href="{{ site_url('user/register') }}">Register</a></li>
+              <li class="active"><a href="{{ site_url('admin/logger') }}">{{ lang('admin.menu.track') }}</a></li>
+              <li><a href="#">{{ lang('admin.menu.statistics') }}</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

@@ -20,3 +20,8 @@ $lang["user.login.public"]          = "Afficher publiquement votre passage";
 $lang["user.login.reason"]          = "Pourquoi êtes-vous ici aujourd'hui ?";
 $lang["user.login.success"]         = "Votre passage est enregistré !";
 $lang["user.login.userDoesntExist"] = "Le compte spécifié n'existe pas, créez le maintenant !";
+
+// ---------------- Admin
+$lang["admin.userCameFor"]          = "est venu(e) pour";
+$lang["admin.menu.track"]           = "Suivi des logs";
+$lang["admin.menu.statistics"]    = "Statistiques";

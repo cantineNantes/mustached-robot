@@ -10,6 +10,9 @@ class Register extends Public_Controller {
 	public function index()
 	{
 		$u = new User();
+
+		$data['email'] = urldecode($this->input->get('email'));
+
 		// If form has been POSTed
 		if($this->input->post())
 		{			
@@ -29,15 +32,24 @@ class Register extends Public_Controller {
 				// Save the relationship between the user and the company
 				$u->save($c);
 
+				// Log the user (using logger module function)
+				Datamapper::add_model_path( array( APPPATH.'modules/logger') );
+				modules::run('logger/front/index');
+
 				// Display a confirmation message to the user
 				$this->session->set_flashdata('msg', array('type' => 'info', 'content' => lang('user.form.saved')));
-				redirect('user/register');
+
+				redirect('logger/front');
 			}		
 			else {
 				$this->data['msg'] = msg_error($u->error->all);
 			}
 		}
-		$this->_render('register');
+		else
+		{
+			$this->_render('register', $data);	
+		}
+		
 	}
 
 

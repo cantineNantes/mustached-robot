@@ -10,19 +10,29 @@ class Front extends Public_Controller {
 
 		if($this->input->post())
 		{			
-			$u->where('email', $this->input->post('email'))->get();
-			
-			if($u->exists()) {
-				$l = new Log();
-				$l->from_array($this->input->post(), '', true);
-				$l->save($u);
-				$this->data['msg'] = user_message('success', lang('user.login.success'));
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('email', 'lang:user.fields.email', 'required');
+			if ($this->form_validation->run() == FALSE)
+			{
+				$errors = $this->form_validation->error_array();
+				$this->data['msg'] = msg_error($errors);
 			}
 			else 
 			{
-				$this->session->set_flashdata('msg', array('type' => 'error', 'content' => lang('user.login.userDoesntExist')));
-				redirect('user/register');
-			}			
+				$u->where('email', $this->input->post('email'))->get();			
+				if($u->exists()) {
+					$l = new Log();
+					$l->from_array($this->input->post(), '', true);
+					$l->save($u);
+					$this->data['msg'] = user_message('success', lang('user.login.success'));
+				}
+				else 
+				{
+					$this->session->set_flashdata('msg', array('type' => 'error', 'content' => lang('user.login.userDoesntExist')));
+					redirect('user/register?email='.urlencode($this->input->post('email')));
+				}			
+			}
+			
 		}
 		$this->_render('login');		
 		

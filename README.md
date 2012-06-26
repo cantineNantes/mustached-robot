@@ -34,7 +34,7 @@ We use CodeIgniter's [Modular Extensions HMVC](https://bitbucket.org/wiredesignz
 
 We use [Datamapper](http://datamapper.wanwizard.eu/) ORM. 
 
-Tip: To load a model of a module from another module, use ``` Datamapper::add_model_path( array( APPPATH.'modules/[module_name]') );``` in the controller.
+Tip: To load a model of a module from another module, use ``` Datamapper::add_model_path( array( APPPATH.'modules/[module_name]') ); in the controller.
 
 ### Database ###
 

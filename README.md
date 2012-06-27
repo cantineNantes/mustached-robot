@@ -74,8 +74,8 @@ A visitor can register and login :
 Todo next :
 
 * Tweet with the coworking space account when the user logs in
-* Allow users to login on their private account and update their information
 * Add skills to the user profiles
+* Allow users to login on their private account and update their information
 
 ### Admin
 

@@ -11,11 +11,13 @@ class MY_Controller extends MX_Controller {
         $this->load->library('Twig');
 		$this->load->spark('assets/1.5.0');
 
+        // Load base helpers
         $this->twig->add_function('assets_css');
         $this->twig->add_function('assets_js');
-        $this->twig->add_function('lang');
         $this->twig->add_function('site_url');
+        $this->twig->add_function('lang');
 
+        // Load form helpers
         $this->twig->add_function('form_open');
         $this->twig->add_function('form_close');
         $this->twig->add_function('form_label');
@@ -24,6 +26,10 @@ class MY_Controller extends MX_Controller {
         $this->twig->add_function('form_textarea');
         $this->twig->add_function('form_checkbox');
         $this->twig->add_function('form_submit');
+        $this->twig->add_function('form_submit');
+
+        // Load specific helpers
+        $this->twig->add_function('get_user_avatar');
 
 
         if ( ENVIRONMENT == 'development' ){

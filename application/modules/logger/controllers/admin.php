@@ -13,6 +13,7 @@ class Admin extends Admin_Controller {
 		//$l->include_related('user', array('firstname', 'lastname', 'id'), true)->get()->all_to_array();
 		$l->include_related('user', array('firstname', 'lastname', 'id'), true);
 		$l->include_related('reason', array('sentence'), true);
+		$l->order_by('created', 'desc');
 		$l->get()->all_to_array();
 
 		//get()->all_to_array();

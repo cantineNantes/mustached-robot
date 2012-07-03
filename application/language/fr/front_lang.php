@@ -23,5 +23,7 @@ $lang["user.login.userDoesntExist"] = "Le compte spécifié n'existe pas, créez
 
 // --------------------------- Admin
 $lang["admin.userCameFor"]          = "est venu(e) pour";
-$lang["admin.menu.track"]           = "Suivi des logs";
+$lang["admin.menu.home"]           = "Dashboard";
 $lang["admin.menu.statistics"]      = "Statistiques";
+$lang["admin.menu.coworkers"]           = "Coworkers";
+$lang["admin.menu.settings"]      = "Paramètres";

@@ -9,13 +9,7 @@
 
     <!-- Le styles -->
 
-    {{ assets_css(['bootstrap.css', 'main.less'])}}
-
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
+    {{ assets_css(['reset.less', 'variables.less', 'mixins.less', 'scaffolding.less', 'grid.less', 'layouts.less', 'type.less', 'code.less', 'forms.less', 'tables.less', 'sprites.less', 'dropdowns.less', 'wells.less', 'component-animations.less', 'close.less', 'buttons.less', 'button-groups.less', 'alerts.less', 'navs.less', 'navbar.less', 'breadcrumbs.less', 'pagination.less', 'pager.less', 'responsive.less', 'mustached.less',  'utilities.less'])}}
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -40,11 +34,25 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Mustached Robot | Admin</a>
+          <!-- <a class="brand" href="#">Mustached Robot | Admin</a> -->
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="{{ site_url('admin/logger') }}">{{ lang('admin.menu.track') }}</a></li>
-              <li><a href="#">{{ lang('admin.menu.statistics') }}</a></li>
+              <li class="active dashboard"><a href="{{ site_url('admin/logger') }}">
+                <div class="navIcon"></div>
+                <span class="navText">{{ lang('admin.menu.home') }}</span>
+              </a></li>
+              <li><a href="#" class="statistics">
+                <div class="navIcon"></div>
+                <span class="navText">{{ lang('admin.menu.statistics') }}</span>
+              </a></li>
+              <li><a href="#" class="coworkers">
+                <div class="navIcon"></div>
+                <span class="navText">{{ lang('admin.menu.coworkers') }}</span>
+              </a></li>
+              <li><a href="#" class="settings">
+                <div class="navIcon"></div>
+                <span class="navText">{{ lang('admin.menu.settings') }}</span>
+              </a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

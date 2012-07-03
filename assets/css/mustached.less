@@ -1,0 +1,72 @@
+body {
+	padding-top: 76px;
+}
+
+abbr[title] {
+	cursor: default;
+	border: 0;
+}
+
+p {
+	color: #ccc;
+}
+
+a {
+	color: #f00;
+}
+
+ul, ol {
+	margin: 13px 0;
+}
+/* Navigation Stuff */
+.navbar {
+	.navbar-inner {
+		background: transparent url('../img/navbarBg.png') repeat-x;
+		padding: 0 0 4px 0;
+		min-height: 71px;
+		.box-shadow(0);
+		border-bottom: 1px dashed @grayLighter;
+	}
+	.nav {
+		li  {
+			a {
+				padding: 19px 25px 19px 25px;
+				font-size: 18px;
+				font-weight: 400;
+				letter-spacing: 0.5px;
+				line-height: 26px;
+				color:darken(@white,15);
+			}
+			a .navIcon {
+				width:33px;
+				height:22px;
+				float:left;
+				margin: 0 10px 0 0;
+				background-image: url('../img/navSprite.png');
+				background-repeat: no-repeat;
+				display: inline-block;
+    			vertical-align: middle;
+    		}
+    		a .navText {
+    			height:29px;
+    		}
+			a.dashboard .navIcon {
+				background-position:0 0;
+				width:33px;
+			}
+			a.statistics .navIcon {
+				background-position:-33px -22px;
+				width:25px;
+			}
+			a.coworkers .navIcon {
+				background-position:-58px -43px;
+				width:20px;
+				height:29px;
+			}
+			a.settings .navIcon {
+				background-position:-78px -72px;
+				width:27px;
+			}
+		}
+	}
+}

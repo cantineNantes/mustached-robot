@@ -4,14 +4,35 @@
 
 
 {% block content %}
-
-	{% for date, log in logs %}
-		<h2>{{ date }}</h2>
-		<ul>
-		{% for single_log in log %}
-			<li><img src="{{ get_user_avatar(single_log.email, 20) }}"> <abbr class="timeago" title="{{ single_log.start }}">{{ single_log.start|date('d/m/Y') }}</abbr> {{ single_log.user.name }} {{ lang('admin.userCameFor') }} {{ single_log.reason }}</li>		
-		{% endfor %}
-		</ul>
-	{% endfor %}	
-
+	<div class="row-fluid">
+		<div class="span8">
+			<h1>Passage</h1>
+			<div class="block">
+				<div class="linkHolder">
+					<a href="#">Ajouter un passage</a>
+				</div>
+				<div class="dataHolder">
+					{% for date, log in logs %}
+						<div class="date">{{ date }}</div>
+						<ul class="coworkersLog">
+						{% for single_log in log %}
+							<li class="log">
+								<img src="{{ get_user_avatar(single_log.email, 50) }}" class="rounded"/>
+								<abbr class="timeago" title="{{ single_log.start }}">{{ single_log.start|date('d/m/Y') }}</abbr> {{ single_log.user.name }} {{ lang('admin.userCameFor') }} {{ single_log.reason }}
+							</li>		
+						{% endfor %}
+						</ul>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="span4">
+			<h1>Occupation</h1>
+			<div class="block">
+				<div class="dataHolder">
+					Beau graphique
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

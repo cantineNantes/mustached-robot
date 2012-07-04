@@ -1,5 +1,6 @@
 body {
-	padding-top: 76px;
+	padding-top: 126px;
+	background: #FAFCFE url('../img/gridNoise.png') repeat; 
 }
 
 abbr[title] {
@@ -12,12 +13,28 @@ p {
 }
 
 a {
-	color: #f00;
+	color: @linkColor;
 }
 
 ul, ol {
 	margin: 13px 0;
+	list-style-type: none;
 }
+
+/* Typography Stuff */
+
+h1 { 
+	font-weight: bold; 
+	text-shadow:3px 3px 0 rgba(255,255,255); 
+	text-transform: uppercase;
+	font-size: 1.7em;
+	line-height: 4 * @baseLineHeight;
+	color:@grayDarkPlus;
+	letter-spacing: 1.5px;
+	}
+.text p { font-size: 1em; line-height: @baseLineHeight; }
+
+
 /* Navigation Stuff */
 .navbar {
 	.navbar-inner {
@@ -68,5 +85,35 @@ ul, ol {
 				width:27px;
 			}
 		}
+	}
+}
+
+/* Layout Stuff */
+.block {
+	background: #fff;
+	border: 1px solid @grayLighter;
+	.box-shadow(0 0 7px rgba(0,0,0,0.15));
+
+	.linkHolder {
+		background: #F7F7F7;
+		line-height: 40px;
+		font-size:@baseFontSize;
+		padding: 0 15px 0 15px;
+	}
+	.dataHolder {
+		padding:15px;
+	}
+}
+
+/* Avatars */
+.rounded {
+	border-radius: 40px;
+}
+
+
+/* Specific Stuff */
+.coworkersLog {
+	li.log {
+		line-height: 60px;
 	}
 }

@@ -28,21 +28,23 @@ class Register extends Public_Controller {
 		if($this->input->post())
 		{			
 			// Save the user from the POST values 
-			if($u->from_array($this->input->post(), array('firstname', 'lastname', 'email', 'password', 'twitter'), true))
-			{		
-				// Search for the company		
-				$c = new Company();
-				$c->where('name', $this->input->post('company'))->get();
+			$u->from_array($this->input->post(), array('firstname', 'lastname', 'email', 'twitter'), false);
+					
+			// Search for the company		
+			$c = new Company();
+			$c->where('name', $this->input->post('company'))->get();
 
-				// If the company doesn't exist, create it
-				if(!$c->exists()) {
-					$c->name = $this->input->post('company');
-					$c->save();
-				}
+			// If the company doesn't exist, create it
+			if(!$c->exists()) {
+				$c->name = $this->input->post('company');
+				$c->save();
+			}
 
-				// Save the relationship between the user and the company
-				$u->save($c);
+			$this->load->library('encrypt');
+			$u->password = $this->encrypt->encode($this->input->post('password'));
 
+			// Save the user with encrypted password and relationships
+			if($u->save($c)) {
 				// Log the user (using logger module function)
 				Datamapper::add_model_path( array( APPPATH.'modules/logger') );
 				modules::run('logger/front/index');
@@ -58,7 +60,6 @@ class Register extends Public_Controller {
 				{
 					$this->data[$key] = $value; 
 				}
-				//$this->data['firstname'] = $this->input->post('firstname');
 			}
 		}
 		

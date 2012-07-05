@@ -73,7 +73,7 @@ class User extends DataMapper {
 			'label' => 'lang:user.fields.email'
 		),
 		'password' => array(
-			'rules' => array('required', 'trim', 'unique', 'max_length' => 120),
+			'rules' => array('required', 'trim', 'max_length' => 120),
 			'label' => 'lang:user.fields.password'
 		)
 	);

@@ -10,7 +10,7 @@ $lang["user.fields.firstname"]      = "Prénom";
 $lang["user.fields.lastname"]       = "Nom";
 $lang["user.fields.email"]          = "Adresse email";
 $lang["user.fields.twitter"]        = "Pseudo twitter";
-$lang["user.fields.password"]        = "Mot de passe";
+$lang["user.fields.password"]       = "Mot de passe";
 $lang["user.fields.companyName"]    = "Nom de l'entreprise";
 $lang["user.fields.skills"]         = "Vos 3 compétences clés";
 $lang["form.fields.submit"]         = "Créer mon compte et me logguer";
@@ -24,7 +24,7 @@ $lang["user.login.userDoesntExist"] = "Le compte spécifié n'existe pas, créez
 
 // --------------------------- Admin
 $lang["admin.userCameFor"]          = "est venu(e) pour";
-$lang["admin.menu.home"]           = "Dashboard";
+$lang["admin.menu.home"]            = "Dashboard";
 $lang["admin.menu.statistics"]      = "Statistiques";
-$lang["admin.menu.coworkers"]           = "Coworkers";
-$lang["admin.menu.settings"]      = "Paramètres";
+$lang["admin.menu.coworkers"]       = "Coworkers";
+$lang["admin.menu.settings"]        = "Paramètres";

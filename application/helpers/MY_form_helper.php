@@ -38,7 +38,7 @@ if (!function_exists('_form_common'))
 {
 	function _form_common($type='text', $data='', $value='', $label='', $extra='', $tooltip = '')
 	{
-		$defaults = array('type' => 'text', 'name' => (( ! is_array($data)) ? $data : ''), 'value' => $value);
+		$defaults = array('type' => $type, 'name' => (( ! is_array($data)) ? $data : ''), 'value' => $value);
 
 		// If name is empty at this point, try to grab it from the $data array
 		if (empty($defaults['name']) && is_array($data) && isset($data['name']))

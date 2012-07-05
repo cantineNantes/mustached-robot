@@ -26,7 +26,7 @@ class MY_Controller extends MX_Controller {
         $this->twig->add_function('form_textarea');
         $this->twig->add_function('form_checkbox');
         $this->twig->add_function('form_submit');
-        $this->twig->add_function('form_submit');
+        $this->twig->add_function('form_password');
 
         // Load specific helpers
         $this->twig->add_function('get_user_avatar');

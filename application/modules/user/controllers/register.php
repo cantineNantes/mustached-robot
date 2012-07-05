@@ -24,13 +24,11 @@ class Register extends Public_Controller {
 		$data['public'] = urldecode($this->input->get('public'));
 
 
-
-
 		// If form has been POSTed
 		if($this->input->post())
 		{			
 			// Save the user from the POST values 
-			if($u->from_array($this->input->post(), array('firstname', 'lastname', 'email', 'twitter'), true))
+			if($u->from_array($this->input->post(), array('firstname', 'lastname', 'email', 'password', 'twitter'), true))
 			{		
 				// Search for the company		
 				$c = new Company();
@@ -56,12 +54,15 @@ class Register extends Public_Controller {
 			}		
 			else {
 				$this->data['msg'] = msg_error($u->error->all);
+				foreach($this->input->post() as $key => $value)
+				{
+					$this->data[$key] = $value; 
+				}
+				//$this->data['firstname'] = $this->input->post('firstname');
 			}
 		}
-		else
-		{
-			$this->_render('register', $data);	
-		}
+		
+		$this->_render('register', $data);	
 		
 	}
 

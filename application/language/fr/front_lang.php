@@ -10,6 +10,7 @@ $lang["user.fields.firstname"]      = "Prénom";
 $lang["user.fields.lastname"]       = "Nom";
 $lang["user.fields.email"]          = "Adresse email";
 $lang["user.fields.twitter"]        = "Pseudo twitter";
+$lang["user.fields.password"]        = "Mot de passe";
 $lang["user.fields.companyName"]    = "Nom de l'entreprise";
 $lang["user.fields.skills"]         = "Vos 3 compétences clés";
 $lang["form.fields.submit"]         = "Créer mon compte et me logguer";

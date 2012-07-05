@@ -11,12 +11,7 @@ class Companies extends Public_Controller {
 	{
 		$c = new Company();
 		$companies = $c->like('name', $this->input->get('q'))->get()->all_to_array();
-
-		//print_r($c->get()->all_to_array());
-
-		//print_r($companies);
-
-		
+	
 		foreach ($companies as $company) {
 			$data[] = array(
 				'name'  => $company['name'],

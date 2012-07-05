@@ -4,16 +4,19 @@
 	{{ form_input({"name": "email" }, email) | raw }}
 
 	{{ lang('user.fields.firstname', 'firstname') | raw }}
-	{{ form_input({"name": "firstname" }, '') | raw }}
+	{{ form_input({"name": "firstname" }, firstname) | raw }}
 
 	{{ lang('user.fields.lastname', 'lastname') | raw }}
-	{{ form_input({"name": "lastname" }, '') | raw }}
+	{{ form_input({"name": "lastname" }, lastname) | raw }}
+
+	{{ lang('user.fields.password', 'password') | raw }}
+	{{ form_input({"name": "password", "type": "password" }, password) | raw }}
 
 	{{ lang('user.fields.twitter', 'twitter') | raw }}
-	{{ form_input({"name": "twitter" }, '') | raw }}
+	{{ form_input({"name": "twitter" }, twitter) | raw }}
 
 	{{ lang('user.fields.companyName', 'companies') | raw }}
-	{{ form_input({"name": "company", "id": "companies" }, '') | raw }}
+	{{ form_input({"name": "company", "id": "companies" }, company) | raw }}
 
 	{{ lang('user.login.reason', 'reason_id') | raw }}
 	{{ form_dropdown('reason_id', reasons, reason_id) | raw }}

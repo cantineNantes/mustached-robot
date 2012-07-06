@@ -17,6 +17,7 @@ class Auth extends Public_Controller {
 	{
 		// display login form
 		$u =  new User();
+		$data = array();
 			
 		if($this->input->post()) {
 			if($this->mustache_user->login($this->input->post('email'), $this->input->post('password')))
@@ -28,7 +29,8 @@ class Auth extends Public_Controller {
 				$this->data['msg'] = user_message('error', lang('user.login.error'));
 			}	
 		}
-		$this->_render('login_form');
+
+		$this->_render('login_form', $data);
 		
 	}
 

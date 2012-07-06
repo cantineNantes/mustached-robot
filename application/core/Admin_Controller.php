@@ -6,34 +6,18 @@ class Admin_controller extends MY_Controller {
 	{
 		// Load the parent constructor
 		parent::__construct();
-		
-		// Load necessary libraries
-		// $this->load->library();
-		
-		// Load necessary models
-		// $this->load->model();
-		
-		// We need to check here whether the page is currently offline or not
 
-		/*
-		if ( ( $this->preference->item('site.offline') == 1 ) && ( $this->acl->has_perm('admin') == FALSE ) )
-		{
-			show_error('The page is currently under maintenance, please come back soon.');
+		// Where are we ? Information used to set up informations on the layout
+		$this->data['section'] = 'admin';
+
+		// Todo : save the current url in session to redirect the user to this url after his login
+		if(!$this->session->userdata('is_admin')) {
+			flash_message('error', lang('admin.accessRestricted'));
+			redirect('user/auth/login');
 		}
-		*/
-		
-		// We need to check here for the correct rights first
-		/*
-		if ( FALSE OR ! $this->acl->has_perm('public') )
-		{
-			show_error(
-						'You don\'t have enough rights to view this page. This is odd. Maybe you will notify an administrator '
-						. mailto($this->preference->item('mail.contact'), html_entities($this->preference->item('mail.contact')))
-					);
-		}
-		*/
+
 	}	
 }
 
-/* End of file Public_controller.php */
-/* Location: ./application/core/Public_controller.php */
+/* End of file Admin_controller.php */
+/* Location: ./application/core/Admin_controller.php */

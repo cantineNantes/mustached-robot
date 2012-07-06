@@ -26,6 +26,7 @@ $lang["user.login.userDoesntExist"] = "Le compte spécifié n'existe pas, créez
 
 
 // --------------------------- Admin
+$lang["admin.accessRestricted"]     = "Désolé, mais l'accès à cette section est réservé !";
 $lang["admin.userCameFor"]          = "est venu(e) pour";
 $lang["admin.menu.home"]            = "Dashboard";
 $lang["admin.menu.statistics"]      = "Statistiques";

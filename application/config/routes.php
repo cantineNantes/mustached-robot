@@ -38,10 +38,10 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "logger/front";
 $route['404_override'] = '';
 
-$route['admin/logger'] = 'logger/admin';
+$route['admin'] = 'logger/admin';
 
 
 

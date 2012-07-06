@@ -7,7 +7,7 @@ class Account extends Public_Controller {
 		parent::__construct();
 		$this->load->library('mustache_user');
 	}
-
+	
 	public function create()
 	{
 		$u = new User();
@@ -23,7 +23,6 @@ class Account extends Public_Controller {
 		$data['email'] = urldecode($this->input->get('email'));
 		$data['reason_id'] = urldecode($this->input->get('reason_id'));
 		$data['public'] = urldecode($this->input->get('public'));
-
 
 		// If form has been POSTed
 		if($this->input->post())

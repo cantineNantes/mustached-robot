@@ -21,7 +21,7 @@ class Mustache_User {
 
 		if($u->password == $this->prep_password($password)) {
 			$user = array(
-				'current_user' => $u->id,
+				'user_id' => $u->id,
 				'firstname'    => $u->firstname,
 				'is_admin'     => $u->is_admin,
 			);

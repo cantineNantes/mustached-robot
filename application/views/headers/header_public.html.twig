@@ -1,0 +1,27 @@
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <!-- <a class="brand" href="#">Mustached Robot</a> -->
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="{{ site_url('')}}">Log me</a></li>
+              <li><a href="{{ site_url('user/account/create') }}">Register</a></li>
+              <li><a href="{{ site_url('user/auth/login') }}">Login</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+          <div class="nav-collapse pull-right">
+            {% if current_user %}
+              {{ current_user.firstname }}
+              <br>  
+              <a href="{{ site_url('user/auth/logout')}}">Logout</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>

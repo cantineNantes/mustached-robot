@@ -21,7 +21,12 @@ if ( ! function_exists('user_message'))
 {
 	function user_message($type, $content )
 	{
-		return array('type' => $type, 'content' => $content);
+		return array(
+			'msg' => array(
+				'type'    => $type, 
+				'content' => $content
+			)
+		);
 	}
 }
 

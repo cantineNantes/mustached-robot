@@ -8,6 +8,8 @@ class MY_Controller extends MX_Controller {
         parent::__construct();
         
         $this->lang->load('mustached');
+        $this->lang->load('front');
+        
         $this->load->library('Twig');
 		$this->load->spark('assets/1.5.0');
 
@@ -43,6 +45,16 @@ class MY_Controller extends MX_Controller {
                 'content' => $msg['content']
             );
         }
+
+        if($this->session->userdata('firstname'))
+        {
+            $this->data['current_user'] = array(
+                'id'        => $this->session->userdata('user_id'),
+                'firstname' => $this->session->userdata('firstname'),
+                'is_admin'  => $this->session->userdata('is_admin'),
+            );    
+        }
+
         
         // add the modules to the model autoloader search path
         // Datamapper::add_model_path( array(  APPPATH.'modules/welcome' ) );

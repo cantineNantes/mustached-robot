@@ -27,19 +27,12 @@ if ( ! function_exists('user_message'))
 
 
 /* Help set flash message */
-if ( ! function_exists('set_flashmessage'))
+if ( ! function_exists('flash_message'))
 {
-	function set_flashmessage($message)
+	function flash_message($type, $content)
 	{
 		$CI =& get_instance();
-		$content = '<ul>';
-		foreach($errors as $error)
-		{
-			$content .= '<li>'.$error.'</li>'; 
-		}
-		$content .= '</ul>';
-		$CI->data['msg'] = array('type' => 'error', 'content' => $content);
-		return array('type' => 'error', 'content' => $content);
+		return $CI->session->set_flashdata(user_message($type, $content));
 	}
 }
 

@@ -18,28 +18,24 @@ class Auth extends Public_Controller {
 		// display login form
 		$u =  new User();
 			
-		$this->load->library('encrypt');
-
 		if($this->input->post()) {
-			$u->get_by_email($this->input->post('email'));
-
-			if($u->password == $this->mustache_user->prep_password($this->input->post('password'))) {
-				echo 'login yeah';
-			}
-			else 
+			if($this->mustache_user->login($this->input->post('email'), $this->input->post('password')))
 			{
-				echo 'login na !';
+				flash_message('success', lang('user.login.success'));
+				redirect('user/account/edit');	
 			}
+			else {
+				$this->data['msg'] = user_message('error', lang('user.login.error'));
+			}	
 		}
-
-		
-
 		$this->_render('login_form');
 		
 	}
 
 	public function logout()
 	{
-
+		$this->mustache_user->logout();
+		flash_message('success', 'Vous êtes déconnecté');
+		redirect('user/auth/login');
 	}
 }

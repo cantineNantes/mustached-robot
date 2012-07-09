@@ -9,7 +9,9 @@ class Admin extends Admin_Controller {
 
 	public function index()
 	{
-		// 'admin pour user';
+		$u = new User();
+		$data['users'] = $u->order_by('created', 'desc')->get()->all_to_array();
+		$this->_render('admin', $data);
 	}
 
 }

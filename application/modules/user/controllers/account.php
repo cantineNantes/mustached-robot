@@ -57,12 +57,19 @@ class Account extends Public_Controller {
 		
 	}
 
-	public function edit()
+	public function edit($id = null)
 	{		
+		if(!$id) {
+			$id = $this->data["current_user"]["id"];
+		}
+		else {
+			// check if the current_user is admin. If not, show error
+		}
+
 		if($this->input->post())
 		{
 			// save user
-			$user = $this->mustache_user->saveFromArray($this->input->post(), false, $this->data["current_user"]["id"]);
+			$user = $this->mustache_user->saveFromArray($this->input->post(), false, $id);
 			if($user->valid) 
 			{
 				$this->data['msg'] = user_message('success', 'Modifications enregistrées !');
@@ -78,7 +85,8 @@ class Account extends Public_Controller {
 		}
 		else {
 			$user = new User();
-			$user->get_by_id($this->data["current_user"]["id"]);
+			
+			$user->get_by_id($id);
 		}
 
 		foreach($user->to_array() as $key => $value)

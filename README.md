@@ -8,6 +8,10 @@
 * Set the environment variable ENVTYPE to "development" or "production" ```SetEnv ENVTYPE development	``` (see http://docstore.mik.ua/orelly/linux/apache/ch04_06.htm)
 * Set up a database called mustached (check application/config/development/database.php to get the full configuration)
 
+### Populate your database
+
+* Before starting you should populate the database with at leat one entry in the "reasons" table
+
 ## Developers
 
 ### General syntax

@@ -12,7 +12,6 @@ class Front extends Public_Controller {
 		$reasons = $r->order_by('order asc')->get()->all_to_array(array('id', 'name'));
 		$data['reasons'] = set_dropdown_array($reasons, 'id', 'name');
 
-
 		if($this->input->post())
 		{			
 			$this->load->library('form_validation');

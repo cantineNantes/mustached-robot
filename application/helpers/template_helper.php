@@ -55,6 +55,7 @@ if ( ! function_exists('set_dropdown_array'))
 {
 	function set_dropdown_array($items, $key_name, $value_name)
 	{
+		$array = array();
 		foreach($items as $item)
 		{
 			$array[$item[$key_name]] = $item[$value_name];			

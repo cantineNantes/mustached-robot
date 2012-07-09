@@ -1,4 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
 	
+
+	<h2>{{ lang('user.edit.title') }}</h2>
+
+	{{ form_open('user/account/edit') | raw }}
 
 	{{ lang('user.fields.email', 'email') | raw }}
 	{{ form_input({"name": "email" }, email) | raw }}
@@ -9,19 +16,12 @@
 	{{ lang('user.fields.lastname', 'lastname') | raw }}
 	{{ form_input({"name": "lastname" }, lastname) | raw }}
 
-	{{ lang('user.fields.password', 'password') | raw }}
-	{{ form_input({"name": "password", "type": "password" }, password) | raw }}
-
 	{{ lang('user.fields.twitter', 'twitter') | raw }}
 	{{ form_input({"name": "twitter" }, twitter) | raw }}
 
 	{{ lang('user.fields.companyName', 'companies') | raw }}
 	{{ form_input({"name": "company", "id": "companies" }, company) | raw }}
 
-	{{ lang('user.login.reason', 'reason_id') | raw }}
-	{{ form_dropdown('reason_id', reasons, reason_id) | raw }}
+	{{ form_submit({'name': 'submit', 'value': lang('user.edit.submit'), 'class': 'btn btn-large btn-primary'}) | raw }}
 
-	{{ form_label(form_checkbox({"name": "public", "checked": public, "value": 1 }, '')~' '~lang('user.login.public')) | raw }}
-
-	{{ form_submit({'name': 'submit', 'value': lang('user.create.submit'), 'class': 'btn btn-large btn-primary'}) | raw }}
-
+{% endblock content %}

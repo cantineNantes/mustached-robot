@@ -10,7 +10,7 @@ class Account extends Public_Controller {
 	
 	public function create()
 	{
-		$u = new User();
+		
 
 		// Initialize reason dropdown menu
 		Datamapper::add_model_path( array( APPPATH.'modules/logger') );
@@ -27,36 +27,24 @@ class Account extends Public_Controller {
 		// If form has been POSTed
 		if($this->input->post())
 		{			
-			// Save the user from the POST values 
-			$u->from_array($this->input->post(), array('firstname', 'lastname', 'email', 'twitter'), false);
-					
-			// Search for the company		
-			$c = new Company();
-			$c->where('name', $this->input->post('company'))->get();
+			// Save the user datas
+			$user = $this->mustache_user->saveFromArray($this->input->post(), true);
 
-			// If the company doesn't exist, create it
-			if(!$c->exists()) {
-				$c->name = $this->input->post('company');
-				$c->save();
-			}
-
-			$this->load->library('encrypt');
-
-			$u->password = $this->mustache_user->prep_password($this->input->post('password'));
-
-			// Save the user infos + relationships
-			if($u->save($c)) {
-				// Log the user (using logger module function)
+			if($user->valid)
+			{
+				// Log the user (using the logger module)
 				Datamapper::add_model_path( array( APPPATH.'modules/logger') );
 				modules::run('logger/front/index');
 
 				// Display a confirmation message to the user
 				$this->session->set_flashdata('msg', array('type' => 'info', 'content' => lang('user.form.saved')));
 
-				redirect('logger/front');
-			}		
+
+
+				redirect('logger/front');	
+			}	
 			else {
-				$this->data['msg'] = msg_error($u->error->all);
+				$this->data['msg'] = msg_error($user->error->all);
 				foreach($this->input->post() as $key => $value)
 				{
 					$this->data[$key] = $value; 
@@ -64,14 +52,45 @@ class Account extends Public_Controller {
 			}
 		}
 		
+		
 		$this->_render('register', $data);	
 		
 	}
 
 	public function edit()
-	{
+	{		
+		if($this->input->post())
+		{
+			// save user
+			$user = $this->mustache_user->saveFromArray($this->input->post(), false, $this->data["current_user"]["id"]);
+			if($user->valid) 
+			{
+				$this->data['msg'] = user_message('success', 'Modifications enregistrées !');
+			}
+			else 
+			{
+				$this->data['msg'] = msg_error($user->error->all);
+				foreach($this->input->post() as $key => $value)
+				{
+					$this->data[$key] = $value; 
+				}	
+			}
+		}
+		else {
+			$user = new User();
+			$user->get_by_id($this->data["current_user"]["id"]);
+		}
 
+		foreach($user->to_array() as $key => $value)
+		{
+			$this->data[$key] = $value; 
+		}
+		$this->data["company"] = $user->company->get()->name;	
+		
+		
+		$this->_render('edit', $this->data);
 	}
+
 
 	public function delete()
 	{

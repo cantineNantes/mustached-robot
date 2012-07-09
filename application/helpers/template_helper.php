@@ -19,7 +19,7 @@ if ( ! function_exists('msg_error'))
 /* Help display a generic message */
 if ( ! function_exists('user_message'))
 {
-	function user_message($type, $content )
+	function user_message($type, $content)
 	{
 		return array(
 			'msg' => array(

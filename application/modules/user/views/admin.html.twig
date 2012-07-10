@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Coworkers{% endblock %}
+{% block title %}{{ lang('coworkers') }}{% endblock %}
 
 {% block content %}
+
 
 	<ul class="coworkersLog">
 
 	{% for user in users %}
 			<li class="log">
-				<img src="{{ get_user_avatar(user.email, 50) }}" class="rounded"/> {{ user.firstname }} {{ user.lastname }} - <a href="{{ site_url('user/account/edit') }}/{{ user.id }}">Edit</a>
+				<img src="{{ get_user_avatar(user.email, 50) }}" class="rounded"/> {{ user.firstname }} {{ user.lastname }} ({{ user.email }}) - <a href="{{ site_url('user/account/edit') }}/{{ user.id }}">{{ lang('edit') }}</a>
 			</li>		
 	{% endfor %}
 	</ul>

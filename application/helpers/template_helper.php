@@ -35,7 +35,7 @@ if ( ! function_exists('flash_message'))
 	function flash_message($type, $content)
 	{
 		$CI =& get_instance();
-		return $CI->session->set_flashdata(user_message($type, $content));
+		$CI->session->set_flashdata(array('msg' => user_message($type, $content)));
 	}
 }
 

@@ -21,6 +21,9 @@
  */
 class User extends DataMapper {
 
+	private $CI;
+
+
 
 	// Uncomment and edit these two if the class has a model name that
 	//   doesn't convert properly using the inflector_helper.
@@ -69,11 +72,11 @@ class User extends DataMapper {
 	
 	var $validation = array(
 		'email' => array(
-			'rules' => array('required', 'trim', 'unique', 'max_length' => 120),
+			'rules' => array('required', 'trim', 'unique', 'valid_email', 'max_length' => 120),
 			'label' => 'lang:user.fields.email'
 		),
 		'password' => array(
-			'rules' => array('required', 'trim', 'max_length' => 120),
+			'rules' => array('required', 'trim', 'encrypt', 'max_length' => 120),
 			'label' => 'lang:user.fields.password'
 		)
 	);
@@ -95,6 +98,8 @@ class User extends DataMapper {
     function __construct($id = NULL)
 	{
 		parent::__construct($id);
+		$this->CI =& get_instance();
+		$this->CI->load->library('encrypt');
     }
 
 	// --------------------------------------------------------------------
@@ -134,6 +139,16 @@ class User extends DataMapper {
 	 	}
 	}
 	*/
+
+	// Validation prepping function to encrypt passwords
+	function _encrypt($field) // optional second parameter is not used
+	{
+	    // Don't encrypt an empty string
+	    if (!empty($this->{$field}))
+	    {
+	        $this->{$field} = $this->CI->encrypt->sha1($this->{$field}.$this->CI->config->item('encryption_key'));	    	
+	    }
+	}
 }
 
 /* End of file user.php */

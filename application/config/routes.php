@@ -42,7 +42,7 @@ $route['default_controller'] = "logger/front";
 $route['404_override'] = '';
 
 $route['admin'] = 'logger/admin';
-
+$route['admin/user'] = 'user/admin';
 
 
 

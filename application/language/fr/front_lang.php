@@ -5,6 +5,8 @@
 $lang["edit"]                       = "Editer";
 $lang["updateSuccessful"]           = "Mise à jour effectuée";
 $lang["coworkers"]                  = "Coworkers";
+$lang["error"]                      = "Une erreur a eu lieu, désolé !";
+
 
 // --------------------------- User register form
 $lang["user.editAccount"]           = "Mon compte";
@@ -39,6 +41,7 @@ $lang["user.edit.submit"]           = "Mettre à jour";
 
 // --------------------------- Logger
 $lang["logger.submitLabel"]         = "Enregistrer mon passage";
+$lang["logger.kill.success"]        = "Session terminée";
 
 
 // --------------------------- Admin

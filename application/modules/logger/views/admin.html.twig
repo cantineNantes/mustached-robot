@@ -21,7 +21,7 @@
 							<li class="log">
 								<img src="{{ get_user_avatar(single_log.email, 50) }}" class="avatar avatar-mini"/>
 								<div class="logInfo">
-									<a href="#">{{ single_log.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_log.reason }} <abbr class="timeago pull-right" title="{{ single_log.start }}">{{ single_log.start|date('d/m/Y') }}</abbr>
+									<a href="#">{{ single_log.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_log.reason }} {% if not single_log.killed %} - <a href="{{ site_url('logger/admin/kill') }}/{{ single_log.id }}">Kill</a> - {% endif %} <abbr class="timeago pull-right" title="{{ single_log.start }}">{{ single_log.start|date('d/m/Y') }}</abbr>
 								</div>
 							</li>		
 						{% endfor %}

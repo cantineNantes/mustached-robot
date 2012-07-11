@@ -68,31 +68,8 @@ The javascript and css assets are minified, stored in the /assets/cache director
 
 ## Project status
 
-### User
+You can see the project status on the [Github issues tracker](https://github.com/cantineNantes/mustached-robot/issues?milestone=1&state=open)
 
-A visitor can register and login :
-
-* [Register](http://mustached.local/user/register)
-* [Login](http://mustached.local/logger/front)
-
-Todo next :
-
-* Tweet with the coworking space account when the user logs in
-* Add skills to the user profiles
-* Allow users to login on their private account and update their information
-
-### Admin
-
-* [Show a list of the logs per day](mustached.local/admin/logger)
-
-Todo :
-
-* Create admin accounts
-* Access to statistics / timeline
-
-### Dashboard
-
-Todo :
-
-* Create the public coworker dashboard
-* Create the public calendar dashboard
+## Migrations
+ALTER TABLE  `logs` ADD  `updated` TIMESTAMP NULL DEFAULT NULL ,
+ADD  `killed` TINYINT NOT NULL

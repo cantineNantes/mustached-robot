@@ -11,14 +11,18 @@
 				<div class="linkHolder">
 					<a href="#">Ajouter un passage</a>
 				</div>
-				<div class="dataHolder">
+				<div class="dataHolder coworkersLog">
 					{% for date, log in logs %}
-						<div class="date">{{ date }}</div>
-						<ul class="coworkersLog">
+						<div class="date dashed">
+							<time datetime="{{ date }}">{{ date }}</time>
+						</div>
+						<ul>
 						{% for single_log in log %}
 							<li class="log">
-								<img src="{{ get_user_avatar(single_log.email, 50) }}" class="rounded"/>
-								<abbr class="timeago" title="{{ single_log.start }}">{{ single_log.start|date('d/m/Y') }}</abbr> {{ single_log.user.name }} {{ lang('admin.userCameFor') }} {{ single_log.reason }}
+								<img src="{{ get_user_avatar(single_log.email, 50) }}" class="avatar avatar-mini"/>
+								<div class="logInfo">
+									<a href="#">{{ single_log.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_log.reason }} <abbr class="timeago pull-right" title="{{ single_log.start }}">{{ single_log.start|date('d/m/Y') }}</abbr>
+								</div>
 							</li>		
 						{% endfor %}
 						</ul>

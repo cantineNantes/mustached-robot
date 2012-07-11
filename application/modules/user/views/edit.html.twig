@@ -23,4 +23,6 @@
 
 	{{ form_submit({'name': 'submit', 'value': lang('user.edit.submit'), 'class': 'btn btn-large btn-primary'}) | raw }}
 
+	<a href="{{ site_url('user/account/delete') }} ">{{ lang('user.delete.title') }}</a>
+
 {% endblock content %}

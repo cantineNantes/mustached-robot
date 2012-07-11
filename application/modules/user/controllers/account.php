@@ -152,7 +152,12 @@ class Account extends Public_Controller {
 
 	public function delete()
 	{
-
+		if($this->input->post())
+		{
+			$u = new User;
+			$this->mustache_user->delete($this->session->userdata('user_id'));
+		}
+		$this->_render('delete');
 	}
 
 

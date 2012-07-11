@@ -8,6 +8,14 @@ $lang["coworkers"]                  = "Coworkers";
 $lang["error"]                      = "Une erreur a eu lieu, désolé !";
 
 
+
+// --------------------------- User deletion
+$lang["user.delete.title"]         = "Supprimer mon compte";
+$lang["user.delete.warning"]       = "Attention, cette action est irréversible ! Êtes-vous sûr de supprimer votre compte et toutes les données qui y sont associées ?";
+$lang["user.delete.confirm"]       = "Oui oui, je veux tout supprimer !";
+$lang["user.delete.success"]       = "Votre compte a bien été supprimé";
+
+
 // --------------------------- User register form
 $lang["user.editAccount"]           = "Mon compte";
 

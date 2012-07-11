@@ -114,6 +114,24 @@ class Mustache_User {
 		return $u;
 	}
 
+	public function delete($id)
+	{
+		$u = new User();
+		$u->get_by_id($id);
+		$u->firstname = 'User';
+		$u->lastname  = 'Deleted';
+		$u->email     = 'deleted_user+'.rand(0,9999999).'@example.com';
+		$u->twitter   = '';
+		$u->password  = rand(0,1000);
+		$u->skill_id  = '';
+		$u->company_id = null;
+		$u->highrise_id = '';
+		$u->save();
+		$this->logout();
+		flash_message("success", lang('user.delete.success'));
+		redirect();
+	}
+
 	private function _prep_password($password)
 	{
 		return $this->CI->encrypt->sha1($password.$this->CI->config->item('encryption_key'));

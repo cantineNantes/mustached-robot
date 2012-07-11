@@ -73,3 +73,5 @@ You can see the project status on the [Github issues tracker](https://github.com
 ## Migrations
 ALTER TABLE  `logs` ADD  `updated` TIMESTAMP NULL DEFAULT NULL ,
 ADD  `killed` TINYINT NOT NULL
+
+ALTER TABLE  `users` CHANGE  `created`  `created` TIMESTAMP NULL DEFAULT NULL

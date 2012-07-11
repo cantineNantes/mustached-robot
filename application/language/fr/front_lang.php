@@ -37,6 +37,7 @@ $lang["user.login.userDoesntExist"] = "Le compte spécifié n'existe pas, créez
 // --------------------------- User edit
 $lang["user.edit.title"]            = "Mettre à jour mon compte";
 $lang["user.edit.submit"]           = "Mettre à jour";
+$lang["user.adminUpgrade.success"]  = "Utilisateur ugrapdé !";
 
 
 // --------------------------- Logger

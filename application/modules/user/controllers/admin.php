@@ -13,4 +13,14 @@ class Admin extends Admin_Controller {
 		$data['users'] = $u->order_by('created', 'desc')->get()->all_to_array();
 		$this->_render('admin', $data);
 	}
+
+	public  function upgrade($id)
+	{
+		$u = new User();
+		$u->get_by_id($id);
+		$u->is_admin = true;
+		$u->save();
+		flash_message('success', lang('user.adminUpgrade.success'));
+		redirect('admin/user');
+	}
 }

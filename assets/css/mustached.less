@@ -104,16 +104,38 @@ h1 {
 		padding:15px;
 	}
 }
+.dashed {
+	background: url('../img/dashedLine.png') repeat-x center;
+}
 
 /* Avatars */
-.rounded {
-	border-radius: 40px;
+.avatar {
+	.box-shadow(inset 2px 2px 2px rgba(0,0,0,0.5));
+
+}
+.avatar-mini {
+	border-radius: 50px;
 }
 
 
 /* Specific Stuff */
 .coworkersLog {
-	li.log {
+	.date {
+		color:@grayLighter;
+		font-weight: bold;
+		time {
+			padding: 0 46px 0 0;
+			background: url('../img/bgGradient.png') no-repeat center right;
+		}
+	}
+	li {
 		line-height: 60px;
+		.logInfo {
+			padding: 0 0 0 10px;
+			display: inline;
+			.timeago {
+				color:@grayLighter;			
+			}
+		}
 	}
 }

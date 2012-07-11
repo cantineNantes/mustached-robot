@@ -41,6 +41,7 @@ class Admin extends Admin_Controller {
 		
 	}
 
+
 	public function kill($id)
 	{
 		$l = new Log();

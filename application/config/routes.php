@@ -39,10 +39,13 @@
 */
 
 $route['default_controller'] = "logger/front";
-$route['404_override'] = '';
+$route['404_override']       = '';
 
-$route['admin'] = 'logger/admin';
-$route['admin/user'] = 'user/admin';
+$route['admin']              = 'logger/admin';
+$route['admin/user']         = 'user/admin';
+$route['admin/analytics']    = 'logger/analytics/range';
+$route['admin/analytics/(:any)']    = "logger/analytics/range/$1";
+$route['admin/analytics/(:any)/(:any)']    = "logger/analytics/range/$1/$2";
 
 
 

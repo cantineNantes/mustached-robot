@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+	<h2>{{ lang('stats.from') }} {{ dates.start }} {{ lang('stats.to') }} {{ dates.end }}</h2>
+
+
+	{{ count.logs }} {{ lang('stats.passages') }}
+
+	<br>
+
+	{{ '%.2f' | format(count.users / count.days) }} {{ lang('stats.passagesPerDay') }}
+
+	<br>
+
+	{{ count.users }} {{ lang('stats.differentPeople') }}
+
+	<br>
+
+	<ul>
+	{% for date, number in logs %}
+		<li>{{ date }} : {{ number }} passages</li>
+	{% endfor %}
+	</ul>
+
+
+
+
+
+{% endblock %}

@@ -51,3 +51,11 @@ $lang["admin.menu.home"]            = "Dashboard";
 $lang["admin.menu.statistics"]      = "Statistiques";
 $lang["admin.menu.coworkers"]       = "Coworkers";
 $lang["admin.menu.settings"]        = "Paramètres";
+
+// --------------------------- Stats
+$lang["stats.from"]                 = "Du";
+$lang["stats.to"]                   = "au";
+
+$lang["stats.passages"]             = "passages";
+$lang["stats.passagesPerDay"]       = "passages / jour";
+$lang["stats.differentPeople"]      = "différentes personnes";

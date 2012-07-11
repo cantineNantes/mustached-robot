@@ -22,10 +22,8 @@ if ( ! function_exists('user_message'))
 	function user_message($type, $content)
 	{
 		return array(
-			'msg' => array(
 				'type'    => $type, 
 				'content' => $content
-			)
 		);
 	}
 }
@@ -37,7 +35,7 @@ if ( ! function_exists('flash_message'))
 	function flash_message($type, $content)
 	{
 		$CI =& get_instance();
-		return $CI->session->set_flashdata(user_message($type, $content));
+		$CI->session->set_flashdata(array('msg' => user_message($type, $content)));
 	}
 }
 

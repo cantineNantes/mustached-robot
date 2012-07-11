@@ -10,7 +10,7 @@
           <!-- <a class="brand" href="#">Mustached Robot | Admin</a> -->
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active dashboard"><a href="{{ site_url('admin/logger') }}">
+              <li class="active dashboard"><a href="{{ site_url('admin') }}">
                 <div class="navIcon"></div>
                 <span class="navText">{{ lang('admin.menu.home') }}</span>
               </a></li>
@@ -18,7 +18,7 @@
                 <div class="navIcon"></div>
                 <span class="navText">{{ lang('admin.menu.statistics') }}</span>
               </a></li>
-              <li><a href="#" class="coworkers">
+              <li><a href="{{ site_url('admin/user') }}" class="coworkers">
                 <div class="navIcon"></div>
                 <span class="navText">{{ lang('admin.menu.coworkers') }}</span>
               </a></li>

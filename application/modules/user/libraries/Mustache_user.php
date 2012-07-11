@@ -73,8 +73,8 @@ class Mustache_User {
 		}
 
 		if($savePassword)
-		{
-			$u->password = $this->_prep_password($post['password']);
+		{			
+			$u->password = $post['password'];
 		}
 
 		$u->save($c);
@@ -82,10 +82,44 @@ class Mustache_User {
 		return $u;
 	}
 
+	public function change_password($id, $old_password, $new_password)
+	{
+		$u = new User();
+		$u->get_by_id($id);
+
+		if($this->_prep_password($old_password) == $u->password)
+		{						
+			$u->password = $new_password;
+			$u->save();
+			return $u;
+		}
+		else
+		{
+			//return false;
+			$u->error_message('custom', 'Le mot de passe actuel n\'est pas le bon !');
+
+			return $u;
+		}
+	}
+
+
+	public function force_change_password($id, $new_password)
+	{
+		$u = new User();
+		$u->get_by_id($id);
+		
+		$u->password = $new_password;
+		
+		$u->save();
+		return $u;
+	}
+
 	private function _prep_password($password)
 	{
 		return $this->CI->encrypt->sha1($password.$this->CI->config->item('encryption_key'));
 	}
+
+
 
 
 

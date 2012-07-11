@@ -20,6 +20,8 @@
               {{ current_user.firstname }}
               <br>  
               <a href="{{ site_url('user/auth/logout')}}">Logout</a>
+              <br>
+              <a href="{{ site_url('user/account/edit_password')}}">Changer mdp</a>
             {% endif %}
           </div>
         </div>

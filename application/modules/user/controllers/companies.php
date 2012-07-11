@@ -10,14 +10,18 @@ class Companies extends Public_Controller {
 	public function index()
 	{
 		$c = new Company();
-		$companies = $c->like('name', $this->input->get('q'))->get()->all_to_array();
+		$companies = $c->like('name', $this->input->get('query'))->get()->all_to_array();
 	
 		foreach ($companies as $company) {
-			$data[] = array(
-				'name'  => $company['name'],
-				'value' => $company['id'],				
-			);
+			$suggestions[] = $company['name'];
+			$datas[]       = $company['id'];
 		}
+
+		$data = array(
+			'query'      => $this->input->get('query'),
+			'suggestions'=> $suggestions,
+			'data'       => $datas
+		);
 
 		$this->output
 			 ->enable_profiler(FALSE)

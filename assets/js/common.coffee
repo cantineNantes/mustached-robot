@@ -1,2 +1,3 @@
 $(document).ready ->	
-	$("abbr.timeago").timeago();
+	$("abbr.timeago").timeago()
+	a = $('#companies').autocomplete({ serviceUrl:'/user/companies' })

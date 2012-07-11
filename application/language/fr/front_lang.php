@@ -7,6 +7,8 @@ $lang["updateSuccessful"]           = "Mise à jour effectuée";
 $lang["coworkers"]                  = "Coworkers";
 
 // --------------------------- User register form
+$lang["user.editAccount"]           = "Mon compte";
+
 $lang["user.form.saved"]            = "Votre compte a été créé, et votre passage enregistré !";
 $lang["user.fields.firstname"]      = "Prénom";
 $lang["user.fields.lastname"]       = "Nom";

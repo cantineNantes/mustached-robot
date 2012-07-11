@@ -47,8 +47,16 @@ $route['admin/analytics']    = 'logger/analytics/range';
 $route['admin/analytics/(:any)']    = "logger/analytics/range/$1";
 $route['admin/analytics/(:any)/(:any)']    = "logger/analytics/range/$1/$2";
 
+$route['api/logs']            = 'logger/api/logs';
+$route['api/log/(:num)']      = "logger/api/log/$1";
 
+$route['api/reasons']         = 'logger/api/reasons';
 
+$route['api/users']           = 'user/api/users';
+$route['api/users/here']      = 'user/api/here';
+$route['api/user/(:num)']     = "user/api/user/$1";
+$route['api/user/(:num)/logs'] = "user/api/logs/$1";
+$route['api/user/(:num)/logs/(:any)/(:any)']= "user/api/logs/$1/$2/$3";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

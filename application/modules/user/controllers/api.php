@@ -2,6 +2,15 @@
 
 class Api extends Rest_Controller {
 
+	private $return = array('id', 'firstname', 'lastname', 'email', 'twitter', 'company_id', 'created', 'updated');
+
+	/*
+	public function __construct()
+	{
+		parent::__construct();
+		$this->return = 
+	}
+	*/
 	/*
 	 *	Get the users
 	 *  
@@ -10,7 +19,7 @@ class Api extends Rest_Controller {
 	{
 		$u = new User();
 		$u->get();
-		$this->response($u->all_to_array(), 201);
+		$this->response($u->all_to_array($this->return), 201);
 	}
 
 	public function user_get($id)
@@ -20,7 +29,7 @@ class Api extends Rest_Controller {
 		$u->get_by_id($id);
 		if($u->exists())
 		{
-			$this->response($u->to_array(), 201);
+			$this->response($u->to_array($this->return), 201);
 		}
 		else 
 		{
@@ -39,7 +48,7 @@ class Api extends Rest_Controller {
 		$l->where('killed = 0');
 		$l->where('public = 1');
 
-		$here = $l->get()->all_to_array();
+		$here = $l->get()->all_to_array($this->return);
 
 		if($here) 
 		{

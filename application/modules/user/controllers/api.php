@@ -53,11 +53,9 @@ class Api extends Rest_Controller {
 		}
 		else 
 		{
-			$this->response(array('message' => 'Sorry, no one is here !'), 400);
+			$this->response(array('message' => 'Sorry, no one is here!'), 400);
 		}		
 	}
-
-
 
 	public function logs_get($user_id, $param = 'created', $order = 'desc')
 	{

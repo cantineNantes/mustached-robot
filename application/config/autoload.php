@@ -80,7 +80,7 @@ $autoload['helper'] = array('language', 'form', 'template', 'user/user');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('mustached');
 
 
 /*

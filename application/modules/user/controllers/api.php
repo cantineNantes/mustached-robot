@@ -5,13 +5,6 @@ class Api extends Rest_Controller {
 	private $return = array('id', 'firstname', 'lastname', 'email', 'twitter', 'company_id', 'created', 'updated');
 
 	/*
-	public function __construct()
-	{
-		parent::__construct();
-		$this->return = 
-	}
-	*/
-	/*
 	 *	Get the users
 	 *  
 	 */
@@ -37,7 +30,7 @@ class Api extends Rest_Controller {
 		}
 	}
 
-	public function here_get()
+	public function here_get($reason = null)
 	{
 		Datamapper::add_model_path( array( APPPATH.'modules/logger') );
 		$l = new Log();
@@ -48,6 +41,10 @@ class Api extends Rest_Controller {
 		$l->where('killed = 0');
 		$l->where('public = 1');
 
+		if($reason) {
+			$l->where('reason_id = '.$reason);
+		}
+
 		$here = $l->get()->all_to_array($this->return);
 
 		if($here) 
@@ -57,13 +54,10 @@ class Api extends Rest_Controller {
 		else 
 		{
 			$this->response(array('message' => 'Sorry, no one is here !'), 400);
-		}
-
-		
-
-		//$this->response($l->user->get()->all_to_array(), 201);
-		
+		}		
 	}
+
+
 
 	public function logs_get($user_id, $param = 'created', $order = 'desc')
 	{

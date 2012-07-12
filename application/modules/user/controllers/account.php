@@ -8,6 +8,11 @@ class Account extends Public_Controller {
 		$this->load->library('mustache_user');
 	}
 	
+	public function api()
+	{
+		$this->load->library('curl'); 
+		$ curl -X POST -H "X-API-KEY: some_key_here" http://example.com/books
+	}
 	/*
 	 * Create a new user
 	 */

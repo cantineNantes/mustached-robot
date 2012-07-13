@@ -22,7 +22,7 @@ class Coworking	 {
 			show_error(lang('calendar.authenticationError'));
 		}
 
-		$evts = $this->CI->gcalendar->getEvents($this->CI->config->item('google_calendar_handle'), 20, date('Y-m-d'));
+		$evts = $this->CI->gcalendar->getEvents($this->CI->config->item('google_calendar_id'), 20, date('Y-m-d'));
 
 		return $evts->data->items;
 	}

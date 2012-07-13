@@ -10,7 +10,18 @@
 
 ### Populate your database
 
-* Before starting you should populate the database with at leat one entry in the "reasons" table
+* Before starting you should populate the database with at leat one entry in the "reasons" table -- by convention the "reason" with "id = 1" is coworking
+
+### Configuration
+
+* Edit the /config/config.php file :
+
+  * line 23 : update the url of your final production site
+  * line 238 : update the encryption key to set your own (very important for security reason)
+
+* Edit the /config/mustached.php file :
+  * number of seats in the coworking space
+  * information to connect to your Google Calendar
 
 ## Developers
 

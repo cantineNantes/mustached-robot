@@ -35,7 +35,7 @@ class MY_Controller extends MX_Controller {
 
 
         if ( ENVIRONMENT == 'development' ){
-            $this->output->enable_profiler(true);
+            //$this->output->enable_profiler(true);
         }
 
         if($msg = $this->session->flashdata('msg'))

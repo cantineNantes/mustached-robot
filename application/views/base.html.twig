@@ -9,7 +9,7 @@
 
     <!-- Le styles -->
 
-    {{ assets_css(['reset.less', 'variables.less', 'mixins.less', 'scaffolding.less', 'grid.less', 'layouts.less', 'type.less', 'code.less', 'forms.less', 'tables.less', 'sprites.less', 'dropdowns.less', 'wells.less', 'component-animations.less', 'close.less', 'buttons.less', 'button-groups.less', 'alerts.less', 'navs.less', 'navbar.less', 'breadcrumbs.less', 'pagination.less', 'pager.less', 'responsive.less', 'mustached.less',  'utilities.less'])}}
+    {{ assets_css(['reset.less', 'variables.less', 'mixins.less', 'scaffolding.less', 'grid.less', 'layouts.less', 'type.less', 'code.less', 'forms.less', 'tables.less', 'sprites.less', 'dropdowns.less', 'wells.less', 'component-animations.less', 'close.less', 'buttons.less', 'button-groups.less', 'alerts.less', 'navs.less', 'navbar.less', 'breadcrumbs.less', 'pagination.less', 'pager.less',  'utilities.less', 'mustached.less', 'responsive.less'])}}
     <link href="http://mustached.local/assets/css/autoSuggest.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -29,7 +29,7 @@
 
     {% include "headers/header_"~section~".html.twig" %}
 
-    <div class="container">
+    <div class="container-fluid">
 
         {% block msg %}
           {% if msg %}
@@ -53,7 +53,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->    
-    {{ assets_js(['jquery-1.7.2.min.js', 'main.js', 'jquery.timeago.js', 'jquery.autocomplete-min.js', 'highcharts.js', 'common.coffee'])}}
+    {{ assets_js(['jquery-1.7.2.min.js', 'main.js', 'jquery.timeago.js', 'jquery.autocomplete-min.js', 'highcharts.js', 'common.coffee', 'bootstrap.js'])}}
 
   </body>
 </html>

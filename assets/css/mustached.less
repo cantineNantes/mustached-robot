@@ -1,5 +1,5 @@
 body {
-	padding-top: 126px;
+	padding-top: 100px;
 	background: #FAFCFE url('../img/gridNoise.png') repeat; 
 }
 
@@ -32,22 +32,30 @@ h1 {
 	color:@grayDarkPlus;
 	letter-spacing: 1.5px;
 	}
+h2 { 
+	font-weight: bold; 
+	text-shadow:3px 3px 0 rgba(255,255,255); 
+	font-size: 1.7em;
+	line-height: 4 * @baseLineHeight;
+	color:@grayDarkPlus;
+	letter-spacing: 1.5px;
+	}
 .text p { font-size: 1em; line-height: @baseLineHeight; }
 
 
 /* Navigation Stuff */
 .navbar {
 	.navbar-inner {
-		background: transparent url('../img/navbarBg.png') repeat-x;
-		padding: 0 0 4px 0;
+		background: transparent url('../img/navbarBg.png') repeat;
+		padding: 0;
 		min-height: 71px;
 		.box-shadow(0);
-		border-bottom: 1px dashed @grayLighter;
+		border-bottom: 6px solid @grayLighter;
 	}
 	.nav {
 		li  {
 			a {
-				padding: 19px 25px 19px 25px;
+				padding: 22px 25px 22px 25px;
 				font-size: 18px;
 				font-weight: 400;
 				letter-spacing: 0.5px;
@@ -137,6 +145,14 @@ h1 {
 				color:@grayLighter;			
 			}
 		}
+	}
+}
+
+/* Check-in forms */
+form {
+	input.input-text {
+		border: 1px solid @grayLighter;
+		.border-radius(5px);
 	}
 }
 

@@ -23,6 +23,8 @@
   * number of seats in the coworking space
   * information to connect to your Google Calendar
 
+* Edit the /config/rest.php (line 85, to set the login / password to access the API datas)
+
 ## Developers
 
 ### General syntax

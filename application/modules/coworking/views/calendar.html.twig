@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+	<h2>{{ lang('calendar.nextEventsTitle') }}</h2>
+
+	{% for event in events %}
+		<h3>{{ event.title}}</h3>
+		{{ lang('stats.from') }} {{ event.when[0].start | date('d/m/Y') }} {{ lang('stats.to') }} {{ event.when[0].end | date('d/m/Y') }}
+	{% endfor %}
+
+{% endblock %}

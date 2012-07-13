@@ -68,3 +68,7 @@ $lang["stats.to"]                   = "au";
 $lang["stats.passages"]             = "passages";
 $lang["stats.passagesPerDay"]       = "passages / jour";
 $lang["stats.differentPeople"]      = "différentes personnes";
+
+// --------------------------- Dashboard
+$lang["calendar.nextEventsTitle"]     = "Prochainement à la Cantine";
+$lang["calendar.authenticationError"] = "Erreur de connexion au calendrier";

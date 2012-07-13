@@ -3,31 +3,15 @@
 class Api extends Rest_Controller {
 
 	/*
-	 *	Get the coworking space seats informations
+	 *	Get the next events in the coworking space (starting from today)
 	 *  
 	 */
-	public function seats_get()
+	public function next_events_get()
 	{
-		
-		Datamapper::add_model_path( array( APPPATH.'modules/logger') );
-		$l = new Log();
-
-		$l->where('created >=', date('Y-m-d'));
-		$l->where('killed = 0');
-		$l->where('reason_id = 1');
-
-		$occupied  = $l->count();
-		$total     = $this->config->item('seats');
-		$available = (($total - $occupied) < 0) ? 0 : $total;
-
-		$seats = array(
-			'total'     => $total,
-			'occupied'  => $occupied,
-			'available' => $available, 
-		);
-
-		$this->response($seats, 201);
+		$this->load->library('coworking');
+		$this->response($this->coworking->getNextEvents(), 201);
 	}
+
 
 
 }

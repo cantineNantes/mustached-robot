@@ -61,6 +61,7 @@ $route['api/user/(:num)/logs']  = "user/api/logs/$1";
 $route['api/user/(:num)/logs/(:any)/(:any)']= "user/api/logs/$1/$2/$3";
 
 $route['api/coworking/seats']   = "coworking/api/seats";
+$route['api/coworking/next_events']  = "coworking/api/next_events";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

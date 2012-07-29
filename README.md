@@ -4,13 +4,31 @@
 
 ### Set up your vhost
 
-* Set up your local vhost to mustached.local
-* Set the environment variable ENVTYPE to "development" or "production" ```SetEnv ENVTYPE development	``` (see http://docstore.mik.ua/orelly/linux/apache/ch04_06.htm)
-* Set up a database called mustached (check application/config/development/database.php to get the full configuration)
+* Set up your local vhost to mustached.local 
+* Configure your vhost so :
+** mustached.local points to /mustached/public
+** set up the environment variable FUEL_ENV to "development" or "production" ```SetEnv ENVTYPE development	``` (see http://docstore.mik.ua/orelly/linux/apache/ch04_06.htm)
+
+Vhost example : 
+
+```
+<VirtualHost *:80>
+        DocumentRoot "/Users/dzey/www/mustached-robot/public"
+        ServerName mustached.local
+		SetEnv FUEL_ENV development		
+</VirtualHost>
+```
+
+### Database
+
+#### Configuration 
+
+* Set up the database name and connection login / passwords (check fuel/app/config/development/db.php to get the full configuration, or edit the file)
 
 ### Populate your database
 
-* Before starting you should populate the database with at leat one entry in the "reasons" table -- by convention the "reason" with "id = 1" is coworking
+* Before starting you should populate the database with the file database.sql located on the root
+* Please note that in this file, one table has been populated : the "reasons" table. You can change the values of the different entries or add new ones, but the entry with id = 1 is, by convention, for coworking.
 
 ### Configuration
 

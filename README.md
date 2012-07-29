@@ -1,13 +1,43 @@
 # Mustached Robot
 
+## Description
+
+Mustached Robot is an open source checkin plateform for coworking spaces. The project started in [Nantes]((http://goo.gl/maps/BNA73) and is currently under development.
+
+## Development team
+
+* Florent Gosselin - UX designer ([@fgosselin](http://twitter.com/fgosselin))
+* Jérémie Pottier - Developer ([@dzey](http://twitter.com/dzey))
+
+## Roadmap
+
+### Beta version (early september)
+
+* Coworkers can create, update and delete their account
+* Coworkers can checkin in the coworking space
+* Dashboard view with the coworkers profiles and the next events in the coworking space (this view can be used on a large TV screen in the coworking space)
+* Administrators can access the coworking space datas (coworkers currently here, coworkers profiles, coworking space statistics)
+* Developers can access the coworking space information via an API (to allow integration with coworking space websites for example)
+
+### V1
+
+* Plugin system to allow anyone to develop plugins without needing to change the core files (example: a billing management system through Freshbook, a connection to a specific CRM, etc)
+
 ## Installation
+
+If you want to install Mustached Robot, just follow these instructions:
+
+### Download the source files
+
+This one should be easy.
 
 ### Set up your vhost
 
 * Set up your local vhost to mustached.local 
 * Configure your vhost so :
-** mustached.local points to /mustached/public
-** set up the environment variable FUEL_ENV to "development" or "production" ```SetEnv ENVTYPE development	``` (see http://docstore.mik.ua/orelly/linux/apache/ch04_06.htm)
+
+  * mustached.local points to /mustached/public
+  * set up the environment variable FUEL_ENV to "development" or "production" ```SetEnv FUEL_ENV development	``` (see http://docstore.mik.ua/orelly/linux/apache/ch04_06.htm)
 
 Vhost example : 
 
@@ -42,9 +72,15 @@ Vhost example :
 
 ## Developers
 
-### General syntax
+Mustached Robot is developed with [FuelPHP](http://fuelphp.com). You should be familiar with this framework to start working on Mustached Robot. The [documentation](http://docs.fuelphp.com/) is nice and easy to work with.
 
-As we are using [FuelPHP](), we follow their [coding standards](http://docs.fuelphp.com/general/coding_standards.html).
+### Contributors
+
+New developers or designers are welcome to join the project. Just contact us on twitter ([@fgosselin](http://twitter.com/fgosselin), [@dzey](http://twitter.com/dzey)) if you want to get involved !
+
+### Coding standards
+
+As we use [FuelPHP](http://fuelphp.com), we follow their [coding standards](http://docs.fuelphp.com/general/coding_standards.html).
 
 ### Modules
 
@@ -79,7 +115,7 @@ We use Sensio Lab's [Twig](http://twig.sensiolabs.org) as a template engine.
 
 Controllers must extend one of the following controller : \Front_Controller, \Admin_Controller or \API_Controller (both available in /application/core).
 
-To call a view from within a controller, just call ```return $this->_render('template_name');``` (without .twig extension). This will call the template called 'template_name.twig' located in the views directory of the same module.
+To call a view from within a controller, just call ```return $this->_render('template_name');``` (without the .twig extension). This will call the template called 'template_name.twig' located in the views directory of the module.
 
 ### Views
 
@@ -103,7 +139,7 @@ And that's it !
 
 #### Javascript
 
-Javascript files are stored in the /public/assets/js directory. They are loaded in the fuel/app/views/app.twig (at theend of the document).
+Javascript files are stored in the /public/assets/js directory. They are loaded in the fuel/app/views/app.twig (at the end of the document).
 
 ## Project status
 

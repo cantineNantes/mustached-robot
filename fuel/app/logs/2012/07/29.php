@@ -997,3 +997,8 @@ Warning - 2012-07-29 13:21:27 --> Fuel\Core\Fuel::init - The configured locale f
 Error - 2012-07-29 13:21:27 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
 Warning - 2012-07-29 13:21:27 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
 Error - 2012-07-29 13:21:27 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
+Warning - 2012-07-29 13:27:03 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Warning - 2012-07-29 13:27:06 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Error - 2012-07-29 13:27:06 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
+Warning - 2012-07-29 13:27:06 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Error - 2012-07-29 13:27:06 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217

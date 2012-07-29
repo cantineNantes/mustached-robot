@@ -44,7 +44,7 @@ Vhost example :
 ```
 <VirtualHost *:80>
         DocumentRoot "/Users/dzey/www/mustached-robot/public"
-        ServerName mustached.local
+        ServerName mustached.localr
 		SetEnv FUEL_ENV development		
 </VirtualHost>
 ```
@@ -68,7 +68,7 @@ Vhost example :
   * seats : set the number of seats available in the coworking space
 
 * Edit the /fuel/modules/calendar/config/calendar.php file :
-  * login and password to connecter your Google Calendar
+  * login and password to connect to your Google Calendar
 
 ## Developers
 
@@ -103,10 +103,6 @@ We use FuelPHP's [Modules] (http://docs.fuelphp.com/general/modules.html). It me
 |       |_ config
 </pre>
 
-### Database ###
-
-Here we will specify where is the database schema and how we handle migrations.
-
 ### Templates
 
 We use Sensio Lab's [Twig](http://twig.sensiolabs.org) as a template engine.
@@ -119,9 +115,9 @@ To call a view from within a controller, just call ```return $this->_render('tem
 
 ### Views
 
-Views are located in the view directory of the module. You must name the views with .twig extension
+Views are located in the views directory of the module (NOT the classes/view directory). You must name the views with .twig extension
 
-Layouts and shared views are located in application/views/
+Layouts and shared views are located in /fuel/app/views/
 
 ### Assets
 
@@ -144,5 +140,3 @@ Javascript files are stored in the /public/assets/js directory. They are loaded 
 ## Project status
 
 You can see the project status on the [Github issues tracker](https://github.com/cantineNantes/mustached-robot/issues?milestone=1&state=open)
-
-## DATABASE

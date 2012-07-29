@@ -1,7 +1,3 @@
-*/config/development/*
-*/logs/log-*.php
-*/logs/!index.html
-*/cache/!index.html
-*/cache/*
 *.sublime-project
 *.sublime-workspace
+oil

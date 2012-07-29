@@ -1,0 +1,28 @@
+{% extends "layouts/app.twig" %}
+
+{% block content %}
+
+	<h2>{{ lang('mustached.checkin.stats.from') }} {{ dates.start }} {{ lang('mustached.checkin.stats.to') }} {{ dates.end }}</h2>
+
+
+	{{ count.logs }} {{ lang('mustached.checkin.stats.passages') }}
+
+	<br>
+
+	{{ '%.2f' | format(count.users / count.days) }} {{ lang('mustached.checkin.stats.passagesPerDay') }}
+
+	<br>
+
+	{{ count.users }} {{ lang('mustached.checkin.stats.differentPeople') }}
+
+	<br>
+
+	<ul>
+	{% for date, number in checkins %}
+		<li>{{ date }} : {{ number }} passages</li>
+	{% endfor %}
+	</ul>
+
+
+
+{% endblock %}

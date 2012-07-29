@@ -14,44 +14,40 @@
 
 ### Configuration
 
-* Edit the /config/config.php file :
+* Edit the /fuel/config/mustached.php file :
 
-  * line 23 : update the url of your final production site
-  * line 238 : update the encryption key to set your own (very important for security reason)
+  * salt : set a unique string (the more complex, the better). This string will be used to encrypt user password and should not be revelad
+  * seats : set the number of seats available in the coworking space
 
-* Edit the /config/mustached.php file :
-  * number of seats in the coworking space
-  * information to connect to your Google Calendar
-
-* Edit the /config/rest.php (line 85, to set the login / password to access the API datas)
+* Edit the /fuel/modules/calendar/config/calendar.php file :
+  * login and password to connecter your Google Calendar
 
 ## Developers
 
 ### General syntax
 
-As we are using Codeigniter, we follow their [coding style](http://codeigniter.com/user_guide/general/styleguide.html).
+As we are using [FuelPHP](), we follow their [coding standards](http://docs.fuelphp.com/general/coding_standards.html).
 
 ### Modules
 
-We use CodeIgniter's [Modular Extensions HMVC](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc/wiki/Home). It means the code is grouped into modules. Each module follow the same architecture :
+We use FuelPHP's [Modules] (http://docs.fuelphp.com/general/modules.html). It means the code is grouped into modules. Each module follow the same architecture :
 
 <pre>
 |- module_1
-|       |_ controllers
+|       |_ classes
+|            |_ controller
+|            |_ model
+|            |_ single_class.php
 |       |_ views
-|       |_ models
 |       |_ config
 |- module_2
-|       |_ controllers
+|       |_ classes
+|            |_ controller
+|            |_ model
+|            |_ other_class.php
 |       |_ views
 |       |_ config
 </pre>
-
-### Models
-
-We use [Datamapper](http://datamapper.wanwizard.eu/) ORM. 
-
-Tip: To load a model of a module from another module, use ```Datamapper::add_model_path( array( APPPATH.'modules/[module_name]') ); in the controller.
 
 ### Database ###
 
@@ -59,32 +55,40 @@ Here we will specify where is the database schema and how we handle migrations.
 
 ### Templates
 
-We use Sensio Lab's [Twig](http://twig.sensiolabs.org) as a template engine. 
+We use Sensio Lab's [Twig](http://twig.sensiolabs.org) as a template engine.
 
-### Controllers 
+### Controllers
 
-Controllers must extend one of the following controller : Public_Controller or Admin_Controller (both available in /application/core). 
+Controllers must extend one of the following controller : \Front_Controller, \Admin_Controller or \API_Controller (both available in /application/core).
 
-To call a view from within a controller, just call ```$this->_render('template_name');``` (without .html.twig extension). This will call the template called 'template_name.html.twig' located in the views directory of the same module.
+To call a view from within a controller, just call ```return $this->_render('template_name');``` (without .twig extension). This will call the template called 'template_name.twig' located in the views directory of the same module.
 
-### Views 
+### Views
 
-Views are located in the view directory of the module. You must name the views with .html.twig extension
+Views are located in the view directory of the module. You must name the views with .twig extension
 
 Layouts and shared views are located in application/views/
 
 ### Assets
 
-Assets are located in the /assets directory. You can use .less for css and .coffee for javascript (just use the .less or .coffee extension). Conventional css (.css extension) or javascript (.js extension) will also work.
+Assets are located in the /public/assets directory.
 
-The javascript and css assets are minified, stored in the /assets/cache directory and sent on the browser. They are generated on-the-fly if on the the files has been modified. 
+#### Less
+
+Less files are located in /public/assets/less directory. They are loaded in the application in the /fuel/app/classes/controller/base.php file. These .less files are generated on the fly if they have been modified in the /public/assets/css/ directory.
+
+If you want to add a new .less file, you need to :
+* add it in the /public/assets/less directory
+* load it in the /fuel/app/classes/controller/base.php
+
+And that's it !
+
+#### Javascript
+
+Javascript files are stored in the /public/assets/js directory. They are loaded in the fuel/app/views/app.twig (at theend of the document).
 
 ## Project status
 
 You can see the project status on the [Github issues tracker](https://github.com/cantineNantes/mustached-robot/issues?milestone=1&state=open)
 
-## Migrations
-ALTER TABLE  `logs` ADD  `updated` TIMESTAMP NULL DEFAULT NULL ,
-ADD  `killed` TINYINT NOT NULL
-
-ALTER TABLE  `users` CHANGE  `created`  `created` TIMESTAMP NULL DEFAULT NULL
+## DATABASE

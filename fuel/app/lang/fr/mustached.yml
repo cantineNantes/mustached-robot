@@ -1,0 +1,70 @@
+user:
+  login:
+    title: Connexion
+    success: Connecté
+    error: Erreur lors de la connexion
+  form:
+    add: Ajouter
+    edit: Modifier
+  edit_password:
+    title: Changer le mot de passe
+    current_password: Mot de passe actuel
+    new_password: Nouveau mot de passe
+    action_label: Changer le mot de passe
+    success: Le mot de passe a été mis à jour
+    error: Hiiiin ! Vérifiez votre mot de passe actuel
+  firstname: Prénom
+  lastname: Nom
+  email: Adresse email
+  password: Mot de passe
+  twitter: Pseudo twitter
+  company: Société
+  create_account: Créer un compte
+  update_account: Mettre à jour le compte
+  save_success: Utilisateur enregistré
+  update_success: Modifications enregistrées
+  save_error: Erreur lors de l'enregistrement
+  email_exists: Cet email existe déjà
+admin:
+  accessRestricted: Désolé, mais l'accès à cette partie du site est réservé !
+  userCameFor: est venu(e) pour
+  menu:
+    home: Dashboard
+    statistics: Statistiques
+    coworkers: Coworkers
+    settings: Paramètres
+  upgrade: Passer en admin
+  downgrade: Révoquer les droits
+  user_upgraded: :firstname :lastname est maintenant admin!
+  user_downgraded: :firstname :lastname n'est plus admin !
+
+checkin:
+
+  fields:
+    public: Afficher publiquement votre passage
+    reason: Quelle est la raison de votre venue aujourd'hui ?
+  add:
+    title: Enregistrez votre passage
+    submit: Enregistrer mon passage
+    success: Votre passage a été enregistré
+    error: Erreur lors de l'enregistrement de votre passage
+    accountDoesntExistCreate: Cet email n'est pas enregistré. Créez un compte dès maintenant !
+  doesnt_exist: Ce checkin n'existe pas
+  killed:
+    success: Checkin killed !
+  admin:
+    title: Checkins
+    add_new: Ajouter un passage
+    occupancy: Occupation
+  stats:
+    from: Du
+    to: au
+    passages: passages
+    passagesPerDay: passages / jour
+    differentPeople: différentes personnes
+
+api:
+    no_result: Aucun résultat
+    no_one_here: Désolé il n'y a personne ici !
+  404: Cette ressource n'existe pas
+

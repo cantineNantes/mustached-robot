@@ -1,0 +1,12 @@
+{% extends "layouts/app.twig" %}
+
+{% block content %}
+	<ul class="coworkersLog">
+
+	{% for user in users %}
+			<li class="log">
+				<img src="{{ avatar(user.email, 50) }}" class="rounded"/> {{ user.firstname }} {{ user.lastname }} ({{ user.email }}) - <a href="{{ url('user/account/edit') }}/{{ user.id }}">{{ lang('edit') }}</a> - {% if user.is_admin %} Admin - (<a href="{{ url('admin/user/downgrade') }}/{{ user.id }}">{{ lang('mustached.admin.downgrade')}}</a>) {% else %} <a href="{{ url('admin/user/upgrade') }}/{{ user.id }}">{{ lang('mustached.admin.upgrade')}}</a> {% endif %}
+			</li>
+	{% endfor %}
+	</ul>
+{% endblock %}

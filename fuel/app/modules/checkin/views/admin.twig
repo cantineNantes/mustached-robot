@@ -1,0 +1,42 @@
+{% extends "layouts/app.twig" %}
+
+{% block content %}
+	<div class="row-fluid">
+		<div class="span8">
+			<h1>{{ lang('mustached.checkin.admin.title') }}</h1>
+			<div class="block">
+				<div class="linkHolder">
+					<a href="{{ url('checkin/add') }}">{{ lang('mustached.checkin.add_new') }}</a>
+				</div>
+				<div class="dataHolder coworkersLog">
+
+					{% for date, checkin in checkins %}
+
+						<div class="date dashed">
+							<time datetime="{{ date }}">{{ date | date('d/m/Y')}}</time>
+						</div>
+
+						<ul>
+						{% for single_checkin in checkin %}
+							<li class="log">
+								<img src="{{ avatar(single_checkin.email, 50) }}" class="avatar avatar-mini"/>
+								<div class="logInfo">
+									<a href="#">{{ single_checkin.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_log.reason }} {% if not single_checkin.killed %} - <a href="{{ url('checkin/admin/kill') }}/{{ single_checkin.id }}">Kill</a> - {% endif %} <abbr class="timeago pull-right" title="{{ single_checkin.start }}">{{ single_checkin.time_ago }}</abbr>
+								</div>
+							</li>
+						{% endfor %}
+						</ul>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="span4">
+			<h1>{{ lang('mustached.checkin.admin.occupancy') }}</h1>
+			<div class="block">
+				<div class="dataHolder">
+					Beau graphique
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

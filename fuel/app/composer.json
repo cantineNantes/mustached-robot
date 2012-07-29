@@ -1,0 +1,6 @@
+{
+	"minimum-stability": "stable",
+    "require": {
+        "twig/twig": "1.*"
+    }
+}

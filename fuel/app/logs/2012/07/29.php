@@ -1002,3 +1002,15 @@ Warning - 2012-07-29 13:27:06 --> Fuel\Core\Fuel::init - The configured locale f
 Error - 2012-07-29 13:27:06 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
 Warning - 2012-07-29 13:27:06 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
 Error - 2012-07-29 13:27:06 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
+Warning - 2012-07-29 15:34:48 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Warning - 2012-07-29 15:34:51 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Warning - 2012-07-29 15:34:53 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Error - 2012-07-29 15:34:53 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
+Warning - 2012-07-29 15:34:53 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Error - 2012-07-29 15:34:53 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
+Warning - 2012-07-29 15:34:55 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Warning - 2012-07-29 15:34:57 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Warning - 2012-07-29 15:35:00 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Error - 2012-07-29 15:35:00 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217
+Warning - 2012-07-29 15:35:00 --> Fuel\Core\Fuel::init - The configured locale fr_FR is not installed on your system.
+Error - 2012-07-29 15:35:00 --> Error - Could not find asset: bootstrap.css in C:\wamp\www\mustached-robot\fuel\core\classes\asset\instance.php on line 217

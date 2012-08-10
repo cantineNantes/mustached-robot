@@ -18,6 +18,7 @@ Mustached Robot is an open source checkin plateform for coworking spaces. The pr
 * Dashboard view with the coworkers profiles and the next events in the coworking space (this view can be used on a large TV screen in the coworking space)
 * Administrators can access the coworking space datas (coworkers currently here, coworkers profiles, coworking space statistics)
 * Developers can access the coworking space information via an API (to allow integration with coworking space websites for example)
+* Mobile ready
 
 ### V1
 

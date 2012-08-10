@@ -2,6 +2,7 @@
 
 namespace Checkin;
 use Mustached\Message;
+use Mustached\Plugin;
 
 class Controller_Public extends \Controller_Front
 {
@@ -35,8 +36,11 @@ class Controller_Public extends \Controller_Front
     {
         $result = $f->create_from_form($fieldset);
         if($result === true) {
-          Message::flash_success('mustached.checkin.add.success');
-          \Response::redirect('checkin/public/add');
+          $plugin = new Plugin();
+          $plugin->postCheckin();
+
+          //Message::flash_success('mustached.checkin.add.success');
+          //\Response::redirect('checkin/public/add');
         }
         else
         {

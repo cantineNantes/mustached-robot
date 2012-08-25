@@ -5,20 +5,12 @@ namespace Calendar;
 class Manager {
 
 	private $gcal;
-
-	public function __construct()
+	
+	public function __construct(\GCalendar $gcal)
 	{
-
-		include('vendor/gcalendar/gcalendar.php');
-
-		$params = array(
-			'email'    => \Config::get('google_calendar_email'),
-			'password' => \Config::get('google_calendar_password'),
-		);
-
-		$this->gcal = new \GCalendar($params);
+		$this->gcal = $gcal;
 	}
-
+	
 	public static function load()
 	{
 		\Lang::load('calendar.yml', 'calendar');

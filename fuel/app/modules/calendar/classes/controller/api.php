@@ -13,7 +13,7 @@ class Controller_Api extends \Controller_Api
 
 	public function get_next_events()
 	{
-		$m = new Manager;
+		$m = new Manager(new \GCalendar(array('email' => \Config::get('google_calendar_email'), 'password' => \Config::get('google_calendar_password'))));
 
 		if( ! ($events = $m->get_next_events()))
 		{

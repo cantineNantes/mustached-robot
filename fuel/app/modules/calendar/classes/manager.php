@@ -5,20 +5,13 @@ namespace Calendar;
 class Manager {
 
 	private $gcal;
-
+	
 	public function __construct()
 	{
-
-		include('vendor/gcalendar/gcalendar.php');
-
-		$params = array(
-			'email'    => \Config::get('google_calendar_email'),
-			'password' => \Config::get('google_calendar_password'),
-		);
-
-		$this->gcal = new \GCalendar($params);
+		require_once 'vendor/gcalendar/gcalendar.php';
+		$this->gcal = new \GCalendar(array('email' => \Config::get('google_calendar_email'), 'password' => \Config::get('google_calendar_password')));
 	}
-
+	
 	public static function load()
 	{
 		\Lang::load('calendar.yml', 'calendar');
@@ -26,7 +19,18 @@ class Manager {
 	}
 
 	/**
+	 * Set a new calendar (overrides constructor calendar)
+	 * 
+	 * @param \GCalendar $gcal [description]
+	 */
+	public function setCalendar(\GCalendar $gcal)
+	{
+		$this->gcal = $gcal;
+	}
+
+	/**
 	 * Get the next events
+	 * 
 	 * @param int $number Number of events to retrieve
 	 * @return bool|array Returns false on failure or an array containing the events informations on success
 	 */

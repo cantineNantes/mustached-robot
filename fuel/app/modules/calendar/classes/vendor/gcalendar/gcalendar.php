@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 Copyright 2011 Montania System AB
 

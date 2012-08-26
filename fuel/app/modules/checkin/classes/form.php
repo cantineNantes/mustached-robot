@@ -8,16 +8,19 @@ class Form
 
 	/**
 	 * Return a form for a checkin
+	 * 
 	 * @return Fieldset
 	 */
+	
 	public function create_form()
 	{
 
 		$reasons = \Arr::assoc_to_keyval(
-  		\DB::select('id', 'name')
-			->from('reasons')
-			->order_by('order', 'asc')
-			->execute()->as_array(),
+	  		\DB::select('id', 'name')
+				->from('reasons')
+				->order_by('order', 'asc')
+				->execute()
+				->as_array(),
   		'id', 'name');
 
 		$fieldset = \Fieldset::forge('checkin');
@@ -46,8 +49,9 @@ class Form
 
 	/**
 	 * Create a checkin from the data returned by a form. If the users doesn't exists, he will be redirected to the registration form
+	 * 
 	 * @param \Fieldset $fieldset The fieldset submited by the user containing the data
-	 * @return bool|String Returns true on success of a String (containing the error message) on failure
+	 * @return bool|String Returns true on success or a String (containing the error message) on failure
 	 */
 	public function create_from_form($fieldset)
 	{

@@ -3,7 +3,15 @@
     "packages": [
         {
             "package": "twig/twig",
-            "version": "v1.9.0"
+            "version": "dev-master",
+            "alias-pretty-version": "1.9.x-dev",
+            "alias-version": "1.9.9999999.9999999-dev"
+        },
+        {
+            "package": "twig/twig",
+            "version": "dev-master",
+            "source-reference": "32c4867f68c1bacc758602d602e18a3ac1598c76",
+            "commit-date": "1345916214"
         }
     ],
     "packages-dev": null,

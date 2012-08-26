@@ -22,11 +22,14 @@ class Plugin {
 			{
 				$this->plugins[] = $module;
 			}
-
 		}
 	}
 
 
+	/**
+	 * Trigger the postCheckin actions on the installed plugins
+	 * @param  array  $params Optional params to be sent to the plugin PostCheckin action
+	 */
 	public function postCheckin($params = array())
 	{
 		foreach($this->plugins as $plugin)

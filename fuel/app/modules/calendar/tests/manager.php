@@ -3,9 +3,9 @@
 namespace Calendar;
 
 /**
- * Message class tests
+ * Manager class tests
  *
- * @group Plugin
+ * @group App
  * @group Calendar
  */
 class Test_Manager extends \TestCase
@@ -28,16 +28,18 @@ class Test_Manager extends \TestCase
                      ->will($this->returnCallback(array($this, 'returnEvents')));
 	}
 
-	public function test_get_next_event_has_twenty_event_by_default()
+	public function test_get_next_event_has_20_events_by_default()
 	{
-		$m = new Manager($this->calendarMock);
+		$m = new Manager;
+		$m->setCalendar($this->calendarMock);
 		$e = $m->get_next_events();
 		$this->assertSame(20, sizeof($e));
 	}
 
-	public function test_get_next_event_with_5_events()
+	public function test_get_next_5_events_return_5_events()
 	{
-		$m = new Manager($this->calendarMock);
+		$m = new Manager();
+		$m->setCalendar($this->calendarMock);
 		$e = $m->get_next_events(5);
 		$this->assertSame(5, sizeof($e));
 	}

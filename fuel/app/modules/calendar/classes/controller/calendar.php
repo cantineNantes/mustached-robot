@@ -1,6 +1,7 @@
 <?php
 
 namespace Calendar;
+
 use Mustached\Message;
 
 class Controller_Calendar extends \Controller_Front
@@ -14,8 +15,7 @@ class Controller_Calendar extends \Controller_Front
 
 	public function action_index()
 	{
-		include('../vendor/gcalendar/gcalendar.php');
-		$m = new Manager(new \GCalendar(array('email' => \Config::get('google_calendar_email'), 'password' => \Config::get('google_calendar_password'))));
+		$m = new Manager;
 
 		if( ! ($this->data['events'] = $m->get_next_events()))
 		{

@@ -74,7 +74,4 @@ class Manager
 					->execute()->as_array();
 	}
 
-
-
-
 }

@@ -16,7 +16,7 @@ class Controller_Api extends \Controller_Api
 	/* Return the public checkins */
 	public function get_checkins($order = 'asc')
 	{
-		$this->m->get_public_checkins($order);
+		$c = $this->m->get_public_checkins($order);
 		return $this->response($this->filter_array($c, $this->return));
 	}
 
@@ -40,7 +40,7 @@ class Controller_Api extends \Controller_Api
 
 	public function get_user_checkins($user_id, $order = 'asc')
 	{
-		$this->response($this->filter_array($this->m->get_user_checkins($user_id), $this->return));
+		return $this->response($this->filter_array($this->m->get_user_checkins($user_id), $this->return));
 	}
 
 

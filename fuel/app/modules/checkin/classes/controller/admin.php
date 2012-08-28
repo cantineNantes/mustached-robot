@@ -46,6 +46,9 @@ class Controller_Admin extends \Controller_Admin
 	 */
 	public function action_kill($id)
 	{
+
+		
+
 		$checkin = Model_Checkin::find($id);
 		if(!$checkin)
 		{

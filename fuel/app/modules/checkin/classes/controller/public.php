@@ -2,6 +2,7 @@
 
 namespace Checkin;
 use Mustached\Message;
+use Mustached\Plugin;
 
 class Controller_Public extends \Controller_Front
 {
@@ -11,18 +12,6 @@ class Controller_Public extends \Controller_Front
      parent::before();
   }
 
-  public function action_test()
-  {
-    $return = array('id', 'user_id', 'reason_id', 'created_at', 'updated_at', 'public', 'killed');
-    $m = new Manager;
-    // return $this->response(array("pouet" => "pouet"));
-    $checkin = $m->get_user_checkins(144);
-
-    print_r($checkin);
-
-    return $this->_render('add');
-
-  }
 
   public function action_add()
   {
@@ -35,6 +24,9 @@ class Controller_Public extends \Controller_Front
     {
         $result = $f->create_from_form($fieldset);
         if($result === true) {
+          $plugin = new Plugin();
+          $plugin->postCheckin();
+
           Message::flash_success('mustached.checkin.add.success');
           \Response::redirect('checkin/public/add');
         }
@@ -49,5 +41,5 @@ class Controller_Public extends \Controller_Front
 	}
 
 
-  }
+}
 

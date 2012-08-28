@@ -41,7 +41,7 @@ return array(
 	 *
 	 * Set this to false or remove if you using mod_rewrite.
 	 */
-	'index_file'  => '',
+	'index_file'  => false,
 
 	'profiling'  => false,
 

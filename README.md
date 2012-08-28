@@ -11,6 +11,7 @@ Mustached Robot is an open source checkin plateform for coworking spaces. The pr
 
 ## Roadmap
 
+
 ### Beta version (early september)
 
 * Coworkers can create, update and delete their account
@@ -18,6 +19,7 @@ Mustached Robot is an open source checkin plateform for coworking spaces. The pr
 * Dashboard view with the coworkers profiles and the next events in the coworking space (this view can be used on a large TV screen in the coworking space)
 * Administrators can access the coworking space datas (coworkers currently here, coworkers profiles, coworking space statistics)
 * Developers can access the coworking space information via an API (to allow integration with coworking space websites for example)
+* Mobile ready
 
 ### V1
 
@@ -30,6 +32,12 @@ If you want to install Mustached Robot, just follow these instructions:
 ### Download the source files
 
 This one should be easy.
+
+### Allow theses directories to be writable
+
+* /public/assets/css
+* /fuel/app/cache/
+* /fuel/app/cache/twig
 
 ### Set up your vhost
 

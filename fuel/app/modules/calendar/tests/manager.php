@@ -12,6 +12,7 @@ class Test_Manager extends \TestCase
 {
 
 	private $calendarMock;
+	private $manager;
 
 	public function setUp()
 	{
@@ -20,27 +21,29 @@ class Test_Manager extends \TestCase
 		$this->calendarMock = $this->getMock('Gcalendar', array('getEvents', 'authenticate'));
 
 		$this->calendarMock->expects($this->any())
-                      ->method('authenticate')
-                      ->will($this->returnValue(true));
+                           ->method('authenticate')
+                           ->will($this->returnValue(true));
 
         $this->calendarMock->expects($this->any())
-                     ->method('getEvents')
-                     ->will($this->returnCallback(array($this, 'returnEvents')));
+                           ->method('getEvents')
+                           ->will($this->returnCallback(array($this, 'returnEvents')));
+
+
+        $this->manager = new Manager;
+		$this->manager->setCalendar($this->calendarMock);
+
 	}
 
 	public function test_get_next_event_has_20_events_by_default()
 	{
-		$m = new Manager;
-		$m->setCalendar($this->calendarMock);
-		$e = $m->get_next_events();
+		
+		$e = $this->manager->get_next_events();
 		$this->assertSame(20, sizeof($e));
 	}
 
 	public function test_get_next_5_events_return_5_events()
 	{
-		$m = new Manager();
-		$m->setCalendar($this->calendarMock);
-		$e = $m->get_next_events(5);
+		$e = $this->manager->get_next_events(5);
 		$this->assertSame(5, sizeof($e));
 	}
 

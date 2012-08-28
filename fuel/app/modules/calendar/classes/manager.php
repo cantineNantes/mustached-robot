@@ -8,7 +8,10 @@ class Manager {
 	
 	public function __construct()
 	{
-		require_once 'vendor/gcalendar/gcalendar.php';
+		if(!class_exists('GCalendar'))
+		{
+			require_once 'vendor/gcalendar/gcalendar.php';
+		}
 		$this->gcal = new \GCalendar(array('email' => \Config::get('google_calendar_email'), 'password' => \Config::get('google_calendar_password')));
 	}
 	
@@ -21,7 +24,7 @@ class Manager {
 	/**
 	 * Set a new calendar (overrides constructor calendar)
 	 * 
-	 * @param \GCalendar $gcal [description]
+	 * @param \GCalendar $gcal
 	 */
 	public function setCalendar(\GCalendar $gcal)
 	{

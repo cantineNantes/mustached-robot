@@ -11,6 +11,8 @@ return array(
 
 	/**** API ROUTING *****/
 	'api/users'               => 'user/api/users',
+	'api/users/here'          => 'user/api/here',
+	'api/users/here/(:id)'    => 'user/api/here/$1',
 	'api/user/(:id)/checkins' => 'checkin/api/user_checkins/$1',
 	'api/user/(:id)'          => 'user/api/user/$1',	
 	'api/seats'               => 'user/api/seats',

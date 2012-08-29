@@ -52,6 +52,7 @@ class Controller_Api extends \Controller_Api
 		{
 			$this->response(array('info' => array('code' => 'no_one_here', 'message' => __('mustached.api.no_one_here'))));
 		}
+		
 	}
 
 	public function get_seats()

@@ -9,26 +9,27 @@
           <!-- <a class="brand" href="#">Mustached Robot</a> -->
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="{{ base_url('')}}">Check-in</a></li>
+              <li{% if current_url() == "" %} class="active" {% endif %}><a href="{{ base_url('')}}">Check-in</a></li>
               {% if current_user %}
-              <li><a href="{{ url('user/account/edit') }}">Modifier mon compte</a></li>
+              <li{% if current_url() == "user/account/edit" %} class="active" {% endif %}><a href="{{ url('user/account/edit') }}">Modifier mon compte</a></li>
               {% else %}
-              <li><a href="{{ url('user/account/add') }}">Créer mon compte</a></li>
-              <li><a href="{{ url('user/auth/login') }}">Connexion</a></li>
+              <li{% if current_url() == "user/account/add" %} class="active" {% endif %}><a href="{{ url('user/account/add') }}">Créer mon compte</a></li>
+              <li{% if current_url() == "user/auth/login" %} class="active" {% endif %}><a href="{{ url('user/auth/login') }}">Connexion</a></li>
               {% endif %}
               
             </ul>
           </div><!--/.nav-collapse -->
-          <div class="nav-collapse pull-right">
-            {% if current_user %}
-              {{ current_user.firstname }}
-              <br>
+           {% if current_user %}
+          <div class="nav-collapse pull-right accountBox">
+           
+              <img src="{{ avatar(current_user.email, 40) }}" class="avatar avatar-mini"/>
+              <!-- <br>
               <a href="">{{ lang('user.editAccount') }}</a>
               <a href="{{ url('user/auth/logout')}}">Déconnexion</a>
               <br>
-              <a href="{{ url('user/account/edit_password')}}">Changer mdp</a>
-            {% endif %}
+              <a href="{{ url('user/account/edit_password')}}">Changer mdp</a> -->
           </div>
+          {% endif %}
         </div>
       </div>
     </div>

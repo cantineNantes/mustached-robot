@@ -94,13 +94,13 @@ class Model_User extends \Orm\Model
     self::build_form($form, $editable);
   }
 
-  /*
-    Build a fieldset according to the model _properties
-
-    @param \Fieldset
-    @param Array fields to display on the form
-    @return Fieldset
-  */
+  /**
+   * Build a fieldset according to the model _properties
+   *
+   * @param \Fieldset
+   * @param Array fields to display on the form
+   * @return Fieldset
+   */
   private static function build_form($form, $editable) {
 
     $property = current(self::$_properties);

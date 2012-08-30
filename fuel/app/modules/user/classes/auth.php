@@ -103,6 +103,7 @@ class Auth {
                     'user_id'      => $u->id,
                     'firstname'    => $u->firstname,
                     'is_admin'     => $u->is_admin,
+                    'email'        => $u->email,
                 );
 
                 \Session::set('current_user', $user);

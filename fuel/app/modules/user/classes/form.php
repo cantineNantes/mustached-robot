@@ -39,7 +39,7 @@ class Form {
         	$input = \Lang::get('mustached.user.form.edit');
 
             $fieldset = \Fieldset::forge()->add_model('User\Model_User', '', 'set_edit_fields' );
-			$fieldset->add('company', \Lang::get('mustached.user.company'), array('type' => 'text', 'id' => 'companies'));
+			$fieldset->add('company', '', array('type' => 'text', 'id' => 'companies', 'placeholder' => __('mustached.user.company')));
 
             $u = \DB::select('firstname', 'email', 'lastname', 'twitter', array('companies.name', 'company'))->from('users')->where('users.id', '=', $id)->join('companies', 'RIGHT')->on('companies.id', '=', 'users.company_id')->execute()->current();
 
@@ -58,10 +58,10 @@ class Form {
             if($email) {
                 $fieldset->populate(array('email' => $email, true));
             }
-            $fieldset->add('company', \Lang::get('mustached.user.company'), array('type' => 'text', 'id' => 'companies'));
+            $fieldset->add('company', '', array('type' => 'text', 'id' => 'companies', 'placeholder' => __('mustached.user.company')));
         }
 
-        $fieldset->add('submit', '', array('type' => 'submit', 'value' => $input, 'class' => 'btn medium primary'));
+        $fieldset->add('submit', '', array('type' => 'submit', 'value' => $input, 'class' => 'btn btn-large btn-primary'));
         $fieldset->repopulate();
 
         return $fieldset;

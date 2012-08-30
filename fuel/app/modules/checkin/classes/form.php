@@ -23,20 +23,20 @@ class Form
 		$fieldset = \Fieldset::forge('checkin');
 
 		$fieldset->add('email',
-					   __('mustached.user.email'),
-					   array('type' => 'text'),
+					   '',
+					   array('type' => 'text', 'class' => 'giant', 'placeholder' => __('mustached.user.email'), 'autocomplete' => 'off'),
 					   array(array('required'), array('valid_email'))
 					   );
 
 		$fieldset->add('reason',
 			           __('mustached.checkin.reason.label'),
-			           array('type' => 'select', 'options' => $reasons)
+			           array('type' => 'select', 'class' => 'giant', 'options' => $reasons)
 			           );
 
 		$fieldset->add('submit',
 					   '',
-					   array('type' => 'submit', 'value' => __('mustached.checkin.add.submit'),
-					   'class' => 'btn btn-medium btn-primary')
+					   array('type' => 'submit', 'value' => __('mustached.checkin.add.submit'), 
+					   'class' => 'btn btn-large btn-primary')
 					   );
 
 		$fieldset->repopulate();

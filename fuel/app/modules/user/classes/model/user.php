@@ -19,8 +19,8 @@ class Model_User extends \Orm\Model
     'id',
     'email' => array(
        'data_type' => 'string',
-       'label' => 'mustached.user.email',
-       'form'  => array('type' => 'text'),
+       'label'     => 'mustached.user.email',
+       'form'  => array('type' => 'text', 'autocomplete' => 'off'),
        'validation' => array('required', 'max_length'=>array(120))
     ),
     'is_admin' => array(
@@ -31,29 +31,28 @@ class Model_User extends \Orm\Model
     'firstname' => array( //column name
        'data_type' => 'string',
        'label'     => 'mustached.user.firstname',
-       'form'      => array('type' => 'text'),
+       'form'      => array('type' => 'text', 'autocomplete' => 'off'),
        'validation'=> array('required') //validation rules
     ),
     'lastname'     => array(
        'data_type' => 'string',
        'label'     => 'mustached.user.lastname',
-       'form'      => array('type' => 'text'),
+       'form'      => array('type' => 'text', 'autocomplete' => 'off'),
        'validation' => array('required')
     ),
     'password' => array(
        'data_type'  => 'string',
-       'label'      => 'mustached.user.password',
+       'label'     => 'mustached.user.password',
        'validation' => array('required'),
-       'form'       => array('type' => 'password')
+       'form'       => array('type' => 'password', 'autocomplete' => 'off')
     ),
     'twitter' => array(
        'data_type'  => 'string',
-       'label'      => 'mustached.user.twitter',
-       'form'      => array('type' => 'text')
+       'label'     => 'mustached.user.twitter',
+       'form'      => array('type' => 'text', 'autocomplete' => 'off')
     ),
     'company_id' => array(
        'data_type'  => 'int',
-       'label'      => 'mustached.user.company',
        'form'       => array('type' => 'text', 'id' => 'companies', 'name' => 'company'),
     ),
     'created_at' => array(
@@ -112,7 +111,7 @@ class Model_User extends \Orm\Model
         if(in_array($name, $editable, true))
         {
           $validation = (isset($property['validation'])) ? array($property['validation']) : array() ;
-          $form->add($name, $property['label'], $property['form'], $validation);
+          $form->add($name, '', array_merge($property['form'], array('placeholder' => \Lang::get($property['label']))), $validation);
         }
         $property = next(self::$_properties);
     }

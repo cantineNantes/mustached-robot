@@ -1,6 +1,6 @@
 body {
 	padding-top: 100px;
-	background: #FAFCFE url('img/gridNoise.png') repeat;
+	background: #FAFCFE url('../img/gridNoise.png') repeat;
 }
 
 abbr[title] {
@@ -34,11 +34,17 @@ h1 {
 	}
 h2 {
 	font-weight: bold;
-	text-shadow:3px 3px 0 rgba(255,255,255);
+	text-shadow:2px 2px 0 rgba(255,255,255);
 	font-size: 1.7em;
 	line-height: 4 * @baseLineHeight;
 	color:@grayDarkPlus;
 	letter-spacing: 1.5px;
+	}
+h2.light {
+	font-weight: normal;
+	color:@grayLight;
+	font-style: italic;
+	font-size: 1.5em;
 	}
 .text p { font-size: 1em; line-height: @baseLineHeight; }
 
@@ -46,7 +52,7 @@ h2 {
 /* Navigation Stuff */
 .navbar {
 	.navbar-inner {
-		background: transparent url('img/navbarBg.png') repeat;
+		background: transparent url('../img/navbarBg.png') repeat;
 		padding: 0;
 		min-height: 71px;
 		.box-shadow(0);
@@ -67,7 +73,7 @@ h2 {
 				height:22px;
 				float:left;
 				margin: 0 10px 0 0;
-				background-image: url('img/navSprite.png');
+				background-image: url('../img/navSprite.png');
 				background-repeat: no-repeat;
 				display: inline-block;
     			vertical-align: middle;
@@ -113,7 +119,7 @@ h2 {
 	}
 }
 .dashed {
-	background: url('img/dashedLine.png') repeat-x center;
+	background: url('../img/dashedLine.png') repeat-x center;
 }
 
 /* Avatars */
@@ -133,7 +139,7 @@ h2 {
 		font-weight: bold;
 		time {
 			padding: 0 46px 0 0;
-			background: url('img/bgGradient.png') no-repeat center right;
+			background: url('../img/bgGradient.png') no-repeat center right;
 		}
 	}
 	li {
@@ -148,16 +154,90 @@ h2 {
 	}
 }
 
-/* Check-in forms */
-form {
-	input.input-text {
-		border: 1px solid @grayLighter;
-		.border-radius(5px);
-	}
+/* Forms */
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: @inputBackground;
+  border: 1px solid @inputBorder;
+  .border-radius(@inputBorderRadius);
+  .box-shadow(~"1px 1px 0 rgba(255, 255, 255, 0.8), inset 2px 2px 4px rgba(0, 0, 0, 0.1)");
+  @transition: border linear .2s, box-shadow linear .2s;
+  .transition(@transition);
+  .placeholder(@grayLighter);
+  color:@grayLight;
+  font-size: @baseFontSize * 1.5;
+  	padding: 20px 15px 20px 15px;
+  	margin-bottom: 10px;
+	width: 370px;
+	line-height: 30px;
+
+  // Focus state
+  &:focus { 
+    border-color: rgba(255,140,162);
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,140,162,.6)");
+  }
+  // Giant inputs
+  /* &.giant {
+  	font-size: @baseFontSize * 2;
+  	padding: 30px 15px 30px 15px;
+  	margin-bottom: 20px;
+	width: 570px;
+	line-height: 40px;
+  }*/
+}
+
+/* select.giant {
+	font-size: @baseFontSize * 2;
+	height: 80px;
+	width: 600px;
+	margin-bottom: 20px;
+	color:@grayLight;
+} */
+select {
+  width: 400px; // default input width + 10px of padding that doesn't get applied
+  border: 1px solid #bbb;
+  height: 60px;
+  font-size: @baseFontSize * 1.5;
+  color:@grayLight;
+}
+.coworkingLogo {
+	max-height: 170px;
+}
+.btn {
+	text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+.btn-large {
+  padding: 20px 40px;
+  font-size: @baseFontSize * 1.25;
+  font-weight: bold;
+  line-height: normal;
+  .border-radius(4px);
+  .box-shadow(~"inset 1px 1px 0 rgba(255, 255, 255, .4), 0 5px 0 rgba(154, 74, 89, 1)");
+  border: 1px solid rgba(154, 74, 89, 1);
+  &:active {
+  	 position: relative;
+  	 top:5px;
+  }
 }
 
 /* Autocomplete */
-.autocomplete-w1 { background:url(img/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:6px 0 0 6px; /* IE6 fix: */ _background:none; _margin:1px 0 0 0; }
+.autocomplete-w1 { background:url(../img/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:6px 0 0 6px; /* IE6 fix: */ _background:none; _margin:1px 0 0 0; }
 .autocomplete { border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
 .autocomplete .selected { background:#F0F0F0; }
 .autocomplete div { padding:2px 5px; white-space:nowrap; overflow:hidden; }

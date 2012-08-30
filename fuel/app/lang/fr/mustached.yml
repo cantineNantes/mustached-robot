@@ -1,11 +1,13 @@
 user:
   login:
     title: Connexion
-    success: Connecté
+    success: Vous êtes connecté !
     error: Erreur lors de la connexion
+    submit: Se connecter
   form:
-    add: Ajouter
+    add: Créer mon compte
     edit: Modifier
+    title: Création de compte
   edit_password:
     title: Changer le mot de passe
     current_password: Mot de passe actuel
@@ -19,7 +21,6 @@ user:
   password: Mot de passe
   twitter: Pseudo twitter
   company: Société
-  create_account: Créer un compte
   update_account: Mettre à jour le compte
   save_success: Utilisateur enregistré
   update_success: Modifications enregistrées
@@ -37,6 +38,14 @@ admin:
   downgrade: Révoquer les droits
   user_upgraded: :firstname :lastname est maintenant admin!
   user_downgraded: :firstname :lastname n'est plus admin !
+
+navigation:
+  checkin: Check-in
+  account:
+    create: Créer mon compte
+    edit: Modifier mon compte
+  login: Connexion
+  logout: Déconnexion
 
 checkin:
 

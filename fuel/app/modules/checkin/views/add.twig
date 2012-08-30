@@ -2,8 +2,14 @@
 
 {% block content %}
 
-<h2>{{ lang('mustached.checkin.add.title') }}</h2>
+<div align="center">
 
-{{ form }}
+	<img src="{{ url('/assets/img/custom/coworkingLogo.png') }}" class="coworkingLogo" alt=""/>
+
+	<h2 class="light">{{ lang('mustached.checkin.add.title') }}</h2>
+
+	{{ form }}
+
+</div>
 
 {% endblock %}

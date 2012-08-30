@@ -11,9 +11,9 @@ class Controller_Auth extends \Controller_Front
 		$fieldset = \Fieldset::forge('login');
 
 		$form = $fieldset->form();
-		$form->add('login', 'Login', array('type' => 'text'), array(array('required'), array('valid_email')));
-		$form->add('password', 'Password', array('type' => 'password'), array(array('required')));
-		$form->add('submit', '', array('type' => 'submit', 'value' => 'Login', 'class' => 'btn medium primary'));
+		$form->add('login', '', array('type' => 'text', 'placeholder' => __('mustached.user.email')), array(array('required'), array('valid_email')));
+		$form->add('password', '', array('type' => 'password', 'placeholder' => __('mustached.user.password')), array(array('required')));
+		$form->add('submit', '', array('type' => 'submit', 'value' => __('mustached.user.login.submit'), 'class' => 'btn btn-large btn-primary'));
 
 		 // repopulate the form on errors
     	$fieldset->repopulate();

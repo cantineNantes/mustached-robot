@@ -236,11 +236,65 @@ select {
   }
 }
 
-.accountBox {
-	padding: 15px 0 15px 0;
-	background: url('../img/icoSelect.png') no-repeat center right;
-	width: 60px;
+
+
+
+
+// Menu position and menu carets
+.navbar .dropdown-menu {
+  &:before, &:after {
+    content: '';
+    display: none;
+  }
 }
+
+.accountBox {	
+	a.l {
+		background: transparent url('../img/icoSelect.png') no-repeat 65px center;
+		width: 60px;
+		padding: 15px;
+		display: block;
+		&:hover {
+			background: rgba(0,0,0,.1) url('../img/icoSelect.png') no-repeat 65px center;
+		}
+	}
+	&.open a.l {
+		background: @grayDarker url('../img/icoSelect.png') no-repeat 65px center;
+	}
+	.dropdown-menu {
+		position: absolute;
+		top:69px !important;
+		right:20px !important;
+		width: 140px;
+		background: @grayDarker;
+		padding:10px 0px 15px 0px;
+		text-align: right;
+		.border-radius(0 0 4px 4px);
+		.box-shadow(0 !important);
+		border:0 !important;
+		li {
+			a {
+				padding: 0;
+				font-size: 14px;
+				font-weight: 400;
+				letter-spacing: 0.5px;
+				line-height: 26px;
+				color:darken(@white,15%) !important;
+				display: block;
+			    padding: 3px 15px;
+			    clear: both;
+			    font-weight: normal;
+			    line-height: @baseLineHeight * 1.25;
+			    white-space: nowrap;
+			    &:hover {
+			    	color:white !important;
+			    	background-color: lighten(@grayDarker, 10%);
+			    }
+			}
+		}
+	}
+}
+
 /* Autocomplete */
 .autocomplete-w1 { background:url(../img/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:6px 0 0 6px; /* IE6 fix: */ _background:none; _margin:1px 0 0 0; }
 .autocomplete { border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }

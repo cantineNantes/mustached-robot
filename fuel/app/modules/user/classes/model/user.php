@@ -11,6 +11,7 @@ class Model_User extends \Orm\Model
                       ),
                     );
 
+  protected static $_many_many = array('skills');
 
   protected static $_created_at = 'created_at';
   protected static $_updated_at = 'updated_at';

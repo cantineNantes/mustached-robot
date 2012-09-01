@@ -19,11 +19,21 @@ class Controller_Api extends \Controller_Api
 
 	public function get_users()
 	{
-		$this->response($this->filter_array($this->um->get_users(), $this->return));
+		$this->um->get_users();
+		//$this->response($this->filter_array($this->um->get_users(), $this->return));
 	}
 
 	public function get_user($id) {
 		$this->response($this->filter_array($this->um->get_user($id), $this->return));
+	}
+
+	public function get_user_extend($id) {
+		$this->response($this->um->get_user_extend($id));
+	}
+
+	public function get_user_skills($id)
+	{
+		$this->response($this->um->get_user_skills($id));
 	}
 
 	public function get_companies()
@@ -34,6 +44,11 @@ class Controller_Api extends \Controller_Api
 	public function get_company($id)
 	{
 		$this->response($this->um->get_company($id));
+	}
+
+	public function get_skills()
+	{
+
 	}
 
 	/*

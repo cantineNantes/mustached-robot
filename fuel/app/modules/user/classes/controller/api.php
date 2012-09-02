@@ -5,7 +5,7 @@ namespace User;
 class Controller_Api extends \Controller_Api
 {
 
-	protected $return = array('id', 'checkins.public', 'firstname', 'lastname', 'email', 'twitter', 'company_id', 'created_at', 'updated_at');
+	protected $return = array('id', 'checkins.public', 'firstname', 'lastname', 'email', 'twitter', 'created_at', 'updated_at', 'skills', 'company');
 
 	protected $um;
 	protected $cm;
@@ -23,11 +23,15 @@ class Controller_Api extends \Controller_Api
 	}
 
 	public function get_user($id) {
-		$this->response($this->filter_array($this->um->get_user($id), $this->return));
-	}
 
-	public function get_user_extend($id) {
-		$this->response($this->um->get_user_extend($id));
+		if (\Input::get('expand'))
+		{
+			$this->response($this->filter_array($this->um->get_user_expand($id, \Input::get('expand')), $this->return));	
+		}
+		else 
+		{
+			$this->response($this->filter_array($this->um->get_user($id), $this->return));
+		}
 	}
 
 	public function get_user_skills($id)

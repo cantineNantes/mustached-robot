@@ -15,7 +15,6 @@ return array(
 	'api/users/here/(:id)'    => 'user/api/here/$1',
 	'api/user/(:id)/checkins' => 'checkin/api/user_checkins/$1',
 	'api/user/(:id)/skills'   => 'user/api/user_skills/$1',
-	'api/user/(:id)/extend'   => 'user/api/user_extend/$1',	
 	'api/user/(:id)'          => 'user/api/user/$1',
 	'api/seats'               => 'user/api/seats',
 

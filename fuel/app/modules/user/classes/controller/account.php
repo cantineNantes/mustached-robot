@@ -12,25 +12,6 @@ class Controller_Account extends \Controller_Front
   }
 
 
-	public function action_index()
-  {
-    /*
-    echo date('Y-m-d');
-    $return = array('checkins.id', 'checkins.reason_id', 'users.firstname', 'users.lastname', 'users.email', 'users.twitter', 'users.company_id', 'users.created_at', 'users.updated_at', 'checkins.created_at');
-    $r = \DB::select_array($return)->from('users')->join('checkins', 'right')->on('checkins.user_id', '=', 'users.id')->where('checkins.killed', '=', '0')->where('checkins.created_at', '>=', date('Y-m-d'))->where('checkins.public', '=', '1')->execute()->as_array(); // ->
-    */
-
-    $um = new Manager;
-    $r = $um->get_users_here();
-
-    echo '<pre>';
-      print_r($r);
-    echo '</pre>';
-
-    return $this->_render('add');
-
-  }
-
 
   public function action_add()
   {

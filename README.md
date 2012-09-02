@@ -78,6 +78,15 @@ Vhost example :
 * Edit the /fuel/modules/calendar/config/calendar.php file :
   * login and password to connect to your Google Calendar
 
+
+### API Access
+
+If you want to enable an API access to external developers, you need to configure the login / password of the developers you want to allow in /fuel/app/config/rest.php -- set the 'valid_logins' array :
+
+```
+	'valid_logins' => array('developer1' => '1234', 'developer2' => '5678'),
+```
+
 ## Developers
 
 Mustached Robot is developed with [FuelPHP](http://fuelphp.com). You should be familiar with this framework to start working on Mustached Robot. The [documentation](http://docs.fuelphp.com/) is nice and easy to work with.

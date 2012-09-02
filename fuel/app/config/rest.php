@@ -36,7 +36,7 @@ return array(
 	|	E.g: My Secret REST API
 	|
 	*/
-	'realm' => 'Mustached Robot API',
+	'realm' => 'REST API',
 
 	/*
 	| Is login required and if so, which type of login?
@@ -44,7 +44,7 @@ return array(
 	|	'' = no login required, 'basic' = unsecure login, 'digest' = more secure login
 	|
 	*/
-	'auth' => 'basic',
+	'auth' => 'digest',
 
 	/*
 	| array of usernames and passwords for login

@@ -130,7 +130,6 @@ ALTER TABLE `checkins`
 -- Constraints for table `skills_users`
 --
 ALTER TABLE `skills_users`
-  ADD CONSTRAINT `skills_users_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `skills_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

@@ -18,9 +18,8 @@ class Controller_Api extends \Controller_Api
 	}
 
 	public function get_users()
-	{
-		$this->um->get_users();
-		//$this->response($this->filter_array($this->um->get_users(), $this->return));
+	{		
+		$this->response($this->filter_array($this->um->get_users(), $this->return));
 	}
 
 	public function get_user($id) {

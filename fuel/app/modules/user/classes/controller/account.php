@@ -11,20 +11,6 @@ class Controller_Account extends \Controller_Front
      parent::before();
   }
 
-  public function action_test()
-  {
-    
-    $this->um = new Manager;
-    $u = $this->um->get_user_extend(1);
-
-    echo '<pre>';
-    print_r($u);
-    echo '</pre>';
-
-    return $this->_render('add');
-
-  }
-
 
 	public function action_index()
   {

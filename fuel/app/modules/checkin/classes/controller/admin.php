@@ -37,6 +37,15 @@ class Controller_Admin extends \Controller_Admin
 			);
 		};
 
+		\Module::load('user');
+		$um        = new \User\Manager;
+		$total        		     = \Config::get('mustached.seats');
+
+		$this->data['total_seats']     = \Config::get('mustached.seats');
+		$this->data['occupied_seats']  = $um->get_occupied_seats_count();
+		$this->data['occupation']      = round(($this->data['occupied_seats'] / $this->data['total_seats'] * 100));
+		
+
 		return $this->_render('admin');
 	}
 

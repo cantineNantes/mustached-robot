@@ -2,10 +2,10 @@
 
 namespace User;
 
-class Controller_Companies extends \Controller_Rest
+class Controller_Company extends \Controller_Front
 {
 
-	public function get_search()
+	public function action_search()
 	{
 
 		$companies = \Arr::assoc_to_keyval(Model_Company::query()->where('name', 'LIKE', '%'.\Input::get('query').'%')->get(), 'id', 'name');
@@ -15,11 +15,15 @@ class Controller_Companies extends \Controller_Rest
 			$datas[]       = $id;
 		}
 
-		$this->response($res = array(
+		$res = array(
 			'query'       => \Input::get('query'),
 			'suggestions' => $suggestions,
 			'data'        => $datas
-		));
+		);
+
+		$this->data['data'] = json_encode($res);
+
+		return $this->_render('raw');
 	}
 
 }

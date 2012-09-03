@@ -49,7 +49,7 @@ class Controller_Account extends \Controller_Front
 
     $this->data['form'] = $fieldset->form()->build();
 
-        // If the form is submitted and the data are valid
+    // If the form is submitted and the datas are valid
     if (\Input::method() == 'POST')
     {
         $result = $fm->update_user_from_form($id, $fieldset);
@@ -76,7 +76,6 @@ class Controller_Account extends \Controller_Front
     $form->add('current_password', \Lang::get('mustached.user.edit_password.current_password'), array('type' => 'password'), array(array('required')));
     $form->add('password', \Lang::get('mustached.user.edit_password.new_password'), array('type' => 'password'), array(array('required')));
     $form->add('submit', '', array('type' => 'submit', 'value' => \Lang::get('mustached.user.edit_password.action_label'), 'class' => 'btn medium primary'));
-
 
     // repopulate the form on errors
     $fieldset->repopulate();

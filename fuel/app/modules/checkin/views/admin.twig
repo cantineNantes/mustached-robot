@@ -21,7 +21,7 @@
 							<li class="log">
 								<img src="{{ avatar(single_checkin.email, 50) }}" class="avatar avatar-mini"/>
 								<div class="logInfo">
-									<a href="#">{{ single_checkin.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_log.reason }} {% if not single_checkin.killed %} - <a href="{{ url('checkin/admin/kill') }}/{{ single_checkin.id }}">Kill</a> - {% endif %} <abbr class="timeago pull-right" title="{{ single_checkin.start }}">{{ single_checkin.time_ago }}</abbr>
+									<a href="#">{{ single_checkin.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_checkin.reason }} {% if not single_checkin.killed %} - <a href="{{ url('checkin/admin/kill') }}/{{ single_checkin.id }}">Kill</a> - {% endif %} <abbr class="timeago pull-right" title="{{ single_checkin.start }}">{{ single_checkin.time_ago }}</abbr>
 								</div>
 							</li>
 						{% endfor %}

@@ -1,11 +1,9 @@
 $(document).ready(function() {
   var a;
   return a = $('#companies').autocomplete({
-    serviceUrl: '/user/companies/search.json'
+    serviceUrl: '/user/company/search'
   });
 
   $("abbr.timeago").timeago();
-
-
 
 });

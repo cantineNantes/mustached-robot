@@ -46,6 +46,7 @@ navigation:
     edit: Modifier mon compte
   login: Connexion
   logout: Déconnexion
+  admin: Admin
 
 checkin:
 

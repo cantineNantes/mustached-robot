@@ -19,15 +19,18 @@
               
             </ul>
           </div><!--/.nav-collapse -->
+          <!-- Logged User Box -->
            {% if current_user %}
           <div class="nav-collapse pull-right accountBox">
               <a href="#" data-toggle="dropdown" class="l"><img src="{{ avatar(current_user.email, 40) }}" class="avatar avatar-mini" /></a>
               <ul class="subnav dropdown-menu" >
                 <li><a href="{{ url('user/account/edit') }}">{{ lang('mustached.navigation.account.edit') }}</a></li>
+                {% if current_user.is_admin %} <li><a href="{{ url('admin') }}">{{ lang('mustached.navigation.account.admin') }}</a></li> {% endif %}
                 <li><a href="{{ url('user/auth/logout')}}">Déconnexion</a></li>
               </ul>
           </div>
           {% endif %}
+          <!-- /Logged User Box -->
         </div>
       </div>
     </div>

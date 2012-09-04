@@ -296,7 +296,7 @@ select {
 }
 /* Gauge */
 .gauge {
-	background: transparent url('../img/bgGauge.png') no-repeat left;
+	background: transparent url('../img/bgGauge.png') no-repeat center;
 	//background-size: cover;
 	position:relative;
 	#canvas {
@@ -304,7 +304,7 @@ select {
 		top:8px;
 	}
 	.occupation {
-		background:@neoVintageGreen; 
+		background:@neoVintageGreen;
 		width:94px;
 		padding:35px 0 0 0;
 		height:59px; 
@@ -319,6 +319,7 @@ select {
 		font-size: 50px;
 		text-align: center;
 	}
+	.occupation.o0 { background:@grayLight;	}
 }
 /* Stats Section */
 .primaryStat {

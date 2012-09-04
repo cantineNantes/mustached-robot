@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 		var indicatorArc = paper.path().attr({
 		    "stroke": "#6DDBD1",
-		    "stroke-width": 45,
+		    "stroke-width": 50,
 		    arc: [boxHeight/2, boxHeight/2, 0, 100, strokeRadius]
 		});
 

@@ -294,7 +294,32 @@ select {
 		}
 	}
 }
-
+/* Gauge */
+.gauge {
+	background: transparent url('../img/bgGauge.png') no-repeat left;
+	//background-size: cover;
+	position:relative;
+	#canvas {
+		position:relative;
+		top:8px;
+	}
+	.occupation {
+		background:@neoVintageGreen; 
+		width:94px;
+		padding:35px 0 0 0;
+		height:59px; 
+		.border-radius(47px);
+		position:absolute;
+		top:50%;
+		margin-top:-47px;
+		left:50%;
+		margin-left:-47px;
+		color:@white;
+		font-weight: 900;
+		font-size: 50px;
+		text-align: center;
+	}
+}
 /* Stats Section */
 .primaryStat {
 	.singleStat {

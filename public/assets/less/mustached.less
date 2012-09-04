@@ -1,5 +1,5 @@
 body {
-	padding-top: 100px;
+	padding: 100px 0 40px 0;
 	background: #FAFCFE url('../img/gridNoise.png') repeat;
 }
 
@@ -295,11 +295,71 @@ select {
 	}
 }
 
-/* Charts CSS3 */
-#canvas {
-
+/* Stats Section */
+.primaryStat {
+	.singleStat {
+		text-align: center;
+		p {
+			display: block;
+			font-family: "ronnia";
+			color:@grayDarkPlus;
+		}
+		p:nth-child(1) {
+			font-weight: 900;
+			font-size: 60px;
+			line-height: @baseLineHeight * 3.5;
+			text-shadow: 
+				1px 1px 0 #F9F9F9, 
+				2px 2px 0 #F9F9F9, 
+				3px 3px 0 #E6E6E6, 
+				4px 4px 0 #E6E6E6,
+				5px 5px 0 #E6E6E6,
+				6px 6px 0 #E6E6E6;
+			letter-spacing: 2px;
+		}
+		p:nth-child(2) {	
+			font-weight: 300;
+			text-transform: uppercase;
+			color:lighten(@grayDarkPlus, 20%);
+		}
+	}
 }
-
+.leaderBoard {
+	ul {
+		margin: 0;
+		li {
+			padding: 0 0 0 20px;
+			line-height: 70px;
+			color:@grayDarkPlus;
+			font-size: @baseFontSize;
+			margin-bottom: 4px;
+			img {
+				.border-radius(25px);
+				margin-left: 10px;
+			}
+			span {
+				margin-left:25px;
+			}
+		}
+		li:nth-child(1) {
+			line-height: 100px;
+			background-color:@neoVintageGreen;
+			font-size: @baseFontSize + 2;
+			font-weight: bold;
+			img {
+				.border-radius(40px);
+				margin-left: 0;
+			}
+			span {
+				margin-left:15px;
+			}
+		}
+		li:nth-child(2) {  background-color: lighten(@neoVintageGreen,10%); line-height: 85px;	}
+		li:nth-child(3) {  background-color: lighten(@neoVintageGreen,20%);	}
+		li:nth-child(4) {  background-color: lighten(@neoVintageGreen,30%);	}
+		li:nth-child(5) {  background-color: lighten(@neoVintageGreen,40%);	}
+	}
+}
 
 /* Autocomplete */
 .autocomplete-w1 { background:url(../img/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:6px 0 0 6px; /* IE6 fix: */ _background:none; _margin:1px 0 0 0; }

@@ -1,28 +1,107 @@
 {% extends "layouts/app.twig" %}
 
 {% block content %}
-
-	<h2>{{ lang('mustached.checkin.stats.from') }} {{ dates.start }} {{ lang('mustached.checkin.stats.to') }} {{ dates.end }}</h2>
-
-
-	{{ count.logs }} {{ lang('mustached.checkin.stats.passages') }}
-
-	<br>
-
-	{{ '%.2f' | format(count.users / count.days) }} {{ lang('mustached.checkin.stats.passagesPerDay') }}
-
-	<br>
-
-	{{ count.users }} {{ lang('mustached.checkin.stats.differentPeople') }}
-
-	<br>
-
-	<ul>
-	{% for date, number in checkins %}
-		<li>{{ date }} : {{ number }} passages</li>
-	{% endfor %}
-	</ul>
-
-
-
+<h1>{{ lang('mustached.checkin.stats.from') }} {{ dates.start }} {{ lang('mustached.checkin.stats.to') }} {{ dates.end }}</h1>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="block">
+				<div class="linkHolder">
+					<a href="{{ url('checkin/add') }}">{{ lang('mustached.checkin.add_new') }}</a>
+				</div>
+				<div class="dataHolder primaryStat">
+					<div class="row-fluid">
+						<div class="span4 singleStat">
+							<p>{{ count.logs }}</p>
+							<p>{{ lang('mustached.checkin.stats.passages') }}</p>
+						</div>
+						<div class="span4 singleStat">
+							<p>{{ '%.2f' | format(count.users / count.days) }}</p>
+							<p>{{ lang('mustached.checkin.stats.passagesPerDay') }}</p>
+						</div>
+						<div class="span4 singleStat">
+							<p>{{ count.users }}</p>
+							<p>{{ lang('mustached.checkin.stats.differentPeople') }}</p>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<h1>Leader Board</h1>
+			<div class="block">
+				<div class="linkHolder">
+					<a href="{{ url('checkin/add') }}">{{ lang('mustached.checkin.add_new') }}</a>
+				</div>
+				<div class="leaderBoard">
+					<ul>
+						<li>
+							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=70" alt=""/>
+							<span class="name">Florent Gosselin</span>
+						</li>
+						<li>
+							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
+							<span class="name">Philippe Destré</span>
+						</li>
+						<li>
+							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
+							<span class="name">Amandine Rech</span>
+						</li>
+						<li>
+							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
+							<span class="name">Olivier Desmoulin</span>
+						</li>
+						<li>
+							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
+							<span class="name">Jennifer Tardi</span>
+						</li>
+					</ul>		
+				</div>
+			</div>
+		</div>
+		<div class="span8">
+			<h1>Fréquentation</h1>
+			<div class="block">
+				<div class="linkHolder">
+					<a href="{{ url('checkin/add') }}">{{ lang('mustached.checkin.add_new') }}</a>
+				</div>
+				<div class="dataHolder" id="holder">
+				</div>
+			</div>
+		</div>
+		<br/><br/>&nbsp;
+	</div>
+	<table id="data" style="display:none;">
+        <tfoot>
+        <tr>
+        	{% for date, number in checkins %}
+				<th>{{ date }}</th>
+			{% endfor %}
+        </tr>
+    </tfoot>
+    <tbody class="data">
+        <tr>
+        	{% for date, number in checkins %}
+				<td>{{ number }}</td>
+			{% endfor %}
+        </tr>
+    </tbody>
+    <tbody class="line1">
+        <tr>
+        	{% for date, number in checkins %}
+				<td>{{ number }} passage(s)</td>
+			{% endfor %}
+        </tr>
+    </tbody>
+    <tbody class="line2">
+        <tr>
+	       	{% for date, number in checkins %}
+				<td>{{ date }}</td>
+			{% endfor %}
+        </tr>
+    </tbody>  
+    </table>
 {% endblock %}

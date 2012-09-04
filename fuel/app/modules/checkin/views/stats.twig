@@ -78,7 +78,7 @@
         <tfoot>
         <tr>
         	{% for date, number in checkins %}
-				<th>{{ date }}</th>
+				<th>{{ date|date("d-M-Y", "Europe/Paris") }}</th>
 			{% endfor %}
         </tr>
     </tfoot>
@@ -99,7 +99,7 @@
     <tbody class="line2">
         <tr>
 	       	{% for date, number in checkins %}
-				<td>{{ date }}</td>
+				<td>{{ date|date("d-m-Y", "Europe/Paris") }}</td>
 			{% endfor %}
         </tr>
     </tbody>  

@@ -33,7 +33,11 @@
 		<div class="span4">
 			<h1>{{ lang('mustached.checkin.admin.occupancy') }}</h1>
 			<div class="block">
-				<div class="dataHolder" id="canvas" data-occupation="{{ occupation }}" data-total-seats="{{ total_seats }}" data-occuppied-seats="{{ occupied_seats }}">
+				<div class="dataHolder">
+					<div class="gauge">
+						<div class="occupation">{{ occupied_seats }}</div>
+						<div id="canvas" data-occupation="{{ occupation }}" data-total-seats="{{ total_seats }}" data-occuppied-seats="{{ occupied_seats }}"></div>
+					</div>
 				</div>
 			</div>
 		</div>

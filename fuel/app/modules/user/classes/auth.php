@@ -36,7 +36,7 @@ class Auth {
         $user = new Model_User;
         if (!$this->email_exists($email))
         {
-            return $this->create_or_update_user($user, $firstname, $lastname, $email, $password, $twitter, $company);
+            return $this->create_or_update_user($user, $firstname, $lastname, '', $email, $password, $twitter, $company);
         }
         else
         {
@@ -44,13 +44,13 @@ class Auth {
         }
     }
 
-    public function update_user($id, $firstname, $lastname, $email, $twitter, $company)
+    public function update_user($id, $firstname, $lastname, $biography, $email, $twitter, $company)
     {
         $user = Model_User::find($id);
 
         if (!$this->email_exists($email, $user->email))
         {
-            return $this->create_or_update_user($user, $firstname, $lastname, $email, null, $twitter, $company);
+            return $this->create_or_update_user($user, $firstname, $lastname, $biography, $email, null, $twitter, $company);
         }
         else
         {
@@ -58,12 +58,14 @@ class Auth {
         }
     }
 
-    private function create_or_update_user($user, $firstname, $lastname, $email, $password, $twitter, $company)
+    private function create_or_update_user($user, $firstname, $lastname, $biography, $email, $password, $twitter, $company)
     {
         $c = $this->find_or_create_company($company);
 
         $user->firstname = $firstname;
         $user->lastname  = $lastname;
+        $user->biography = $biography;
+
         $user->email     = $email;
         if ($password)
         {

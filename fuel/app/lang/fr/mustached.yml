@@ -17,6 +17,7 @@ user:
     error: Hiiiin ! Vérifiez votre mot de passe actuel
   firstname: Prénom
   lastname: Nom
+  biography: Bio
   email: Adresse email
   password: Mot de passe
   twitter: Pseudo twitter

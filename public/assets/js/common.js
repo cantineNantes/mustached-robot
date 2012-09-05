@@ -81,6 +81,12 @@ $(document).ready(function() {
 		freqChart.setViewBox(0, 0, 600, 300, true);
 	});
 
+	//Resize Window trigger
+	$(window).resize(function() {
+  		freqChart.setViewBox('holder','100%',400,true);
+  		//alert('resize');
+	});
+	 
 	//Ajax trigger
 	var a;
 	return a = $('#companies').autocomplete({

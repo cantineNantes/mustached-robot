@@ -80,6 +80,42 @@ $(document).ready(function() {
 		freqChart.setSize(600,300);
 		freqChart.setViewBox(0, 0, 600, 300, true);
 	});
+	//Stats Date Picker
+	//DatePicker
+	if ($( "#sd").width()) {
+		var dates = $( "#sd, #ed" ).datepicker({
+			defaultDate: "+1w",
+			changeMonth: true,
+			numberOfMonths: 1,
+			showButtonPanel: true,
+			dateFormat: 'dd/mm/yy',
+			showAnim: 'drop',
+			onSelect: function( selectedDate ) {
+				var option = this.id == "sd" ? "minDate" : "maxDate",
+				instance = $( this ).data( "datepicker" );
+				date = $.datepicker.parseDate(
+				instance.settings.dateFormat ||
+				$.datepicker._defaults.dateFormat,
+				selectedDate, instance.settings );
+				dates.not( this ).datepicker( "option", option, date );
+			}
+		});
+		$('#btn_date_form').click(function() {
+  			$('#date_form').submit();
+		});
+		$('#sd_label').click(function() {
+			$('#sd_label').hide();
+  			$('#sd').show();
+  			$('#sd').focus();
+  			$('#btn_date_form').show();
+		});
+		$('#ed_label').click(function() {
+			$('#ed_label').hide();
+  			$('#ed').show();
+  			$('#ed').focus();
+  			$('#btn_date_form').show();
+		});
+	}
 
 	//Resize Window trigger
 	$(window).resize(function() {

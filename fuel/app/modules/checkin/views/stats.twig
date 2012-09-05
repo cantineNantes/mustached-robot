@@ -1,7 +1,17 @@
 {% extends "layouts/app.twig" %}
 
 {% block content %}
-<h1>{{ lang('mustached.checkin.stats.from') }} {{ dates.start }} {{ lang('mustached.checkin.stats.to') }} {{ dates.end }}</h1>
+<form id="date_form" method="GET" action="{{ current_url }}" class="statsDatePicker">
+	<h1>
+		{{ lang('mustached.checkin.stats.from') }} 
+		<span id="sd_label" class="date">{{ dates.start|date("d/m/Y", "Europe/Paris") }}</span> 
+		<input type="text" id="sd" name="sd" value="{{ dates.start|date("d/m/Y", "Europe/Paris") }}" style="display: none; " class="hasDatepicker">
+		{{ lang('mustached.checkin.stats.to') }} 
+		<span id="ed_label" class="date">{{ dates.end|date("d/m/Y", "Europe/Paris") }}</span>
+		<input type="text" id="ed" name="ed" value="{{ dates.end|date("d/m/Y", "Europe/Paris") }}" style="display: none; " class="hasDatepicker">
+		<a id="btn_date_form" class="btn btn-primary" style="display: none; ">Valider</a>
+	</h1>
+</form>
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="block">
@@ -64,7 +74,7 @@
         <tfoot>
         <tr>
         	{% for date, number in checkins %}
-				<th>{{ date|date("d-M-Y", "Europe/Paris") }}</th>
+				<th>{{ date|date("d/m", "Europe/Paris") }}</th>
 			{% endfor %}
         </tr>
     </tfoot>
@@ -85,7 +95,7 @@
     <tbody class="line2">
         <tr>
 	       	{% for date, number in checkins %}
-				<td>{{ date|date("d-m-Y", "Europe/Paris") }}</td>
+				<td>{{ date|date("d-M-Y", "Europe/Paris") }}</td>
 			{% endfor %}
         </tr>
     </tbody>  

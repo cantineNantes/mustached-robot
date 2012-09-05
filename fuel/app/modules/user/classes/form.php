@@ -39,17 +39,19 @@ class Form {
         	$input = \Lang::get('mustached.user.form.edit');
 
             $fieldset = \Fieldset::forge()->add_model('User\Model_User', '', 'set_edit_fields' );
+            
 			$fieldset->add('company', '', array('type' => 'text', 'id' => 'companies', 'placeholder' => __('mustached.user.company')));
 
-            $u = \DB::select('firstname', 'email', 'lastname', 'twitter', array('companies.name', 'company'))->from('users')->where('users.id', '=', $id)->join('companies', 'RIGHT')->on('companies.id', '=', 'users.company_id')->execute()->current();
+            $u = \DB::select('firstname', 'email', 'lastname', 'biography', 'twitter', array('companies.name', 'company'))->from('users')->where('users.id', '=', $id)->join('companies', 'RIGHT')->on('companies.id', '=', 'users.company_id')->execute()->current();
 
-           $user = array(
+            $user = array(
             	'firstname' => $u['firstname'],
             	'email'     => $u['email'],
             	'lastname'  => $u['lastname'],
+                'biography' => $u['biography'],
             	'twitter'   => $u['twitter'],
             	'company'   => $u['company'],
-			);
+            );
 
             $fieldset->populate($user, true);
         }
@@ -77,7 +79,7 @@ class Form {
             $fields = $fieldset->validated();
             if($id)
             {
-            	return $auth->update_user($id, $fields['firstname'], $fields['lastname'], $fields['email'], $fields['twitter'], $fields['company']);
+            	return $auth->update_user($id, $fields['firstname'], $fields['lastname'], $fields['biography'], $fields['email'], $fields['twitter'], $fields['company']);
             }
             else
             {

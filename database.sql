@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `checkins` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `reason_id` (`reason_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(120) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `reasons` (
   `sentence` varchar(100) NOT NULL,
   `order` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -102,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `is_admin` tinyint(4) DEFAULT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
+  `biography` text NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(120) NOT NULL,
   `twitter` varchar(100) DEFAULT NULL,
@@ -113,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `company_id` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
@@ -148,9 +149,9 @@ ALTER TABLE `users`
 --
 
 INSERT INTO `reasons` (`id`, `name`, `sentence`, `order`) VALUES
-(1, 'Coworking', 'coworker', 1),
-(2, 'De passage pour un événement', 'un événement', 2),
-(3, 'Réunion avec l''équipe', 'une réunion avec l''équipe', 3),
-(4, 'Autre', 'autre chose !', 4);
+(1, 'Coworking', 'est venu coworker', 1),
+(2, 'De passage pour un événement', 'est passé pour un événement', 2),
+(3, 'Réunion avec l''équipe', 'est venu pour une réunion avec l''équipe', 3),
+(4, 'Autre', 'est venu pour autre chose !', 4);
 
 -- --------------------------------------------------------

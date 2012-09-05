@@ -41,6 +41,11 @@ class Model_User extends \Orm\Model
        'form'      => array('type' => 'text', 'autocomplete' => 'off'),
        'validation' => array('required')
     ),
+    'biography'     => array(
+       'data_type' => 'string',
+       'label'     => 'mustached.user.biography',
+       'form'      => array('type' => 'textarea', 'autocomplete' => 'off'),
+    ),
     'password' => array(
        'data_type'  => 'string',
        'label'     => 'mustached.user.password',
@@ -85,7 +90,7 @@ class Model_User extends \Orm\Model
 
   public static function set_edit_fields($form, $instance = null)
   {
-    $editable = array('firstname', 'lastname', 'email', 'twitter');
+    $editable = array('firstname', 'lastname', 'email', 'twitter', 'biography');
     self::build_form($form, $editable);
   }
 

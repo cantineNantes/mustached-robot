@@ -31,4 +31,68 @@ class Manager
 		return \DB::select()->from('checkins')->where('created_at', '>=', $start)->where('created_at', '<=', $end)->execute()->as_array();
 	}
 
+	public function get_checkins_and_users($start, $end)
+	{
+		return Model_Checkin::find('all', array(
+				'related'  => array('user'),							
+				'order_by' => array('created_at' => 'desc'),
+				'where'    => array(
+					array('created_at', '>=', $start),
+					array('created_at', '<=', $end)
+				),
+		));
+	}
+
+	public function get_leaders($start, $end)
+	{
+
+		/*
+		$checkin_count = \DB::select(\DB::expr('count(id)'))
+							->from('checkins')
+							->where('checkins.created_at', '>=', $start)
+							->where('checkins.created_at', '<=', $end);
+
+
+		$leaders = \DB::select('users.*', array($checkin_count, 'check'))
+							->from('checkins')		
+							->where('checkins.created_at', '>=', $start)
+							->where('checkins.created_at', '<=', $end)
+							->join('users', 'right')
+							->on('users.id', '=', 'checkins.user_id')
+							//->distinct(true)
+							->execute()->as_array();
+		 */
+		
+		$leaders = \DB::select('users.email', 'users.firstname', 'users.lastname', array(\DB::expr('count(users.id)'), 'checkin_number'))
+							->from('users')
+							->join('checkins')
+							->on('users.id', '=', 'checkins.user_id')
+							->where('checkins.created_at', '>=', $start)
+							->where('checkins.created_at', '<=', $end)
+							->group_by('users.email')
+							->order_by('checkin_number', 'desc')
+							->execute()->as_array();
+
+		
+		return $leaders;
+
+		/*
+
+		SELECT `users`.*, 
+			(SELECT count(id) 
+				FROM `checkins` 
+				WHERE `checkins`.`created_at` >= null 
+				AND `checkins`.`created_at` <= null
+			) AS `check` 
+		
+		FROM `checkins` 
+			RIGHT JOIN `users` ON (`users`.`id` = `checkins`.`user_id`) 
+			WHERE `checkins`.`created_at` >= null AND `checkins`.`created_at` <= null
+
+		 */
+
+	}
+
+
+
 }

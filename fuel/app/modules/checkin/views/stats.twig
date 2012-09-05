@@ -22,9 +22,7 @@
 							<p>{{ count.users }}</p>
 							<p>{{ lang('mustached.checkin.stats.differentPeople') }}</p>
 						</div>
-					</div>
-					
-					
+					</div>										
 				</div>
 			</div>
 		</div>
@@ -38,28 +36,14 @@
 				</div>
 				<div class="leaderBoard">
 					<ul>
-						{# {% for leader in leaders %} #}
+						{% set avatar_size = 70 %}
+						{% for leader in leaders %}
+						{% if not loop.first %}{% set avatar_size = 50 %}{% endif %}
 						<li>
-							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=70" alt=""/>
-							<span class="name">Florent Gosselin</span>
+							<img src="{{ avatar(leader.email, avatar_size) }}" alt=""/>
+							<span class="name">{{ leader.firstname }} {{ leader.lastname }}</span>
 						</li>
-						<li>
-							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
-							<span class="name">Philippe Destré</span>
-						</li>
-						<li>
-							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
-							<span class="name">Amandine Rech</span>
-						</li>
-						<li>
-							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
-							<span class="name">Olivier Desmoulin</span>
-						</li>
-						<li>
-							<img src="http://www.gravatar.com/avatar/fae5d8e57ddbb4d713cb0ae3a62cff3a?s=50" alt=""/>
-							<span class="name">Jennifer Tardi</span>
-						</li>
-						{# {% endfor %} #}
+						{% endfor %}
 					</ul>		
 				</div>
 			</div>

@@ -44,7 +44,7 @@ return array(
 	|	'' = no login required, 'basic' = unsecure login, 'digest' = more secure login
 	|
 	*/
-	'auth' => 'digest',
+	'auth' => 'basic',
 
 	/*
 	| array of usernames and passwords for login

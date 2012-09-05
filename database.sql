@@ -149,7 +149,7 @@ ALTER TABLE `users`
 
 INSERT INTO `reasons` (`id`, `name`, `sentence`, `order`) VALUES
 (1, 'Coworking', 'coworker', 1),
-(2, 'De passage à un événement', 'un événement', 2),
+(2, 'De passage pour un événement', 'un événement', 2),
 (3, 'Réunion avec l''équipe', 'une réunion avec l''équipe', 3),
 (4, 'Autre', 'autre chose !', 4);
 

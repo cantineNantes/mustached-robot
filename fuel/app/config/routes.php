@@ -7,8 +7,6 @@ return array(
 
 	/**** PUBLIC ROUTING ****/
 
-
-
 	/**** API ROUTING *****/
 	'api/users'               => 'user/api/users',
 	'api/users/here'          => 'user/api/here',
@@ -37,8 +35,6 @@ return array(
 	'admin'                   => 'checkin/admin',
 	'admin/(:segment)'        => '$1/admin',
 	'admin/(:segment)/(:any)' => '$1/admin/$2',
-
-
 
 
 );

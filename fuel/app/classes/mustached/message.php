@@ -18,7 +18,7 @@ class Message {
 	}
 
 	public static function flash_error($message) {
-		\Session::set_flashp('msg', self::generic('error', $message));
+		\Session::set_flash('msg', self::generic('error', $message));
 	}
 
 	public static function generic($type, $message)

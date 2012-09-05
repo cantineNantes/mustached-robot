@@ -6,8 +6,6 @@ use Mustached\Message;
 class Controller_Admin extends \Controller_Admin
 {
 
-
-
 	/**
 	 * Show a list of the last checkins
 	 */
@@ -55,9 +53,6 @@ class Controller_Admin extends \Controller_Admin
 	 */
 	public function action_kill($id)
 	{
-
-		
-
 		$checkin = Model_Checkin::find($id);
 		if(!$checkin)
 		{
@@ -79,19 +74,17 @@ class Controller_Admin extends \Controller_Admin
 	public function action_stats($start = null, $end = null)
 	{
 
-
-
-
 		$m = new Manager;
 
 		if(!$end)     $end   = date('Y-m-d');
 		if(!$start)   $start = date_sub(new \DateTime($end), new \DateInterval('P30D'))->format('Y-m-d');
 
-		$checkins = $m->get_checkins($start, $end);
+		$checkins = $m->get_checkins($start, $end);		
 
-		$users = array();
-    	$days = array();
+		$users         = array();
+    	$days          = array();
     	$checkinperday = array();
+    	$leaderboard   = array(); 
 
     	foreach($checkins as $checkin) {
     		$checkin_date = date('Y-m-d',strtotime($checkin['created_at']));
@@ -100,7 +93,7 @@ class Controller_Admin extends \Controller_Admin
     		if (!in_array($checkin['user_id'], $users))
     		{
     			$users[] = $checkin['user_id'];
-    		}
+    		} 		
 
     		// Compute the number of different days
     		if(!in_array($checkin['created_at'], $days))
@@ -109,30 +102,39 @@ class Controller_Admin extends \Controller_Admin
     		}
 
     		// Compute the number of logs for each day of the range
-    		if(array_key_exists($checkin_date, $checkinperday)) {
-				$checkinperday[$checkin_date]++;
-    		}
-    		else
-    		{
-				$checkinperday[$checkin_date] = 1;
-    		}
+			$checkinperday[$checkin_date]++;
+
+			// Add the users to the leaderboard according to their number of checkins
+			$leaderboard[$checkin['user_id']]++;
     	}
+    	arsort($leaderboard);
 
-
+    	// Add empty dates
+    	$interval = \Date::range_to_array(strtotime($start), strtotime($end), $interval = '+1 Day');
+    	foreach($interval as $date)
+    	{
+    		if(!array_key_exists($date->format('mysql_date'), $checkinperday))
+    		{
+    			$checkinperday[$date->format('mysql_date')] = 0;	
+    		}	
+    	}
+    	ksort($checkinperday);
 
 		$this->data['dates'] = array(
     		'start' => $start,
     		'end'   => $end
     	);
+
     	$this->data['count'] = array(
     		'users' => sizeof($users),
     		'days'  => sizeof($days),
     		'logs'  => sizeof($checkins),
     	);
+
     	$this->data['checkins'] = $checkinperday;
+    	//$this->data['leaders']  = $leaderboard;
 
     	return $this->_render('stats');
-
 	}
 
 }

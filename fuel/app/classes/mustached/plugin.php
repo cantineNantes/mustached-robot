@@ -5,7 +5,7 @@ namespace Mustached;
 class Plugin {
 
 	private $plugins = array();
-	private $regular_modules = array('checkin', 'calendar', 'user');
+	private $regular_modules = array('checkin', 'calendar', 'user', 'install');
 
 	public function __construct()
 	{

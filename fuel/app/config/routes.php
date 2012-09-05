@@ -29,12 +29,13 @@ return array(
 	'api/companies'            => 'user/api/companies',
 
 	'api/(:segment)/(:any)'        => '$1/api/$2',
-	//'api/(:segment)/(:any)/(:any)' => '$1/api/$2/$3',
 
 	/**** ADMIN ROUTING ****/
 	'admin'                   => 'checkin/admin',
 	'admin/(:segment)'        => '$1/admin',
 	'admin/(:segment)/(:any)' => '$1/admin/$2',
+
+	'coworker/(:id)'          => 'user/profile/view/$1',
 
 
 );

@@ -5,7 +5,7 @@ namespace User;
 class Controller_Api extends \Controller_Api
 {
 
-	protected $return = array('id', 'checkins.public', 'firstname', 'lastname', 'biography', 'email', 'twitter', 'created_at', 'updated_at', 'skills', 'company');
+	protected $return = array('id', 'checkins.public', 'firstname', 'lastname', 'biography', 'email', 'twitter', 'created_at', 'skills', 'company');
 
 	protected $um;
 	protected $cm;

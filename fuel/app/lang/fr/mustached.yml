@@ -2,7 +2,7 @@ user:
   login:
     title: Connexion
     success: Vous êtes connecté !
-    error: Erreur lors de la connexion
+    error: Erreur de connexion. Vérifiez votre e-mail / mot de passe !
     submit: Se connecter
   form:
     add: Créer mon compte

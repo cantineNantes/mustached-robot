@@ -14,20 +14,24 @@ class Model_User extends \Orm\Model
   protected static $_many_many = array('skills');
 
   protected static $_created_at = 'created_at';
-  protected static $_updated_at = 'updated_at';
 
   protected static $_properties = array(
     'id',
+    'username' => array(
+       'data_type' => 'string',
+       'label'     => 'mustached.user.email',
+       'form'  => array('type' => false)
+    ),
+    'group' => array(
+       'data_type' => 'int',
+       'label'     => 'mustached.user.group',
+       'form'  => array('type' => false)
+    ),
     'email' => array(
        'data_type' => 'string',
        'label'     => 'mustached.user.email',
        'form'  => array('type' => 'text', 'autocomplete' => 'off'),
        'validation' => array('required', 'max_length'=>array(120))
-    ),
-    'is_admin' => array(
-       'data_type'  => 'int',
-       'label'      => 'Is Admin',
-       'form'       => array('type' => false),
     ),
     'firstname' => array( //column name
        'data_type' => 'string',
@@ -68,9 +72,9 @@ class Model_User extends \Orm\Model
           'type' => false, // this prevents this field from being rendered on a form
       ),
     ),
-    'updated_at' => array(
-      'data_type' => 'int',
-      'label' => 'Updated At',
+    'last_login' => array(
+      'data_type' => 'string',
+      'label' => 'Last login',
       'form' => array(
           'type' => false, // this prevents this field from being rendered on a form
       ),
@@ -78,15 +82,11 @@ class Model_User extends \Orm\Model
 
   );
 
-    protected static $_observers = array(
-      'Orm\\Observer_CreatedAt' => array(
-        'mysql_timestamp' => true,
-       ),
-
-      'Orm\\Observer_UpdatedAt' => array(
-        'mysql_timestamp' => true,
-      )
-    );
+  protected static $_observers = array(
+    'Orm\\Observer_CreatedAt' => array(
+      'mysql_timestamp' => true,
+    ),
+  );
 
   public static function set_edit_fields($form, $instance = null)
   {

@@ -61,6 +61,8 @@ class Controller_Base extends Controller
         $this->current_user = \Session::get('current_user') ? \Session::get('current_user') : false;
         $this->data['current_user'] = $this->current_user;
 
+        //print_r($this->current_user);
+
 	}
 
 	protected function _render($template)

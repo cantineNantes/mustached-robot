@@ -35,7 +35,6 @@ class Form {
     	$input = \Lang::get('mustached.user.form.add');
         if ($id)
         {
-
         	$input = \Lang::get('mustached.user.form.edit');
 
             $fieldset = \Fieldset::forge()->add_model('User\Model_User', '', 'set_edit_fields' );
@@ -72,18 +71,18 @@ class Form {
 
     private function create_or_update_from_form($id, $fieldset)
     {
-    	$auth = new Auth;
+    	$um = new Manager;
 
     	if ($fieldset->validation()->run() == true)
         {
             $fields = $fieldset->validated();
             if($id)
             {
-            	return $auth->update_user($id, $fields['firstname'], $fields['lastname'], $fields['biography'], $fields['email'], $fields['twitter'], $fields['company']);
+            	return $um->update_user($id, $fields);
             }
             else
             {
-            	return $auth->create_user($fields['firstname'], $fields['lastname'], $fields['email'], $fields['password'], $fields['twitter'], $fields['company']);
+            	return $um->create_user($fields);
             }
         }
         else

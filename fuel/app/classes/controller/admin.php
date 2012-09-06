@@ -10,12 +10,14 @@ class Controller_Admin extends Controller_Base
 		parent::before();
 		$this->data['section'] = 'admin';
 
-		if (!$this->current_user['is_admin'])
+		$auth = Auth::instance();
+		
+		if (!Auth::has_access('administration.read'))
 		{
 			\Session::set_flash('redirect', \Uri::main());
-
 			Message::flash_error('mustached.admin.accessRestricted');
 			\Response::redirect('user/auth/login');
-		}
+		}	
+		
 	}
 }

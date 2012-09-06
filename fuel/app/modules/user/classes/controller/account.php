@@ -12,7 +12,6 @@ class Controller_Account extends \Controller_Front
   }
 
 
-
   public function action_add()
   {
 
@@ -23,7 +22,9 @@ class Controller_Account extends \Controller_Front
 
     // If the form is submitted and the data are valid
     if(\Input::method() == 'POST')
-    {
+    {    
+        $um = new Manager;
+
         $result = $fm->create_user_from_form($fieldset);
         if($result === true)
         {
@@ -39,11 +40,22 @@ class Controller_Account extends \Controller_Front
 
   }
 
+  public function action_test()
+  {
+    $um = new Manager;
+    echo $this->um->get_user($id);
+
+    return $this->_render('add');    
+  }
+
+
+
   public function action_edit($id = null)
   {
     if(!$id) {
       $id = $this->current_user['user_id'];
     }
+
     $fm = new Form;
     $fieldset = $fm->create_form($id);
 
@@ -77,9 +89,6 @@ class Controller_Account extends \Controller_Front
     $form->add('password', \Lang::get('mustached.user.edit_password.new_password'), array('type' => 'password'), array(array('required')));
     $form->add('submit', '', array('type' => 'submit', 'value' => \Lang::get('mustached.user.edit_password.action_label'), 'class' => 'btn medium primary'));
 
-    // repopulate the form on errors
-    $fieldset->repopulate();
-
     // set the appropriate data for the template
     $this->data['form'] = $form->build();
 
@@ -88,16 +97,16 @@ class Controller_Account extends \Controller_Front
       if ($fieldset->validation()->run() == true)
       {
         $fields = $fieldset->validated();
-        $auth = new Auth;
+        $auth = \Auth::instance();
 
-        $result = $auth->update_password($this->current_user['user_id'], $fields['current_password'], $fields['password']);
+        $result = $auth->change_password($fields['current_password'], $fields['password'], $this->current_user['email']);
         if ($result === true)
         {
           $this->data['msg'] = Message::success('mustached.user.edit_password.success');
         }
         else
         {
-          $this->data['msg'] = Message::error($result);
+          $this->data['msg'] = Message::error('mustached.user.edit_password.error');
         }
       }
     }

@@ -22,11 +22,14 @@ return array(
 	'api/checkins/user/(:id)' => 'checkin/api/user/$1',
 	'api/checkins/user/(:id)/(asc|desc)' => 'checkin/api/user/$1/$2',
 	'api/checkin/(:id)'       => 'checkin/api/checkin/$1',
+	'api/coworking/next_events' => 'calendar/api/next_events',
 
 	'api/reasons'             => 'checkin/api/reasons',
 
 	'api/company/(:id)'        => 'user/api/company/$1',
 	'api/companies'            => 'user/api/companies',
+
+
 
 	'api/(:segment)/(:any)'        => '$1/api/$2',
 

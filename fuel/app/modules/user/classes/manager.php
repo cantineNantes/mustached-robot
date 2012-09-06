@@ -5,6 +5,51 @@ namespace User;
 class Manager
 {
 
+	public function create_user($datas)
+	{
+		$auth = \Auth::instance();
+        $id = $auth->create_user($datas['email'], $datas['password'], $datas['email'], $group = 1);
+        if($id)
+        {
+        	$res = $this->update_user($id, $datas);
+        	return $res;
+        }        
+        else 
+        {
+        	return "Error";
+        }
+	}
+
+	public function update_user($id, $datas)
+    {
+
+    	$user = Model_User::find($id);
+
+    	$user->firstname = isset($datas['firstname']) ? $datas['firstname'] : null;
+    	$user->lastname  = isset($datas['lastname'])  ? $datas['lastname']  : null;
+    	$user->biography = isset($datas['biography']) ? $datas['biography'] : null;
+    	$user->twitter   = isset($datas['twitter'])   ? $datas['twitter']   : null;
+    	$user->email     = isset($datas['email'])     ? $datas['email']     : null;
+    	$user->username  = isset($datas['email'])     ? $datas['email']     : null;
+
+    	if(isset($datas['company']))
+    	{
+    		$c = $this->find_or_create_company($datas['company']);
+    		$user->company = $c;
+    	}
+
+        try
+        {
+            $user->save();
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+
 	public function get_users($order = 'asc')
 	{
 		return \DB::select('users.*')->from('users')->order_by('created_at', $order)->execute()->as_array();		
@@ -85,6 +130,44 @@ class Manager
 		return $qb->execute()->as_array();
 	}
 
+	/**
+     * Save the user information in session
+     * @param string $email     Email of the user
+     * @param string $password  Password of the user
+     * @return bool|string      Return true on success or the error message on failure
+     */
+    public function save_user_session($email)
+    {
+    	try 
+    	{
+			$u = Model_User::find()->where('email', '=', $email)->get_one();
+
+			$user = array(
+	            'user_id'      => $u->id,
+	            'firstname'    => $u->firstname,
+	            'group'        => $u->group,
+	            'email'        => $u->email,
+			);
+
+			\Session::set('current_user', $user);
+    	}
+    	catch (\Exception $e)
+        {
+            return false;
+        }        
+        return true;      
+    }
+
+    /**
+     * Kill the login session
+     * @return bool
+     */
+    public function kill_user_session()
+    {
+        \Session::delete('current_user');
+        return true;
+    }
+
 
 
 	public function get_companies()
@@ -101,5 +184,30 @@ class Manager
 	{
 		return \DB::select('users.id')->from('users')->join('checkins', 'right')->on('checkins.user_id', '=', 'users.id')->where('checkins.killed', '=', '0')->where('checkins.created_at', '>=', date('Y-m-d'))->where('checkins.reason_id', '=', 1)->execute()->count();
 	}
+
+	/**
+     * Utility function to return a company (and if company doesn't exist, this function creates it)
+     * @param string company_name   The name of the company to find or create
+     * @return null|Model_Company   Return the company or null if the data submitted was empty (no need to create a company in this case)
+     */
+    public function find_or_create_company($company_name)
+    {
+        if ($company_name != '')
+        {
+            $c = Model_Company::find()->where('name', '=', $company_name)->get_one();
+
+            if(!$c)
+            {
+                $c = new Model_Company;
+                $c->name = $company_name;
+                $c->save();
+            }
+            return $c;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
 }

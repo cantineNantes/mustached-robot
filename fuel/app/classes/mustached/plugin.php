@@ -50,7 +50,31 @@ class Plugin {
 				}
 			}
 		}
+	}
 
+	public function buildPublicMenu()
+	{
+		$menuItems = array();
+		foreach($this->plugins as $plugin)
+		{
+			\Module::load($plugin);
+			$object_name = "\\".ucfirst($plugin)."\Config";
+
+			$object = new $object_name;
+			if(method_exists($object, 'publicMenu'))
+			{
+				try 
+				{
+					$menuItems[] = $object->publicMenu();	
+				}
+				catch(Exception $e)
+				{
+
+					// Log the error and the plugin associated with it
+				}
+			}
+		}
+		return $menuItems;
 	}
 
 }

@@ -12,6 +12,9 @@
               <li class="active"><a href="{{ base_url('')}}">Check-in</a></li>
               <li><a href="{{ url('user/account/add') }}">Créer mon compte</a></li>
               <li><a href="{{ url('user/auth/login') }}">Connexion</a></li>
+              {% for menu in publicMenus %}
+                <li><a href="{{ menu.href }}">{{ menu.label }}</a></li>
+              {% endfor %}
             </ul>
           </div><!--/.nav-collapse -->
           <div class="nav-collapse pull-right">

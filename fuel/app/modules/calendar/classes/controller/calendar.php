@@ -3,7 +3,7 @@
 namespace Calendar;
 use Mustached\Message;
 
-class Controller_Calendar extends \Controller_Front
+class Controller_Calendar extends \Controller_Admin
 {
 
 	public function before()

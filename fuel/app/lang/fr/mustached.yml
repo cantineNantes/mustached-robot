@@ -35,6 +35,7 @@ admin:
     statistics: Statistiques
     coworkers: Coworkers
     settings: Paramètres
+    screenMode: TV Mode
   upgrade: Passer en admin
   downgrade: Révoquer les droits
   user_upgraded: :firstname :lastname est maintenant admin!
@@ -69,14 +70,23 @@ checkin:
     add_new: Ajouter un passage
     occupancy: Occupation
   stats:
-    from: Du
+    from: du
     to: au
     passages: passages
     passagesPerDay: passages / jour
     differentPeople: différentes personnes
+
+screen:
+  calendar:
+    title: Prochainement à la Cantine
 
 api:
     no_result: Aucun résultat
     no_one_here: Désolé il n'y a personne ici !
   404: Cette ressource n'existe pas
 
+general:
+  the: Le
+  at: à
+  from: de
+  hourS: h

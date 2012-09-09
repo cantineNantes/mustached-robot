@@ -3,12 +3,36 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-
-	<h2>{{ lang('calendar.nextEventsTitle') }}</h2>
-
-	{% for event in events %}
-		<h3>{{ event.title}}</h3>
-		{{ lang('stats.from') }} {{ event.when[0].start | date('d/m/Y') }} {{ lang('stats.to') }} {{ event.when[0].end | date('d/m/Y') }}
-	{% endfor %}
+<div id="screenContent" class="row-fluid">
+	<div id="screen1" class="screen span12">
+		<div class="row-fluid">
+			<div class="span12 block">
+			Hey baby !
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12 block">
+			Hey baby !
+			</div>
+		</div>
+	</div>
+	<div id="screen2" class="screen span12">
+		<h2>{{ lang('mustached.screen.calendar.title') }}</h2>
+		<ul class="calendar">
+		{% for event in events %}
+			<li class="event">
+				<h3>{{ event.title}}</h3>
+				<div class="detail">
+					{% if event.when[0].start != event.when[0].end %}
+						{{ lang('mustached.general.the') }} {{ event.when[0].start | date("d F", "Europe/Paris") }} {{ lang('mustached.general.from') }} {{ event.when[0].start | date("H", "Europe/Paris") }}{{ lang('mustached.general.hourS') }} {{ lang('mustached.general.at') }} {{ event.when[0].end | date("H", "Europe/Paris") }}{{ lang('mustached.general.hourS') }}
+					{% else %}
+						{{ lang('mustached.checkin.stats.from') }} {{ event.when[0].start | date("d M Y", "Europe/Paris") }} {{ lang('mustached.checkin.stats.to') }} {{ event.when[0].end | date("d M Y", "Europe/Paris") }}
+					{% endif %}
+				</div>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</div>
 
 {% endblock %}

@@ -1,3 +1,15 @@
+.navbar:-moz-full-screen {
+    background: red !important;
+}
+
+.navbar:-webkit-full-screen {
+    background: red !important;
+}
+
+.navbar:fullscreen {
+    background: red !important;
+}
+
 body {
 	padding: 100px 0 40px 0;
 	background: #FAFCFE url('../img/gridNoise.png') repeat;
@@ -51,6 +63,9 @@ h2.light {
 
 /* Navigation Stuff */
 .navbar {
+	&:-webkit-full-screen {
+		display: none;
+	}
 	.navbar-inner {
 		background: transparent url('../img/navbarBg.png') repeat;
 		padding: 0;
@@ -182,7 +197,7 @@ input[type="color"],
   font-size: @baseFontSize * 1.5;
   	padding: 20px 15px 20px 15px;
   	margin-bottom: 10px;
-	max-width: 370px;
+	width: 370px;
 	line-height: 30px;
 
   // Focus state
@@ -783,4 +798,50 @@ select {
     left: -4px; /*must have*/
     width: 200px; /*must have*/
     height: 200px; /*must have*/
+}
+#screenContent {
+	background: none;
+	.screen {
+		&:nth-child(2) { display: none;}
+	}
+}
+#screenContent.fullScreen {
+	background: #111;
+	padding:20px 0 20px 0;
+	.screen {
+		position:absolute;
+		margin:0 !important;
+	}
+	h2 {
+		font-size: 60px;
+		color:@whiteTv;
+		text-shadow: 1px 1px 2px rgba(0,0,0,.8);
+		margin-left:60px;
+		font-weight: normal;
+		line-height: 200%;
+	}
+	ul.calendar {
+		font-size: 28px;
+		line-height: 120%;
+		li.event {
+			background-color:@grayDarker;
+			padding:20px 60px 20px 60px;
+			text-shadow: 1px 1px 2px rgba(0,0,0,.8);
+			&:nth-child(odd){ background-color:lighten(@grayDarker,3%); }
+			&:nth-child(n+6) { display: none; }
+			h3 {
+				color:@whiteTv;
+				font-size: 1.5em;
+				line-height: 200%;
+				.text-overflow(ellipsis);
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.detail {
+				color:darken(@whiteTv,30%);
+				font-size: 1.2em;
+				line-height: 200%;
+			}
+		}
+	}
 }

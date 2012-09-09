@@ -1,4 +1,23 @@
 $(document).ready(function() {
+
+	//TV Screen optim stuff
+	var w = screen.width;
+	var h = screen.height;
+
+	var bw = $(window).width();
+	var bh = $(window).height();
+
+	var wRatio = bw/w;
+	var hRatio = bh/h;
+	var ratio = (wRatio + hRatio) / 2;
+
+	//$('body').css('zoom', ratio);
+
+	//Screen Mode Toggle
+	if ($("#screen1")) {
+		setInterval('$("#screen1, #screen2").fadeToggle(1000);',6000);
+	}
+
 	//Raphaël Stuff
 	if ($("#canvas").data("occupation")) {
 		var gaugeContainer = $("#canvas");
@@ -47,39 +66,41 @@ $(document).ready(function() {
 	}
 
 	//Chart freq.
-	var w = $("#holder").width(); // you can make this dynamic so it fits as you would like
-      var freqChart = Raphael('holder', '100%', '400'); // init the raphael obj and give it a width plus height
-      freqChart.lineChart({
-         data_holder: 'data', // find the table data source by id
-         width: w, // pass in the same width
-         height: '400', // pass in the same width
-         show_area: true, // show the area
-         x_labels_step: 3, // X axis labels step
-         y_labels_count: 5, // Y axis labels count
-         mouse_coords: 'rect', // rect (uses blanket mode) | circle (pinpoints the points)
-         colors: {
-           master: '#FF8CA2' // set the line color
-         },
-         text: {
-	        axis_labels: {
-	            font: "12px Helvetica, Arial",
-	            fill: "#666"
-	        },
-	        popup_line1: {
-	            font: "bold 11px Helvetica, Arial",
-	            fill: "#666"
-	        },
-	        popup_line2: {
-	            font: "bold 10px Helvetica, Arial",
-	            fill: "#666"
-	        }
-	    }
-      });
-	$("#changeBtn").click(function() {
-		alert("Changement de taille du canvas...");
-		freqChart.setSize(600,300);
-		freqChart.setViewBox(0, 0, 600, 300, true);
+	if ($("#holder").width()) {
+		var w = $("#holder").width(); // you can make this dynamic so it fits as you would like
+	      var freqChart = Raphael('holder', '100%', '400'); // init the raphael obj and give it a width plus height
+	      freqChart.lineChart({
+	         data_holder: 'data', // find the table data source by id
+	         width: w, // pass in the same width
+	         height: '400', // pass in the same width
+	         show_area: true, // show the area
+	         x_labels_step: 3, // X axis labels step
+	         y_labels_count: 5, // Y axis labels count
+	         mouse_coords: 'rect', // rect (uses blanket mode) | circle (pinpoints the points)
+	         colors: {
+	           master: '#FF8CA2' // set the line color
+	         },
+	         text: {
+		        axis_labels: {
+		            font: "12px Helvetica, Arial",
+		            fill: "#666"
+		        },
+		        popup_line1: {
+		            font: "bold 11px Helvetica, Arial",
+		            fill: "#666"
+		        },
+		        popup_line2: {
+		            font: "bold 10px Helvetica, Arial",
+		            fill: "#666"
+		        }
+		    }
+	      });
+	//Resize Window trigger
+	$(window).resize(function() {
+  		freqChart.setViewBox('holder','100%',400,true);
+  		//alert('resize');
 	});
+	}
 	//Stats Date Picker
 	//DatePicker
 	if ($( "#sd").width()) {
@@ -117,11 +138,16 @@ $(document).ready(function() {
 		});
 	}
 
-	//Resize Window trigger
-	$(window).resize(function() {
-  		freqChart.setViewBox('holder','100%',400,true);
-  		//alert('resize');
-	});
+$('#goScreenMode').click(function(e){
+    // Use the plugin
+    $('#screenContent').fullScreen();
+    e.preventDefault();
+    return false;
+});
+
+
+
+
 	 
 	//Ajax trigger
 	var a;

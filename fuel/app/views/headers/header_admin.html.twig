@@ -22,11 +22,11 @@
                 <div class="navIcon"></div>
                 <span class="navText">{{ lang('mustached.admin.menu.coworkers') }}</span>
               </a></li>
-              <li{% if current_url() == "admin/settings" %} class="active" {% endif %}><a href="#" class="settings">
+              <li{% if current_url() == "admin/settings" %} class="active" {% endif %}><a href="{{ url('admin/settings') }}" class="settings">
                 <div class="navIcon"></div>
                 <span class="navText">{{ lang('mustached.admin.menu.settings') }}</span>
               </a></li>
-              <li><a href="#" class="screenMode" id="goScreenMode">
+              <li{% if current_url() == "calendar" %} class="active" {% endif %}><a href="{{ url('calendar') }}" class="screenMode">
                 <div class="navIcon"></div>
                 <span class="navText">{{ lang('mustached.admin.menu.screenMode') }}</span>
               </a></li>

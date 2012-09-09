@@ -14,7 +14,7 @@ $(document).ready(function() {
 	//$('body').css('zoom', ratio);
 
 	//Screen Mode Toggle
-	if ($("#screen1")) {
+	if ($("#screen1") && $(".fullScreen")) {
 		setInterval('$("#screen1, #screen2").fadeToggle(1000);',6000);
 	}
 
@@ -142,7 +142,6 @@ $('#goScreenMode').click(function(e){
     // Use the plugin
     $('#screenContent').fullScreen();
     e.preventDefault();
-    return false;
 });
 
 

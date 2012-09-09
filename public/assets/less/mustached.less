@@ -1,15 +1,3 @@
-.navbar:-moz-full-screen {
-    background: red !important;
-}
-
-.navbar:-webkit-full-screen {
-    background: red !important;
-}
-
-.navbar:fullscreen {
-    background: red !important;
-}
-
 body {
 	padding: 100px 0 40px 0;
 	background: #FAFCFE url('../img/gridNoise.png') repeat;
@@ -82,6 +70,9 @@ h2.light {
 				letter-spacing: 0.5px;
 				line-height: 26px;
 				color:darken(@white,15);
+				&:hover {
+    				background-color:rgba(0,0,0,.1);
+    			}
 			}
 			a .navIcon {
 				width:33px;
@@ -112,6 +103,11 @@ h2.light {
 			a.settings .navIcon {
 				background-position:-78px -72px;
 				width:27px;
+			}
+			a.screenMode .navIcon {
+				background-position:-105px -94px;
+				width:18px;
+				height:23px;
 			}
 		}
 	}
@@ -800,12 +796,13 @@ select {
     height: 200px; /*must have*/
 }
 #screenContent {
-	background: none;
+	display: none;
 	.screen {
 		&:nth-child(2) { display: none;}
 	}
 }
 #screenContent.fullScreen {
+	display: block;
 	background: #111;
 	padding:20px 0 20px 0;
 	.screen {

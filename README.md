@@ -52,7 +52,7 @@ Vhost example :
 ```
 <VirtualHost *:80>
         DocumentRoot "/Users/dzey/www/mustached-robot/public"
-        ServerName mustached.localr
+        ServerName mustached.local
 		SetEnv FUEL_ENV development		
 </VirtualHost>
 ```
@@ -86,6 +86,11 @@ If you want to enable an API access to external developers, you need to configur
 ```
 	'valid_logins' => array('developer1' => '1234', 'developer2' => '5678'),
 ```
+
+### Create an admin user
+
+* You first need to create a user by registering the user on http://mustached.local/user/account/add
+* Then, in the database, set the "group" field of this user to 100 (it means you will be an admin)
 
 ## Developers
 

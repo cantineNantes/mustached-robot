@@ -38,9 +38,9 @@
         {% block msg %}
           {% if msg %}
 
-          <div class="row-fluid">
+          <div class="row-fluid messageToHide">
             <div class="span12">
-              <div id="message" class="alert alert-{{ msg.type }} clearfix">
+              <div id="message" class="alert alert-{{ msg.type }} clearfix" data-alert="{{ msg.type }}" data-msg="{{ msg.content | raw }}">
                 <div class="icoMessage pull-left"></div>
                 <div class="messages span11">{{ msg.content | raw }}</div>
               </div>
@@ -69,6 +69,7 @@
     {{ asset_js('bootstrap.js') }}
     {{ asset_js('raphael-min.js') }}
     {{ asset_js('raphael_linechart.js') }}
+     {{ asset_js('jquery.pnotify.min.js') }}
     {{ asset_js('common.js') }}
     {% block js %}{% endblock %}
   </body>

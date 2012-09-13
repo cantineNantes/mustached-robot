@@ -137,4 +137,75 @@ class Controller_Admin extends \Controller_Admin
     	return $this->_render('stats');
 	}
 
+	/**
+	 * Show statistics about the checkins in TV View
+	 * @param string (yyyy-mm-dd) $start Start of the analytics range (optionnal,  default = 30 days from nom)
+	 * @param string (yyyy-mm-dd) $end   End of the analytucs range (optionnal, default = today)
+	 */
+	public function action_tv($start = null, $end = null)
+	{
+
+		$m = new Manager;
+
+		if(!$end)     $end   = date('Y-m-d');
+		if(!$start)   $start = date_sub(new \DateTime($end), new \DateInterval('P30D'))->format('Y-m-d');
+
+		// 
+		$end_compute = date_add(new \DateTime($end), new \DateInterval('P30D'))->format('Y-m-d');
+
+		$checkins = $m->get_checkins_and_users($start, $end_compute);		
+
+		$users         = array();
+    	$days          = array();
+    	$checkinperday = array();
+    	$leaders       = $m->get_leaders($start, $end_compute);
+
+    	foreach($checkins as $checkin) {
+    		$checkin_date = date('Y-m-d',strtotime($checkin->created_at));
+
+    		// Compute the number of different users
+    		if (!in_array($checkin->user_id, $users))
+    		{
+    			$users[] = $checkin->user_id;
+    		} 		
+
+    		// Compute the number of different days
+    		if(!in_array($checkin->created_at, $days))
+    		{
+    			$days[]  = $checkin->created_at;
+    		}
+
+    		// Compute the number of logs for each day of the range
+			$checkinperday[$checkin_date]++;
+
+    	}
+
+    	// Add empty dates
+    	$interval = \Date::range_to_array(strtotime($start), strtotime($end_compute), $interval = '+1 Day');
+    	foreach($interval as $date)
+    	{
+    		if(!array_key_exists($date->format('mysql_date'), $checkinperday))
+    		{
+    			$checkinperday[$date->format('mysql_date')] = 0;	
+    		}	
+    	}
+    	ksort($checkinperday);
+
+		$this->data['dates'] = array(
+    		'start' => $start,
+    		'end'   => $end
+    	);
+
+    	$this->data['count'] = array(
+    		'users' => sizeof($users),
+    		'days'  => sizeof($days),
+    		'logs'  => sizeof($checkins),
+    	);
+
+    	$this->data['checkins'] = $checkinperday;
+    	$this->data['leaders']  = $leaders;
+
+    	return $this->_render('tv');
+	}
+
 }

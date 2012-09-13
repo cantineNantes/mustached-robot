@@ -10,6 +10,7 @@ abbr[title] {
 
 p {
 	color: #ccc;
+	line-height: 200%;
 }
 
 a {
@@ -182,26 +183,27 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  background-color: @inputBackground;
-  border: 1px solid @inputBorder;
-  .border-radius(@inputBorderRadius);
-  .box-shadow(~"1px 1px 0 rgba(255, 255, 255, 0.8), inset 2px 2px 4px rgba(0, 0, 0, 0.1)");
-  @transition: border linear .2s, box-shadow linear .2s;
-  .transition(@transition);
-  .placeholder(@grayLighter);
-  color:@grayLight;
-  font-size: @baseFontSize * 1.5;
-  	padding: 20px 15px 20px 15px;
+	background-color: @inputBackground;
+	border: 1px solid @inputBorder;
+	.border-radius(@inputBorderRadius);
+	.box-shadow(~"1px 1px 0 rgba(255, 255, 255, 0.8), inset 2px 2px 4px rgba(0, 0, 0, 0.1)");
+	@transition: border linear .2s, box-shadow linear .2s;
+	.transition(@transition);
+	.placeholder(@grayLighter);
+	color:@grayLight;
+	font-size: @baseFontSize * 1.5;
+	padding: 15px;
   	margin-bottom: 10px;
 	width: 370px;
 	line-height: 30px;
+	height:1.2em;
 
   // Focus state
   &:focus { 
-    border-color: rgba(255,140,162);
-    outline: 0;
-    outline: thin dotted \9; /* IE6-9 */
-    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,140,162,.6)");
+	border-color: rgba(59,186,250,.8) !important;
+	outline: 0;
+	outline: thin dotted \9;
+	.box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(59,186,250,.6)") !important;
   }
   // Giant inputs
   /* &.giant {
@@ -211,6 +213,21 @@ input[type="color"],
 	width: 570px;
 	line-height: 40px;
   }*/
+}
+textarea {
+	min-height: 150px;
+}
+// HTML5 invalid states
+// Shares styles with the .control-group.error above
+input:focus:required:invalid,
+textarea:focus:required:invalid,
+select:focus:required:invalid {
+  color: @grayLighter !important;
+  border-color: rgba(59,186,250,.8) !important;
+  &:focus {
+    border-color: rgba(59,186,250,.8) !important;
+    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,140,162,.6)");
+  }
 }
 
 /* select.giant {
@@ -246,10 +263,6 @@ select {
   	 top:5px;
   }
 }
-
-
-
-
 
 // Menu position and menu carets
 .navbar .dropdown-menu {
@@ -797,6 +810,7 @@ select {
 }
 #screenContent {
 	display: none;
+	background: #111 !important;
 	.screen {
 		&:nth-child(2) { display: none;}
 	}

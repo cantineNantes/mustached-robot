@@ -77,9 +77,10 @@
 		// for the background and a callback function
 
 		var options = $.extend({
-			'background'      : 'none',
+			'background'      : '#111',
 			'callback'        : $.noop( ),
-			'fullscreenClass' : 'fullScreen'
+			'fullscreenClass' : 'fullScreen',
+			'overflow'		  : 'hidden'
 		}, props),
 
 		elem = this,
@@ -89,11 +90,12 @@
 
 		fs = $('<div>', {
 			'css' : {
-				'overflow-y' : 'auto',
+				'overflow' : 'hidden',
 				'background' : options.background,
 				'width'      : '100%',
 				'height'     : '100%'
-			}
+			}, 
+			'id' : 'fullScreenContainer'
 		})
 			.insertBefore(elem)
 			.append(elem);

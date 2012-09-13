@@ -13,11 +13,6 @@ $(document).ready(function() {
 
 	//$('body').css('zoom', ratio);
 
-	//Screen Mode Toggle
-	if ($("#screen1") && $(".fullScreen")) {
-		setInterval('$("#screen1, #screen2").fadeToggle(1000);',6000);
-	}
-
 	//Raphaël Stuff
 	if ($("#canvas").data("occupation")) {
 		var gaugeContainer = $("#canvas");
@@ -137,16 +132,6 @@ $(document).ready(function() {
   			$('#btn_date_form').show();
 		});
 	}
-
-$('#goScreenMode').click(function(e){
-    // Use the plugin
-    $('#screenContent').fullScreen();
-    e.preventDefault();
-});
-
-
-
-
 	 
 	//Ajax trigger
 	var a;

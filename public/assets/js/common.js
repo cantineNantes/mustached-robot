@@ -132,7 +132,21 @@ $(document).ready(function() {
   			$('#btn_date_form').show();
 		});
 	}
+	//Button wait click behaviour
+	/*$('[data-wait]').click(function(){
+		$(this).val($(this).data('wait'));
+	});*/
 	 
+	 //Resize Window trigger on checkin window
+	if ($('#loginScreen')) {
+		$(window).bind('load resize', function() {
+			if (screen.height === window.outerHeight) { 
+				//Switch to fullscreen css
+				$('#loginScreen').addClass('fullScreen');
+			} else { $('#loginScreen').removeClass('fullScreen'); }
+		});
+	}
+
 	//Ajax trigger
 	var a;
 	return a = $('#companies').autocomplete({

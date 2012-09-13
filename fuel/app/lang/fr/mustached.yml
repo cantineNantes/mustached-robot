@@ -8,6 +8,7 @@ user:
     add: Créer mon compte
     edit: Modifier
     title: Création de compte
+    wait: Veuillez patienter...
   edit_password:
     title: Changer le mot de passe
     current_password: Mot de passe actuel
@@ -35,7 +36,7 @@ admin:
     statistics: Statistiques
     coworkers: Coworkers
     settings: Paramètres
-    screenMode: TV Mode
+    screenMode: Mode TV
   upgrade: Passer en admin
   downgrade: Révoquer les droits
   user_upgraded: :firstname :lastname est maintenant admin!
@@ -62,6 +63,7 @@ checkin:
     success: Votre passage a été enregistré
     error: Erreur lors de l'enregistrement de votre passage
     accountDoesntExistCreate: Cet email n'est pas enregistré. Créez un compte dès maintenant !
+    fullscreen: Lancer le mode plein écran
   doesnt_exist: Ce checkin n'existe pas
   killed:
     success: Checkin killed !
@@ -77,6 +79,9 @@ checkin:
     differentPeople: différentes personnes
 
 screen:
+  launchLabel: Lancer le mode TV
+  introText1: Depuis cette page, vous pouvez lancer le mode TV de Mustached Robot !
+  introText2: L'ensemble de vos modules de type TV s'afficheront tour à tour en plein écran.
   calendar:
     title: Prochainement à la Cantine
 

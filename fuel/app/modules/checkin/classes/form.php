@@ -36,7 +36,7 @@ class Form
 		$fieldset->add('submit',
 					   '',
 					   array('type' => 'submit', 'value' => __('mustached.checkin.add.submit'), 
-					   'class' => 'btn btn-large btn-primary')
+					   'class' => 'btn btn-large btn-primary', 'data-wait' => __('mustached.user.form.wait'))
 					   );
 
 		$fieldset->repopulate();

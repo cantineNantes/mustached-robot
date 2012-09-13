@@ -9,7 +9,7 @@ abbr[title] {
 }
 
 p {
-	color: #ccc;
+	//color: #ccc;
 	line-height: 200%;
 }
 
@@ -244,14 +244,55 @@ select {
   font-size: @baseFontSize * 1.5;
   color:@grayLight;
 }
-.coworkingLogo {
-	max-height: 170px;
+#loginScreen.fullScreen {
+	position:absolute;
+	z-index: 99999;
+	top:0;
+	left:0;
+	background: #FAFCFE url('../img/gridNoise.png') repeat;
+	padding:60px 0 20px 0;
+	text-align: center;
+	height: 100%;
+	h2 {
+		line-height: 80px;
+	}
+	.coworkingLogo {
+		display: block;
+		margin: auto;
+		max-height: 250px;
+	}
+	.tip {
+		display: none;
+	}
+}
+#loginScreen {
+	.coworkingLogo {
+		display: none;
+	}
+	.tip {
+		color:@grayLight;
+		text-shadow: 2px 2px 0px #fff;
+	}
 }
 .btn {
 	text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+	padding: 15px;
 }
 .btn-large {
   padding: 20px 40px;
+  font-size: @baseFontSize * 1.25;
+  font-weight: bold;
+  line-height: normal;
+  .border-radius(4px);
+  .box-shadow(~"inset 1px 1px 0 rgba(255, 255, 255, .4), 0 5px 0 rgba(154, 74, 89, 1)");
+  border: 1px solid rgba(154, 74, 89, 1);
+  &:active {
+  	 position: relative;
+  	 top:5px;
+  }
+}
+.btn-giant {
+  padding: 20px 80px;
   font-size: @baseFontSize * 1.25;
   font-weight: bold;
   line-height: normal;

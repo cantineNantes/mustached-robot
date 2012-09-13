@@ -2,14 +2,13 @@
 
 {% block content %}
 
-<div align="center">
-
-	<img src="{{ url('/assets/img/custom/coworkingLogo.png') }}" class="coworkingLogo" alt=""/>
-
-	<h2 class="light">{{ lang('mustached.checkin.add.title') }}</h2>
-
-	{{ form }}
-
+<div class="row-fluid" id="loginScreen">
+	<div class="span12">
+		<img src="{{ url('/assets/img/custom/coworkingLogo.png') }}" class="coworkingLogo" alt=""/>
+		<h2 class="light">{{ lang('mustached.checkin.add.title') }}</h2>
+		{{ form }}
+		{% if current_user.group == 100 %} <div class="tip">(Basculez votre navigateur en plein écran pour activer le mode Desk)</div> {% endif %}
+	</div>
 </div>
 
 {% endblock %}

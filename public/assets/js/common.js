@@ -142,8 +142,18 @@ $(document).ready(function() {
 		$(window).bind('load resize', function() {
 			if (screen.height === window.outerHeight) { 
 				//Switch to fullscreen css
-				$('#loginScreen').addClass('fullScreen');
-			} else { $('#loginScreen').removeClass('fullScreen'); }
+				$('.container-fluid').addClass('fullScreen');
+			} else { $('.container-fluid').removeClass('fullScreen'); }
+		});
+	}
+
+	/* Pines Notify Activation
+	----------------------------------*/
+	if ($('#message').data()) {
+		$.pnotify({
+		    title: 'Blidablip!',
+		    text: $('#message').data('msg'),
+		    type: $('#message').data('alert')
 		});
 	}
 

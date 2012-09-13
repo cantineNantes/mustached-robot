@@ -1,5 +1,9 @@
 # Mustached Robot
 
+!! COWORKING WEEK-END SPECIAL !!
+
+[We have a special page dedicated to the Coworking WeekEnd Hackaton](https://github.com/cantineNantes/mustached-robot/wiki/Coworking-week-end), please read it if you want to get involved !
+
 ## Description
 
 Mustached Robot is an open source checkin plateform for coworking spaces. The project started in [Nantes]((http://goo.gl/maps/BNA73) and is currently under development.

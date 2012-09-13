@@ -84,6 +84,7 @@ screen:
   introText2: L'ensemble de vos modules de type TV s'afficheront tour à tour en plein écran.
   calendar:
     title: Prochainement à la Cantine
+  loading: Veuillez patienter...
 
 api:
     no_result: Aucun résultat

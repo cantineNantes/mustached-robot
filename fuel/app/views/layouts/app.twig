@@ -33,7 +33,7 @@
 
      {% include "headers/header_"~section~".html.twig" %}
 
-    <div class="container-fluid">
+    <div class="container-fluid{% if fullscreen %} fullScreen{% endif %}">
 
         {% block msg %}
           {% if msg %}
@@ -52,6 +52,11 @@
         {% block content %}
 
         {% endblock %}
+        <div id="loadingRobot">
+          <div class="container">
+            {{ lang('mustached.screen.loading') }}
+          </div>
+        </div>
 
     </div> <!-- /container -->
 

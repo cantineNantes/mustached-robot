@@ -139,11 +139,38 @@ $(document).ready(function() {
 	 
 	 //Resize Window trigger on checkin window
 	if ($('#loginScreen')) {
-		$(window).bind('load resize', function() {
+		$(window).bind('resize', function() {
 			if (screen.height === window.outerHeight) { 
-				//Switch to fullscreen css
-				$('.container-fluid').addClass('fullScreen');
-			} else { $('.container-fluid').removeClass('fullScreen'); }
+				//Enable fullscreen session variable by an ajax call, to stay in that mode during browsing.
+				$('#loadingRobot').fadeIn();
+				$.ajax({
+					url: 'http://' + $(location).attr('host') + '/user/fullscreen/enter',
+					cache: false,
+					success: function(html) {
+						//Switch to fullscreen css
+						$('#loadingRobot').fadeOut();
+						if (!$('.container-fluid').hasClass('fullScreen')) {
+							$('.container-fluid').addClass('fullScreen');
+						}
+					},
+					error: function() {
+						alert('ERROR entering fullscreen :(');
+					}
+				});
+			} else if($('.container-fluid').hasClass('fullScreen')) { 
+				//Enable fullscreen session variable by an ajax call, to stay in that mode during browsing.
+				$.ajax({
+					url: 'http://' + $(location).attr('host') + '/user/fullscreen/exit',
+					cache: false,
+					success: function(html) {
+						//Switch to non fullscreen css
+						$('.container-fluid').removeClass('fullScreen');
+					},
+					error: function() {
+						alert('ERROR exit fullscreen :(');
+					}
+				});
+			}
 		});
 	}
 

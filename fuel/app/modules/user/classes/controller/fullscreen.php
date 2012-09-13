@@ -9,13 +9,15 @@ class Controller_Fullscreen extends \Controller_Admin
 	public function action_enter()
 	{
 		\Session::set('fullscreen', true);
-		\Response::redirect(\Input::referrer());
+		// \Response::redirect(\Input::referrer());
+		return 'enter';
 	}
 
 	public function action_exit()
 	{
 		\Session::delete('fullscreen');
-		\Response::redirect(\Input::referrer());
+		// \Response::redirect(\Input::referrer());
+		return 'exit';
 	}
 
 }

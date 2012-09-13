@@ -244,7 +244,7 @@ select {
   font-size: @baseFontSize * 1.5;
   color:@grayLight;
 }
-.fullScreen {
+.container-fluid.fullScreen {
 	position:absolute;
 	z-index: 1031; //Put that above bootstrap navbar
 	top:0;
@@ -252,6 +252,7 @@ select {
 	background: #FAFCFE url('../img/gridNoise.png') repeat;
 	width:100%;
 	height: 100%;
+	overflow-x: hidden;
 	#loginScreen {
 		padding:60px 0 20px 0;
 		text-align: center;
@@ -1015,4 +1016,30 @@ height: 17px;
 }
 .messageToHide {
 	display: none;
+}
+#loadingRobot {
+	display: none;
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 9999999999;
+	background-color: rgba(0,0,0,.5);
+	text-align: center;
+	color:@white;
+	font-size: 80px;
+	.container {
+		margin: auto;
+		position: relative;
+		top:40%;
+		img {
+			display: none;
+			position:relative;
+			width:270px;
+			height: 270px;
+			margin: auto;
+		}
+	}
 }

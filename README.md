@@ -1,5 +1,9 @@
 # Mustached Robot
 
+!! COWORKING WEEK-END SPECIAL !!
+
+[We have a special page dedicated to the Coworking WeekEnd Hackaton](https://github.com/cantineNantes/mustached-robot/wiki/Coworking-week-end), please read it if you want to get involved !
+
 ## Description
 
 Mustached Robot is an open source checkin plateform for coworking spaces. The project started in [Nantes]((http://goo.gl/maps/BNA73) and is currently under development.
@@ -70,13 +74,15 @@ Vhost example :
 
 ### Configuration
 
-* Edit the /fuel/config/mustached.php file :
+* Edit the fuel/app/config/mustached.php file :
 
-  * salt : set a unique string (the more complex, the better). This string will be used to encrypt user password and should not be revelad
   * seats : set the number of seats available in the coworking space
 
-* Edit the /fuel/modules/calendar/config/calendar.php file :
+* Edit the fuel/modules/calendar/config/calendar.php file :
   * login and password to connect to your Google Calendar
+
+* Edit the fuel/app/config/simpleauth.php file :
+  * login_hash_salt : set a unique string (the more complex, the better). This string will be used to encrypt user password and should not be revelad nor changed
 
 
 ### API Access
@@ -131,9 +137,40 @@ We use Sensio Lab's [Twig](http://twig.sensiolabs.org) as a template engine.
 
 ### Controllers
 
-Controllers must extend one of the following controller : \Front_Controller, \Admin_Controller or \API_Controller (both available in /application/core).
+Controllers must extend one of the following controller : \Front_Controller, \Admin_Controller or \API_Controller ( available in /application/core).
+
+The Front_controller is used to display information for a public user 
+The Admin_Controller
 
 To call a view from within a controller, just call ```return $this->_render('template_name');``` (without the .twig extension). This will call the template called 'template_name.twig' located in the views directory of the module.
+
+### Users
+
+We use FuelPHP's [SimpleAuth package](http://docs.fuelphp.com/packages/auth/simpleauth/intro.html) to handle authentication.
+
+In each controller, you have access to a variable called current_user. If this variable is set, it means a user is logged in. You also have access to some variables :
+
+* user_id 
+* firstname
+* email
+* group : this is the group the user belongs to. See [SimpleAuth documentation](http://docs.fuelphp.com/packages/auth/simpleauth/intro.html) -- basically : group = 100 means it is an admin and group = 1 means it's a simple user 
+
+You can access to this datas in the Controller : 
+
+* $this->current_user['user_id']
+* $this->current_user['firstname']
+* $this->current_user['group']
+* $this->current_user['email']
+
+Or in the templates :
+
+Twig :
+* {{ current_user.user_id }}
+* {{ current_user.firstname }}
+* {{ current_user.group }}
+* {{ current_user.email }}
+
+You can also access the user's avatar with the twig function {{ avatar(current_user.email, 40) }} (40 can be replaced by another integer : it is the size of the avatar).
 
 ### Views
 
@@ -158,6 +195,8 @@ And that's it !
 #### Javascript
 
 Javascript files are stored in the /public/assets/js directory. They are loaded in the fuel/app/views/app.twig (at the end of the document).
+
+
 
 ## Project status
 

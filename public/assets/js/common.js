@@ -138,7 +138,7 @@ $(document).ready(function() {
 	});*/
 	 
 	 //Resize Window trigger on checkin window
-	if ($('#loginScreen')) {
+	if ($('#loginScreen').length > 0 || $('#addForm').length > 0) {
 		$(window).bind('resize', function() {
 			if (screen.height === window.outerHeight) { 
 				//Enable fullscreen session variable by an ajax call, to stay in that mode during browsing.
@@ -151,6 +151,7 @@ $(document).ready(function() {
 						$('#loadingRobot').fadeOut();
 						if (!$('.container-fluid').hasClass('fullScreen')) {
 							$('.container-fluid').addClass('fullScreen');
+							$('.btn').removeClass('btn-large').addClass('btn-giant');
 						}
 					},
 					error: function() {
@@ -165,6 +166,7 @@ $(document).ready(function() {
 					success: function(html) {
 						//Switch to non fullscreen css
 						$('.container-fluid').removeClass('fullScreen');
+						$('.btn').addClass('btn-large').removeClass('btn-giant');
 					},
 					error: function() {
 						alert('ERROR exit fullscreen :(');

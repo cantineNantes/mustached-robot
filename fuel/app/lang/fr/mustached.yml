@@ -24,7 +24,7 @@ user:
   twitter: Pseudo twitter
   company: Société
   update_account: Mettre à jour le compte
-  save_success: Utilisateur enregistré
+  save_success: Votre compte a été créé, vous pouvez désormais vous loguer !
   update_success: Modifications enregistrées
   save_error: Erreur lors de l'enregistrement
   email_exists: Cet email existe déjà

@@ -177,10 +177,13 @@ $(document).ready(function() {
 	/* Pines Notify Activation
 	----------------------------------*/
 	if ($('#message').data()) {
+		var msg = $('#message').data('msg');
+		var alert = $('#message').data('alert');
+		if (alert == 'success') { var title = 'Yeepa!'; } else { var title = 'Boodo :('; }
 		$.pnotify({
-		    title: 'Blidablip!',
-		    text: $('#message').data('msg'),
-		    type: $('#message').data('alert')
+		    title: title,
+		    text: msg,
+		    type: alert
 		});
 	}
 

@@ -3,7 +3,7 @@
 namespace User;
 use Mustached\Message;
 
-class Controller_Fullscreen extends \Controller_Admin
+class Controller_Fullscreen extends \Controller_Front
 {
 
 	public function action_enter()

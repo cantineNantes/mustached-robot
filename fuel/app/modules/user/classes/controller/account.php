@@ -28,16 +28,16 @@ class Controller_Account extends \Controller_Front
         $result = $fm->create_user_from_form($fieldset);
         if($result === true)
         {
-           $this->data['msg'] = Message::success('mustached.user.save_success');
+           //$this->data['msg'] = Message::success('mustached.user.save_success');
+           Message::flash_success('mustached.user.save_success');
+          \Response::redirect('checkin/public/add');
         }
         else
         {
            $this->data['msg'] = Message::error($result);
         }
     }
-
     return $this->_render('add');
-
   }
 
   public function action_test()

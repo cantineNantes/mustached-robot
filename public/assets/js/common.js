@@ -98,10 +98,9 @@ $(document).ready(function() {
 	}
 	//Stats Date Picker
 	//DatePicker
-	if ($( "#sd").width()) {
+	if ($( '#sd_label').length > 0) {
 		var dates = $( "#sd, #ed" ).datepicker({
 			defaultDate: "+1w",
-			changeMonth: true,
 			numberOfMonths: 1,
 			showButtonPanel: true,
 			dateFormat: 'dd/mm/yy',
@@ -114,23 +113,34 @@ $(document).ready(function() {
 				$.datepicker._defaults.dateFormat,
 				selectedDate, instance.settings );
 				dates.not( this ).datepicker( "option", option, date );
+				//window.alert($("#sd, #ed").datepicker( "getDate" ));
 			}
 		});
 		$('#btn_date_form').click(function() {
   			$('#date_form').submit();
 		});
 		$('#sd_label').click(function() {
-			$('#sd_label').hide();
-  			$('#sd').show();
+			$('#sd_label, #sd').toggle();
   			$('#sd').focus();
   			$('#btn_date_form').show();
 		});
 		$('#ed_label').click(function() {
-			$('#ed_label').hide();
-  			$('#ed').show();
+			$('#ed_label, #ed').toggle();
   			$('#ed').focus();
   			$('#btn_date_form').show();
 		});
+		$('#date_form').submit(function() {
+ 			var startDate = $('#sd').val().split('/');
+ 			var endDate = $('#ed').val().split('/');
+ 			var path = startDate[2] + '-' + startDate[1] + '-' + startDate[0] + '/' + endDate[2] + '-' + endDate[1] + '-' + endDate[0] + '/';
+  			path = '/admin/checkin/stats/' + path;
+  			$(this).attr('action', path);
+  			return true;
+		});
+		//$('#sd').blur(function() { $('#sd_label, #sd').toggle(); }); 
+		//$('#sd').change(function() { $('#sd_label').html($(this).val()); }); 
+		//$('#ed').blur(function() { $('#ed_label, #ed').toggle(); });
+		//$('#ed').change(function() { $('#ed_label').html($(this).val()); }); 
 	}
 	//Button wait click behaviour
 	/*$('[data-wait]').click(function(){

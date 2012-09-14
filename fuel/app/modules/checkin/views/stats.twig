@@ -1,14 +1,14 @@
 {% extends "layouts/app.twig" %}
 
 {% block content %}
-<form id="date_form" method="GET" action="{{ current_url }}" class="statsDatePicker">
+<form id="date_form" method="POST" action="{{ current_url() }}" class="statsDatePicker">
 	<h1>
 		{{ lang('mustached.checkin.stats.from') }} 
 		<span id="sd_label" class="date">{{ dates.start|date("d/m/Y", "Europe/Paris") }}</span> 
-		<input type="text" id="sd" name="sd" value="{{ dates.start|date("d/m/Y", "Europe/Paris") }}" style="display: none; " class="hasDatepicker">
+		<input type="text" id="sd" name="sd" value="{{ dates.start|date("d/m/Y", "Europe/Paris") }}" style="display: none; ">
 		{{ lang('mustached.checkin.stats.to') }} 
 		<span id="ed_label" class="date">{{ dates.end|date("d/m/Y", "Europe/Paris") }}</span>
-		<input type="text" id="ed" name="ed" value="{{ dates.end|date("d/m/Y", "Europe/Paris") }}" style="display: none; " class="hasDatepicker">
+		<input type="text" id="ed" name="ed" value="{{ dates.end|date("d/m/Y", "Europe/Paris") }}" style="display: none; ">
 		<a id="btn_date_form" class="btn btn-primary" style="display: none; ">Valider</a>
 	</h1>
 </form>

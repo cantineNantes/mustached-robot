@@ -20,15 +20,14 @@ class Controller_Account extends \Controller_Front
 
     $this->data['form'] = $fieldset->form()->build();
 
-    // If the form is submitted and the data are valid
     if(\Input::method() == 'POST')
     {    
         $um = new Manager;
 
         $result = $fm->create_user_from_form($fieldset);
-        if($result === true)
+        
+        if(is_int($result))
         {
-           //$this->data['msg'] = Message::success('mustached.user.save_success');
            Message::flash_success('mustached.user.save_success');
           \Response::redirect('checkin/public/add');
         }

@@ -5,6 +5,12 @@ namespace User;
 class Manager
 {
 
+
+	/**
+	 * Create a user 
+	 * @param  array $datas 	Array of datas containing the user informations : email, password, firstname, lastname, biography, twitter, email, company
+	 * @return mixed 		    Return the id of the newly created user on success or an error message on failure   
+	 */
 	public function create_user($datas)
 	{
 		$auth = \Auth::instance();
@@ -12,7 +18,14 @@ class Manager
         if($id)
         {
         	$res = $this->update_user($id, $datas);
-        	return $res;
+        	if($res)
+        	{
+        		return intval($id);
+        	}
+        	else
+        	{
+        		return $res;
+        	}
         }        
         else 
         {
@@ -25,21 +38,20 @@ class Manager
 
     	$user = Model_User::find($id);
 
-    	$user->firstname = isset($datas['firstname']) ? $datas['firstname'] : null;
-    	$user->lastname  = isset($datas['lastname'])  ? $datas['lastname']  : null;
-    	$user->biography = isset($datas['biography']) ? $datas['biography'] : null;
-    	$user->twitter   = isset($datas['twitter'])   ? $datas['twitter']   : null;
-    	$user->email     = isset($datas['email'])     ? $datas['email']     : null;
-    	$user->username  = isset($datas['email'])     ? $datas['email']     : null;
+    	$user->firstname = isset($datas['firstname']) ? trim($datas['firstname']) : null;
+    	$user->lastname  = isset($datas['lastname'])  ? trim($datas['lastname'])  : null;
+    	$user->biography = isset($datas['biography']) ? trim($datas['biography']) : null;
+    	$user->twitter   = isset($datas['twitter'])   ? trim($datas['twitter'])   : null;
+    	$user->email     = isset($datas['email'])     ? trim($datas['email'])     : null;
+    	$user->username  = isset($datas['email'])     ? trim($datas['email'])     : null;
 
-    	$datas['company'] = trim($datas['company']);
+    	$datas['company'] =  isset($datas['company']) ? trim($datas['company'])   : null;
 
     	if($datas['company'] != '')
     	{
     		$c = $this->find_or_create_company($datas['company']);
     		$user->company = $c;
     	}
-
         try
         {
             $user->save();

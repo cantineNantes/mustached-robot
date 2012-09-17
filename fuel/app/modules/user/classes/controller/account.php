@@ -12,6 +12,11 @@ class Controller_Account extends \Controller_Front
   }
 
 
+  /**
+   * Page allowing a user to create his account
+   * If the user comes from the checkin page and his account doesn't exists: the email field is populated
+   * If the account creation succeed, the user is redirected to the checkin page, with the email field populated
+   */
   public function action_add()
   {
 
@@ -29,7 +34,8 @@ class Controller_Account extends \Controller_Front
         if(is_int($result))
         {
            Message::flash_success('mustached.user.save_success');
-          \Response::redirect('checkin/public/add');
+           $user = Model_User::find($result);
+           \Response::redirect('/?email='.urlencode($user['email']));
         }
         else
         {
@@ -37,14 +43,6 @@ class Controller_Account extends \Controller_Front
         }
     }
     return $this->_render('add');
-  }
-
-  public function action_test()
-  {
-    $um = new Manager;
-    echo $this->um->get_user($id);
-
-    return $this->_render('add');    
   }
 
 

@@ -8,9 +8,10 @@ class Form
 
 	/**
 	 * Return a form for a checkin
+	 * @param  String $email 	(optional) Email to fill the email field with
 	 * @return Fieldset
 	 */
-	public function create_form()
+	public function create_form($email = null)
 	{
 
 		$reasons = \Arr::assoc_to_keyval(
@@ -24,7 +25,7 @@ class Form
 
 		$fieldset->add('email',
 					   '',
-					   array('type' => 'text', 'class' => 'giant', 'placeholder' => __('mustached.user.email'), 'autocomplete' => 'off'),
+					   array('type' => 'text', 'class' => 'giant', 'placeholder' => __('mustached.user.email'), 'autocomplete' => 'off', 'value' => $email),
 					   array(array('required'), array('valid_email'))
 					   );
 

@@ -16,7 +16,20 @@ class Controller_Public extends \Controller_Front
   public function action_add()
   {
     $f = new Form;
-    $fieldset = $f->create_form();
+
+    $email = null;
+
+    if($this->current_user)
+    {
+      $email = $this->current_user['email'];
+    }
+
+    if(\Input::get('email'))
+    {
+      $email = urldecode(\Input::get('email'));
+    }
+
+    $fieldset = $f->create_form($email);
 
   	$this->data['form'] = $fieldset->form()->build();
 

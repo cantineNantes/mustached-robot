@@ -40,7 +40,7 @@ class Controller_Auth extends \Controller_Front
                     if($redirect = \Session::get_flash('redirect')) {
                        \Response::redirect($redirect);
                     }
-                    \Response::redirect('user/account/edit');
+                    \Response::redirect('/');
 
                 }
         		else

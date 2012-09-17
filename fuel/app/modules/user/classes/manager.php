@@ -32,7 +32,9 @@ class Manager
     	$user->email     = isset($datas['email'])     ? $datas['email']     : null;
     	$user->username  = isset($datas['email'])     ? $datas['email']     : null;
 
-    	if(isset($datas['company']))
+    	$datas['company'] = trim($datas['company']);
+
+    	if($datas['company'] != '')
     	{
     		$c = $this->find_or_create_company($datas['company']);
     		$user->company = $c;

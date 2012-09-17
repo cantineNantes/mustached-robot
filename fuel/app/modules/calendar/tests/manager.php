@@ -28,8 +28,7 @@ class Test_Manager extends \TestCase
                            ->method('getEvents')
                            ->will($this->returnCallback(array($this, 'returnEvents')));
 
-        $this->manager = new Manager;
-		$this->manager->setCalendar($this->calendarMock);
+        $this->manager = new Manager($this->calendarMock);
 
 	}
 

@@ -6,17 +6,23 @@ class Manager {
 
 	private $gcal;
 
-	public function __construct()
+	public function __construct($gcal = null)
 	{
+		if(!$gcal)
+		{
+			include('vendor/gcalendar/gcalendar.php');
+			$params = array(
+				'email'    => \Config::get('google_calendar_email'),
+				'password' => \Config::get('google_calendar_password'),
+			);
+		
+			$this->gcal = new \GCalendar($params);
+		}
+		else 
+		{
+			$this->gcal = $gcal;
+		}
 
-		include('vendor/gcalendar/gcalendar.php');
-
-		$params = array(
-			'email'    => \Config::get('google_calendar_email'),
-			'password' => \Config::get('google_calendar_password'),
-		);
-
-		$this->gcal = new \GCalendar($params);
 	}
 
 	public static function load()
@@ -41,6 +47,11 @@ class Manager {
 			$evts = $this->gcal->getEvents(\Config::get('google_calendar_id'), $number, date('Y-m-d'));
 		}
 		return $evts->data->items;
+	}
+
+	public function set_calendar($gcal)
+	{
+		$this->gcal = $gcal;
 	}
 
 }

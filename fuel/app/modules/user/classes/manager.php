@@ -71,7 +71,7 @@ class Manager
 
 	public function get_user($id)
 	{
-		return \DB::select()->from('users')->where('id', '=', $id)->execute()->as_array();
+		return \DB::select()->from('users')->where('id', '=', $id)->execute()->current();
 	}
 
 	/**
@@ -100,17 +100,17 @@ class Manager
 						->execute()
 						->as_array();
 					 
-					$u[0]['skills'] = $s;
+					$u['skills'] = $s;
 				break;
 
 				case 'company':
 					$c = \DB::select('id', 'name')
 						->from('companies')			
-						->where('companies.id', '=', $u[0]['company_id'])
+						->where('companies.id', '=', $u['company_id'])
 						->execute()
 						->as_array();
 
-					$u[0]['company'] = $c[0];
+					$u['company'] = $c;
 				break;
 			}			
 		}		
@@ -196,7 +196,15 @@ class Manager
 
 	public function get_occupied_seats_count()
 	{
-		return \DB::select('users.id')->from('users')->join('checkins', 'right')->on('checkins.user_id', '=', 'users.id')->where('checkins.killed', '=', '0')->where('checkins.created_at', '>=', date('Y-m-d'))->where('checkins.reason_id', '=', 1)->execute()->count();
+		return \DB::select('users.id')
+					->from('users')
+					->join('checkins', 'right')
+					->on('checkins.user_id', '=', 'users.id')
+					->where('checkins.killed', '=', '0')
+					->where('checkins.created_at', '>=', date('Y-m-d'))
+					->where('checkins.reason_id', '=', 1)
+					->execute()
+					->count();
 	}
 
 	/**

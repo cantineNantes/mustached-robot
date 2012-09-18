@@ -1,6 +1,6 @@
 # Mustached Robot
 
-[![Build Status](https://secure.travis-ci.org/dzey/mustached-robot.png)](http://travis-ci.org/dzey/mustached-robot)
+[![Build Status](https://secure.travis-ci.org/cantineNantes/mustached-robot.png)](http://travis-ci.org/cantineNantes/mustached-robot)
 
 !! COWORKING WEEK-END SPECIAL !!
 

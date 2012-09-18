@@ -9,11 +9,6 @@ namespace Fuel\Tasks;
 class Db
 {
 
-	public function setup()
-	{
-
-	}
-
 	public function setup_test()
 	{
 		\Fuel::$env = \Fuel::TEST;		

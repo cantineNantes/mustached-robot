@@ -2,6 +2,11 @@
 
 use Mustached\Message;
 
+/**
+ * The Controller_Admin adds a security layer to the Controller_Base
+ * 
+ * Every admin specific controller of the application MUST extend this controller.
+ */
 class Controller_Admin extends Controller_Base
 {
 

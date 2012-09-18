@@ -2,11 +2,11 @@
 
 namespace Mustached;
 
+
 class Plugin {
 
 	private $plugins = array(); // list of plugins installed on the app (in the modules folder)
 	private $regular_modules = array('checkin', 'calendar', 'user', 'install'); // list of the core module of the app (aka "not the plugins")
-
 
 	/**
 	 * Instanciate the plugins array.
@@ -35,7 +35,6 @@ class Plugin {
 	 * For each plugin, check if there is a postCheckin() function. 
 	 * If so, the action is called, wathever it is.
 	 */
-
 	public function postCheckin($params = array())
 	{
 		foreach($this->plugins as $plugin)

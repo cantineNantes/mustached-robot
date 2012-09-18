@@ -8,3 +8,10 @@ before_script:
   - php oil refine db:setup_test
 
 script: php oil test
+
+notifications:
+  email:
+    recipients:
+      - jeremie.pottier+mustached@gmail.com
+    on_success: change
+    on_failure: change

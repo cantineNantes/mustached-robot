@@ -2,8 +2,9 @@ language: php
 
 php:
   - 5.3
-  - 5.4
 
   before_script:
-  - mysql -e 'create database myapp_test;'
+  - mysql -e 'create database mustached_test;'
   - php oil refine db:setup_test
+
+script: php oil test

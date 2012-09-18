@@ -21,7 +21,7 @@ class Test_Manager extends \TestCase
 
 		$this->user = array(
 			'email'     => 'jeremie.pottier@test.com',
-			'firstname' => 'Jérémie',
+			'firstname' => 'Jeremie',
 			'lastname'  => 'Pottier',
 			'password'  => 'topsecret',
 		);

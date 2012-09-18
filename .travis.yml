@@ -3,7 +3,7 @@ language: php
 php:
   - 5.3
 
-  before_script:
+before_script:
   - mysql -e 'create database mustached_test;'
   - php oil refine db:setup_test
 

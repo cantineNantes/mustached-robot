@@ -1,5 +1,7 @@
 # Mustached Robot
 
+[![Build Status](https://secure.travis-ci.org/dzey/mustached-robot.png)](http://travis-ci.org/dzey/mustached-robot)
+
 !! COWORKING WEEK-END SPECIAL !!
 
 [We have a special page dedicated to the Coworking WeekEnd Hackaton](https://github.com/cantineNantes/mustached-robot/wiki/Coworking-week-end), please read it if you want to get involved !

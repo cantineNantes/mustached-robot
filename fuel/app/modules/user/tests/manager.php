@@ -157,11 +157,6 @@ class Test_Manager extends \TestCase
 		
 	}
 
-	public function test_get_companies()
-	{
-
-	}
-
 	public function test_get_company()
 	{
 		

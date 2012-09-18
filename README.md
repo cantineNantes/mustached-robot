@@ -2,10 +2,6 @@
 
 [![Build Status](https://secure.travis-ci.org/cantineNantes/mustached-robot.png)](http://travis-ci.org/cantineNantes/mustached-robot)
 
-!! COWORKING WEEK-END SPECIAL !!
-
-[We have a special page dedicated to the Coworking WeekEnd Hackaton](https://github.com/cantineNantes/mustached-robot/wiki/Coworking-week-end), please read it if you want to get involved !
-
 ## Description
 
 Mustached Robot is an open source checkin plateform for coworking spaces. The project started in [Nantes]((http://goo.gl/maps/BNA73) and is currently under development.
@@ -15,13 +11,13 @@ Mustached Robot is an open source checkin plateform for coworking spaces. The pr
 * Florent Gosselin - UX designer ([@fgosselin](http://twitter.com/fgosselin))
 * Jérémie Pottier - Developer ([@dzey](http://twitter.com/dzey))
 
-New developers or designers are welcome to join the project. Just contact us on twitter ([@fgosselin](http://twitter.com/fgosselin), [@dzey](http://twitter.com/dzey)) if you want to get involved !
+New developers or designers are welcome to join the project. Just contact us on twitter ([@fgosselin](http://twitter.com/fgosselin), [@dzey](http://twitter.com/dzey)) if you want to get involved!
 
 ## Roadmap
 
 ### Beta version (september)
 
-_The beta version is a fully functional application on its own but a little nerdy to install_
+_The beta version is a completely functional application on its own but a little nerdy to install_
 
 * Coworkers can create an account and checkin in the coworking space
 * Coworking space managers can access the coworking space datas on a beautiful dashboards: coworkers currently here, coworkers profiles, coworking space statistics
@@ -31,7 +27,7 @@ _The beta version is a fully functional application on its own but a little nerd
 
 ### V1
 
-_The V1 version is an easy-to-install, easy-to-extend plateform_
+_The V1 is an easy-to-install, easy-to-extend plateform_
 
 * Install wizard (database configuration, google calendar credentials, creation of the first admin user)
 * Plugin system to allow anyone to develop plugins without needing to change the core files (example: a billing management system through Freshbook, a connection to a specific CRM, etc).
@@ -42,7 +38,7 @@ See the [install documentation](https://github.com/cantineNantes/mustached-robot
 
 ## Documentation 
 
-You want to get involved? See the [Developers documentation](https://github.com/cantineNantes/mustached-robot/wiki/Developers-documentation)!
+You want to get involved? See the [Developers documentation](https://github.com/cantineNantes/mustached-robot/wiki/Developers-documentation)
 
 ## API documentation 
 

@@ -9,7 +9,7 @@ return array(
 		'connection'  => array(
 			'dsn'        => 'mysql:host=localhost;dbname=mustached_test',
 			'username'   => 'root',
-			'password'   => 'root',
+			'password'   => '',
 		),
 	),
 );

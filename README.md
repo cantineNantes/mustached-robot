@@ -47,3 +47,8 @@ An [API mini-doc](https://github.com/cantineNantes/mustached-robot/wiki/API) is 
 ## Project status and bug report
 
 You can see the project status or report any bug on the [Github issues tracker](https://github.com/cantineNantes/mustached-robot/issues?milestone=1&state=open)
+
+## Help and discussions
+
+If you need help or if you want to talk about mustaches, you can do it on twitter or on this [Google Group](https://github.com/cantineNantes/mustached-robot/tree/master/fuel/app/modules/user/classes).
+

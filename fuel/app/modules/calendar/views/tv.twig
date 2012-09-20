@@ -1,0 +1,15 @@
+<h2>{{ lang('mustached.screen.calendar.title') }}</h2>
+<ul class="calendar">
+{% for event in events %}
+	<li class="event">
+		<h3>{{ event.title}}</h3>
+		<div class="detail">
+			{% if event.when[0].start != event.when[0].end %}
+				{{ lang('mustached.general.the') }} {{ event.when[0].start | date("d F", "Europe/Paris") }} {{ lang('mustached.general.from') }} {{ event.when[0].start | date("H", "Europe/Paris") }}{{ lang('mustached.general.hourS') }} {{ lang('mustached.general.at') }} {{ event.when[0].end | date("H", "Europe/Paris") }}{{ lang('mustached.general.hourS') }}
+			{% else %}
+				{{ lang('mustached.checkin.stats.from') }} {{ event.when[0].start | date("d M Y", "Europe/Paris") }} {{ lang('mustached.checkin.stats.to') }} {{ event.when[0].end | date("d M Y", "Europe/Paris") }}
+			{% endif %}
+		</div>
+	</li>
+{% endfor %}
+</ul>

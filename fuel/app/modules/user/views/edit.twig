@@ -1,9 +1,10 @@
 {% extends "layouts/app.twig" %}
 
 {% block content %}
-
-<h2>{{ lang('mustached.user.update_account') }}</h2>
-
-{{ form }}
-
+<div class="row-fluid" id="editForm">
+	<div class="span12">
+		<h2>{{ lang('mustached.user.update_account') }}</h2>
+		{{ form }}
+	</div>
+</div>
 {% endblock %}

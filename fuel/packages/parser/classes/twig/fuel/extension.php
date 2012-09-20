@@ -47,8 +47,11 @@ class Twig_Fuel_Extension extends Twig_Extension
 			'base_url'      => new Twig_Function_Function('Uri::base'),
 			'uri_segment'   => new Twig_Function_Function('Uri::segment'),
 			'uri_segments'  => new Twig_Function_Function('Uri::segments'),
+			'current_url'   => new Twig_Function_Function('Uri::string'),
+
 			'config'        => new Twig_Function_Function('Config::get'),
 			'lang'          => new Twig_Function_Function('Lang::get'),
+
 
 			'form_open'     => new Twig_Function_Function('Form::open'),
 			'form_close'    => new Twig_Function_Function('Form::close'),

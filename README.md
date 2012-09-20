@@ -1,5 +1,7 @@
 # Mustached Robot
 
+[![Build Status](https://secure.travis-ci.org/cantineNantes/mustached-robot.png)](http://travis-ci.org/cantineNantes/mustached-robot)
+
 ## Description
 
 Mustached Robot is an open source checkin plateform for coworking spaces. The project started in [Nantes]((http://goo.gl/maps/BNA73) and is currently under development.
@@ -9,142 +11,44 @@ Mustached Robot is an open source checkin plateform for coworking spaces. The pr
 * Florent Gosselin - UX designer ([@fgosselin](http://twitter.com/fgosselin))
 * Jérémie Pottier - Developer ([@dzey](http://twitter.com/dzey))
 
+New developers or designers are welcome to join the project. Just contact us on twitter ([@fgosselin](http://twitter.com/fgosselin), [@dzey](http://twitter.com/dzey)) if you want to get involved!
+
 ## Roadmap
 
+### Beta version (september)
 
-### Beta version (early september)
+_The beta version is a completely functional application on its own but a little nerdy to install_
 
-* Coworkers can create, update and delete their account
-* Coworkers can checkin in the coworking space
-* Dashboard view with the coworkers profiles and the next events in the coworking space (this view can be used on a large TV screen in the coworking space)
-* Administrators can access the coworking space datas (coworkers currently here, coworkers profiles, coworking space statistics)
-* Developers can access the coworking space information via an API (to allow integration with coworking space websites for example)
+* Coworkers can create an account and checkin in the coworking space
+* Coworking space managers can access the coworking space datas on a beautiful dashboards: coworkers currently here, coworkers profiles, coworking space statistics
+* A Dashboard view with the coworkers profiles and the next events in the coworking space (this view can be used on a large TV screen in the coworking space)
+* An API is available so any allowed developer can play with the coworking space datas
 * Mobile ready
 
 ### V1
 
-* Plugin system to allow anyone to develop plugins without needing to change the core files (example: a billing management system through Freshbook, a connection to a specific CRM, etc)
+_The V1 is an easy-to-install, easy-to-extend plateform_
+
+* Install wizard (database configuration, google calendar credentials, creation of the first admin user)
+* Plugin system to allow anyone to develop plugins without needing to change the core files (example: a billing management system through Freshbook, a connection to a specific CRM, etc).
 
 ## Installation
 
-If you want to install Mustached Robot, just follow these instructions:
+See the [install documentation](https://github.com/cantineNantes/mustached-robot/wiki/Installation)
 
-### Download the source files
+## Documentation 
 
-This one should be easy.
+You want to get involved? See the [Developers documentation](https://github.com/cantineNantes/mustached-robot/wiki/Developers-documentation)
 
-### Allow theses directories to be writable
+## API documentation 
 
-* /public/assets/css
-* /fuel/app/cache/
-* /fuel/app/cache/twig
+An [API mini-doc](https://github.com/cantineNantes/mustached-robot/wiki/API) is also available. Once Mustached Robot is installed and configured on a server, developers can use this API to access the coworking space datas.
 
-### Set up your vhost
+## Project status and bug report
 
-* Set up your local vhost to mustached.local 
-* Configure your vhost so :
+You can see the project status or report any bug on the [Github issues tracker](https://github.com/cantineNantes/mustached-robot/issues?milestone=1&state=open)
 
-  * mustached.local points to /mustached/public
-  * set up the environment variable FUEL_ENV to "development" or "production" ```SetEnv FUEL_ENV development	``` (see http://docstore.mik.ua/orelly/linux/apache/ch04_06.htm)
+## Help and discussions
 
-Vhost example : 
+If you need help or if you want to talk about mustaches, you can do it on twitter or on this [Google Group](https://groups.google.com/forum/#!forum/mustached-robot).
 
-```
-<VirtualHost *:80>
-        DocumentRoot "/Users/dzey/www/mustached-robot/public"
-        ServerName mustached.localr
-		SetEnv FUEL_ENV development		
-</VirtualHost>
-```
-
-### Database
-
-#### Configuration 
-
-* Set up the database name and connection login / passwords (check fuel/app/config/development/db.php to get the full configuration, or edit the file)
-
-### Populate your database
-
-* Before starting you should populate the database with the file database.sql located on the root
-* Please note that in this file, one table has been populated : the "reasons" table. You can change the values of the different entries or add new ones, but the entry with id = 1 is, by convention, for coworking.
-
-### Configuration
-
-* Edit the /fuel/config/mustached.php file :
-
-  * salt : set a unique string (the more complex, the better). This string will be used to encrypt user password and should not be revelad
-  * seats : set the number of seats available in the coworking space
-
-* Edit the /fuel/modules/calendar/config/calendar.php file :
-  * login and password to connect to your Google Calendar
-
-## Developers
-
-Mustached Robot is developed with [FuelPHP](http://fuelphp.com). You should be familiar with this framework to start working on Mustached Robot. The [documentation](http://docs.fuelphp.com/) is nice and easy to work with.
-
-### Contributors
-
-New developers or designers are welcome to join the project. Just contact us on twitter ([@fgosselin](http://twitter.com/fgosselin), [@dzey](http://twitter.com/dzey)) if you want to get involved !
-
-### Coding standards
-
-As we use [FuelPHP](http://fuelphp.com), we follow their [coding standards](http://docs.fuelphp.com/general/coding_standards.html).
-
-### Modules
-
-We use FuelPHP's [Modules] (http://docs.fuelphp.com/general/modules.html). It means the code is grouped into modules. Each module follow the same architecture :
-
-<pre>
-|- module_1
-|       |_ classes
-|            |_ controller
-|            |_ model
-|            |_ single_class.php
-|       |_ views
-|       |_ config
-|- module_2
-|       |_ classes
-|            |_ controller
-|            |_ model
-|            |_ other_class.php
-|       |_ views
-|       |_ config
-</pre>
-
-### Templates
-
-We use Sensio Lab's [Twig](http://twig.sensiolabs.org) as a template engine.
-
-### Controllers
-
-Controllers must extend one of the following controller : \Front_Controller, \Admin_Controller or \API_Controller (both available in /application/core).
-
-To call a view from within a controller, just call ```return $this->_render('template_name');``` (without the .twig extension). This will call the template called 'template_name.twig' located in the views directory of the module.
-
-### Views
-
-Views are located in the views directory of the module (NOT the classes/view directory). You must name the views with .twig extension
-
-Layouts and shared views are located in /fuel/app/views/
-
-### Assets
-
-Assets are located in the /public/assets directory.
-
-#### Less
-
-Less files are located in /public/assets/less directory. They are loaded in the application in the /fuel/app/classes/controller/base.php file. These .less files are generated on the fly if they have been modified in the /public/assets/css/ directory.
-
-If you want to add a new .less file, you need to :
-* add it in the /public/assets/less directory
-* load it in the /fuel/app/classes/controller/base.php
-
-And that's it !
-
-#### Javascript
-
-Javascript files are stored in the /public/assets/js directory. They are loaded in the fuel/app/views/app.twig (at the end of the document).
-
-## Project status
-
-You can see the project status on the [Github issues tracker](https://github.com/cantineNantes/mustached-robot/issues?milestone=1&state=open)

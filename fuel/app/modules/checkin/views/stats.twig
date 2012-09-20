@@ -1,28 +1,103 @@
 {% extends "layouts/app.twig" %}
 
 {% block content %}
-
-	<h2>{{ lang('mustached.checkin.stats.from') }} {{ dates.start }} {{ lang('mustached.checkin.stats.to') }} {{ dates.end }}</h2>
-
-
-	{{ count.logs }} {{ lang('mustached.checkin.stats.passages') }}
-
-	<br>
-
-	{{ '%.2f' | format(count.users / count.days) }} {{ lang('mustached.checkin.stats.passagesPerDay') }}
-
-	<br>
-
-	{{ count.users }} {{ lang('mustached.checkin.stats.differentPeople') }}
-
-	<br>
-
-	<ul>
-	{% for date, number in checkins %}
-		<li>{{ date }} : {{ number }} passages</li>
-	{% endfor %}
-	</ul>
-
-
-
+<form id="date_form" method="POST" action="{{ current_url() }}" class="statsDatePicker">
+	<h1>
+		{{ lang('mustached.checkin.stats.from') }} 
+		<span id="sd_label" class="date">{{ dates.start|date("d/m/Y", "Europe/Paris") }}</span> 
+		<input type="text" id="sd" name="sd" value="{{ dates.start|date("d/m/Y", "Europe/Paris") }}" style="display: none; ">
+		{{ lang('mustached.checkin.stats.to') }} 
+		<span id="ed_label" class="date">{{ dates.end|date("d/m/Y", "Europe/Paris") }}</span>
+		<input type="text" id="ed" name="ed" value="{{ dates.end|date("d/m/Y", "Europe/Paris") }}" style="display: none; ">
+		<a id="btn_date_form" class="btn btn-primary" style="display: none; ">Valider</a>
+	</h1>
+</form>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="block">
+				<div class="linkHolder">
+					<a href="{{ url('checkin/add') }}">{{ lang('mustached.checkin.add_new') }}</a>
+				</div>
+				<div class="dataHolder primaryStat">
+					<div class="row-fluid">
+						<div class="span4 singleStat">
+							<p>{{ count.logs }}</p>
+							<p>{{ lang('mustached.checkin.stats.passages') }}</p>
+						</div>
+						<div class="span4 singleStat">
+							<p>{{ '%.2f' | format(count.users / count.days) }}</p>
+							<p>{{ lang('mustached.checkin.stats.passagesPerDay') }}</p>
+						</div>
+						<div class="span4 singleStat">
+							<p>{{ count.users }}</p>
+							<p>{{ lang('mustached.checkin.stats.differentPeople') }}</p>
+						</div>
+					</div>										
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4">
+			<h1>Leader Board</h1>
+			<div class="block">
+				<div class="linkHolder">
+					<a href="{{ url('checkin/add') }}">{{ lang('mustached.checkin.add_new') }}</a>
+				</div>
+				<div class="leaderBoard">
+					<ul>
+						{% set avatar_size = 70 %}
+						{% for leader in leaders %}
+						{% if not loop.first %}{% set avatar_size = 50 %}{% endif %}
+						<li>
+							<img src="{{ avatar(leader.email, avatar_size) }}" alt=""/>
+							<span class="name">{{ leader.firstname }} {{ leader.lastname }}</span>
+						</li>
+						{% endfor %}
+					</ul>		
+				</div>
+			</div>
+		</div>
+		<div class="span8">
+			<h1>Fréquentation</h1>
+			<div class="block">
+				<div class="linkHolder">
+					<a href="{{ url('checkin/add') }}">{{ lang('mustached.checkin.add_new') }}</a>
+				</div>
+				<div class="dataHolder" id="holder">
+				</div>
+			</div>
+		</div>
+		<br/><br/>&nbsp;
+	</div>
+	<table id="data" style="display:none;">
+        <tfoot>
+        <tr>
+        	{% for date, number in checkins %}
+				<th>{{ date|date("d/m", "Europe/Paris") }}</th>
+			{% endfor %}
+        </tr>
+    </tfoot>
+    <tbody class="data">
+        <tr>
+        	{% for date, number in checkins %}
+				<td>{{ number }}</td>
+			{% endfor %}
+        </tr>
+    </tbody>
+    <tbody class="line1">
+        <tr>
+        	{% for date, number in checkins %}
+				<td>{{ number }} passage(s)</td>
+			{% endfor %}
+        </tr>
+    </tbody>
+    <tbody class="line2">
+        <tr>
+	       	{% for date, number in checkins %}
+				<td>{{ date|date("d-M-Y", "Europe/Paris") }}</td>
+			{% endfor %}
+        </tr>
+    </tbody>  
+    </table>
 {% endblock %}

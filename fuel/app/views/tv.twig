@@ -1,0 +1,28 @@
+{% extends "layouts/app.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block js %}
+	{{ asset_js('tv.js') }}
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+	<div class="span8">
+		<h1>TV Mode</h1>
+		<div class="block">
+			<div class="dataHolder ">
+				<p>{{ lang('mustached.screen.introText1') }}<br/>
+					{{ lang('mustached.screen.introText2') }}</p>
+				<p><a class="btn btn-large btn-primary" id="goScreenMode" data-toload='[{% for screen in screens %}{% if loop.last %}"{{ url(screen) }}"{% else %}"{{ url(screen) }}", {% endif %}{% endfor %}]'>{{ lang('mustached.screen.launchLabel') }}</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- FullScreen Contents Begins Here... -->
+
+<div id="screenContent" class="row-fluid"></div>
+
+{% endblock %}

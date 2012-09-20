@@ -24,22 +24,23 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <script type="text/javascript" src="//use.typekit.net/uid8fxo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
 
   <body id="{{ section }}">
 
 
-
      {% include "headers/header_"~section~".html.twig" %}
 
-    <div class="container-fluid">
+    <div class="container-fluid{% if fullscreen %} fullScreen{% endif %}">
 
         {% block msg %}
           {% if msg %}
 
-          <div class="row-fluid">
+          <div class="row-fluid messageToHide">
             <div class="span12">
-              <div id="message" class="alert alert-{{ msg.type }} clearfix">
+              <div id="message" class="alert alert-{{ msg.type }} clearfix" data-alert="{{ msg.type }}" data-msg="{{ msg.content | raw }}">
                 <div class="icoMessage pull-left"></div>
                 <div class="messages span11">{{ msg.content | raw }}</div>
               </div>
@@ -51,6 +52,11 @@
         {% block content %}
 
         {% endblock %}
+        <div id="loadingRobot">
+          <div class="container">
+            {{ lang('mustached.screen.loading') }}
+          </div>
+        </div>
 
     </div> <!-- /container -->
 
@@ -62,9 +68,14 @@
 
     {{ asset_js('jquery-1.7.2.min.js') }}
     {{ asset_js('jquery.autocomplete-min.js') }}
+    {{ asset_js('jquery-ui-1.8.23.custom.min.js') }}
     {{ asset_js('jquery.timeago.js') }}
-    {{ asset_js('common.js') }}
+    {{ asset_js('jquery.fullscreen.js') }}
     {{ asset_js('bootstrap.js') }}
-
+    {{ asset_js('raphael-min.js') }}
+    {{ asset_js('raphael_linechart.js') }}
+     {{ asset_js('jquery.pnotify.min.js') }}
+    {{ asset_js('common.js') }}
+    {% block js %}{% endblock %}
   </body>
 </html>

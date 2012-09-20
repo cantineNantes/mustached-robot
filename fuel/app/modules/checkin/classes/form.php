@@ -8,38 +8,36 @@ class Form
 
 	/**
 	 * Return a form for a checkin
-	 * 
+	 * @param  String $email 	(optional) Email to fill the email field with
 	 * @return Fieldset
 	 */
-	
-	public function create_form()
+	public function create_form($email = null)
 	{
 
 		$reasons = \Arr::assoc_to_keyval(
-	  		\DB::select('id', 'name')
-				->from('reasons')
-				->order_by('order', 'asc')
-				->execute()
-				->as_array(),
+  		\DB::select('id', 'name')
+			->from('reasons')
+			->order_by('order', 'asc')
+			->execute()->as_array(),
   		'id', 'name');
 
 		$fieldset = \Fieldset::forge('checkin');
 
 		$fieldset->add('email',
-					   __('mustached.user.email'),
-					   array('type' => 'text'),
+					   '',
+					   array('type' => 'text', 'class' => 'giant', 'placeholder' => __('mustached.user.email'), 'autocomplete' => 'off', 'value' => $email),
 					   array(array('required'), array('valid_email'))
 					   );
 
 		$fieldset->add('reason',
 			           __('mustached.checkin.reason.label'),
-			           array('type' => 'select', 'options' => $reasons)
+			           array('type' => 'select', 'class' => 'giant', 'options' => $reasons)
 			           );
 
 		$fieldset->add('submit',
 					   '',
-					   array('type' => 'submit', 'value' => __('mustached.checkin.add.submit'),
-					   'class' => 'btn btn-medium btn-primary')
+					   array('type' => 'submit', 'value' => __('mustached.checkin.add.submit'), 
+					   'class' => 'btn btn-large btn-primary', 'data-wait' => __('mustached.user.form.wait'))
 					   );
 
 		$fieldset->repopulate();
@@ -49,9 +47,8 @@ class Form
 
 	/**
 	 * Create a checkin from the data returned by a form. If the users doesn't exists, he will be redirected to the registration form
-	 * 
 	 * @param \Fieldset $fieldset The fieldset submited by the user containing the data
-	 * @return bool|String Returns true on success or a String (containing the error message) on failure
+	 * @return bool|String Returns true on success of a String (containing the error message) on failure
 	 */
 	public function create_from_form($fieldset)
 	{

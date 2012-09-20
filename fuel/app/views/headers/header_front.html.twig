@@ -9,24 +9,29 @@
           <!-- <a class="brand" href="#">Mustached Robot</a> -->
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="{{ base_url('')}}">Check-in</a></li>
-              <li><a href="{{ url('user/account/add') }}">Créer mon compte</a></li>
-              <li><a href="{{ url('user/auth/login') }}">Connexion</a></li>
-              {% for menu in publicMenus %}
-                <li><a href="{{ menu.href }}">{{ menu.label }}</a></li>
-              {% endfor %}
+              <li{% if current_url() == "" %} class="active" {% endif %}><a href="{{ base_url('')}}">Check-in</a></li>
+              {% if current_user %}
+              
+              {% else %}
+              <li{% if current_url() == "user/account/add" %} class="active" {% endif %}><a href="{{ url('user/account/add') }}">Créer mon compte</a></li>
+              <li{% if current_url() == "user/auth/login" %} class="active" {% endif %}><a href="{{ url('user/auth/login') }}">Connexion</a></li>
+              {% endif %}
+              
             </ul>
           </div><!--/.nav-collapse -->
-          <div class="nav-collapse pull-right">
-            {% if current_user %}
-              {{ current_user.firstname }}
-              <br>
-              <a href="">{{ lang('user.editAccount') }}</a>
-              <a href="{{ url('user/auth/logout')}}">Déconnexion</a>
-              <br>
-              <a href="{{ url('user/account/edit_password')}}">Changer mdp</a>
-            {% endif %}
+          <!-- Logged User Box -->
+           {% if current_user %}
+          <div class="nav-collapse pull-right accountBox">
+              <a href="#" data-toggle="dropdown" class="l"><img src="{{ avatar(current_user.email, 40) }}" class="avatar avatar-mini" /></a>
+              <ul class="subnav dropdown-menu" >
+                <li><a href="{{ url('user/account/edit') }}">{{ lang('mustached.navigation.account.edit') }}</a></li>
+                {% if current_user.group == 100 %} <li><a href="{{ url('admin') }}">{{ lang('mustached.navigation.account.admin') }}</a></li> {% endif %}
+                <li><a href="{{ url('user/auth/logout')}}">Déconnexion</a></li>
+              </ul>
           </div>
+          {% endif %}
+          <!-- /Logged User Box -->
         </div>
       </div>
     </div>
+

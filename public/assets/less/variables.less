@@ -18,11 +18,12 @@
 @grayLight:             #999;
 @grayLighter:           #ccc;
 @white:                 #fff;
+@whiteTv:				#F1F1F1;
 
 
 // Accent colors
 // -------------------------
-@blue:                  #049cdb;
+@blue:                  #3BBAFA;
 @blueDark:              #0064cd;
 @green:                 #46a546;
 @red:                   #9d261d;
@@ -30,7 +31,9 @@
 @orange:                #f89406;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
-
+@robotPink:				#FF8CA2;
+@robotPinkDarken:		#C25D6E;
+@neoVintageGreen:		#6DDBD1;
 
 // Scaffolding
 // -------------------------
@@ -74,8 +77,8 @@
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #ccc;
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
+@btnPrimaryBackground:              @robotPink;
+@btnPrimaryBackgroundHighlight:   	@robotPinkDarken;
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;
@@ -96,8 +99,9 @@
 // Forms
 // -------------------------
 @inputBackground:               @white;
-@inputBorder:                   #ccc;
-@inputBorderRadius:             3px;
+@inputBorder:                   @grayLighter;
+@inputBorderFocus:				@robotPink;
+@inputBorderRadius:             4px;
 @inputDisabledBackground:       @grayLighter;
 @formActionsBackground:         #f5f5f5;
 

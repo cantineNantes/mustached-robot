@@ -13,7 +13,7 @@
 					{% for date, checkin in checkins %}
 
 						<div class="date dashed">
-							<time datetime="{{ date }}">{{ date | date('d/m/Y')}}</time>
+							<time datetime="{{ date }}">{{ date | date('d M Y')}}</time>
 						</div>
 
 						<ul>
@@ -21,7 +21,7 @@
 							<li class="log">
 								<img src="{{ avatar(single_checkin.email, 50) }}" class="avatar avatar-mini"/>
 								<div class="logInfo">
-									<a href="#">{{ single_checkin.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_log.reason }} {% if not single_checkin.killed %} - <a href="{{ url('checkin/admin/kill') }}/{{ single_checkin.id }}">Kill</a> - {% endif %} <abbr class="timeago pull-right" title="{{ single_checkin.start }}">{{ single_checkin.time_ago }}</abbr>
+									<a href="{{ url('coworker') }}/{{ single_checkin.user.id }}">{{ single_checkin.user.name }}</a> {{ lang('admin.userCameFor') }} {{ single_checkin.reason }} {% if not single_checkin.killed %} - <a href="{{ url('checkin/admin/kill') }}/{{ single_checkin.id }}">Kill</a> - {% endif %} <abbr class="timeago pull-right" title="{{ single_checkin.start }}">{{ single_checkin.time_ago }}</abbr>
 								</div>
 							</li>
 						{% endfor %}
@@ -34,7 +34,10 @@
 			<h1>{{ lang('mustached.checkin.admin.occupancy') }}</h1>
 			<div class="block">
 				<div class="dataHolder">
-					Beau graphique
+					<div class="gauge">
+						<div class="occupation o{{ occupation }}">{{ occupied_seats }}</div>
+						<div id="canvas" data-occupation="{{ occupation }}" data-total-seats="{{ total_seats }}" data-occuppied-seats="{{ occupied_seats }}"></div>
+					</div>
 				</div>
 			</div>
 		</div>

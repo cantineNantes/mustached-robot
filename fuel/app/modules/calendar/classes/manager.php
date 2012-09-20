@@ -5,16 +5,26 @@ namespace Calendar;
 class Manager {
 
 	private $gcal;
-	
-	public function __construct()
+
+	public function __construct($gcal = null)
 	{
-		if(!class_exists('GCalendar'))
+		if(!$gcal)
 		{
-			require_once 'vendor/gcalendar/gcalendar.php';
+			include('vendor/gcalendar/gcalendar.php');
+			$params = array(
+				'email'    => \Config::get('google_calendar_email'),
+				'password' => \Config::get('google_calendar_password'),
+			);
+		
+			$this->gcal = new \GCalendar($params);
 		}
-		$this->gcal = new \GCalendar(array('email' => \Config::get('google_calendar_email'), 'password' => \Config::get('google_calendar_password')));
+		else 
+		{
+			$this->gcal = $gcal;
+		}
+
 	}
-	
+
 	public static function load()
 	{
 		\Lang::load('calendar.yml', 'calendar');
@@ -22,18 +32,7 @@ class Manager {
 	}
 
 	/**
-	 * Set a new calendar (overrides constructor calendar)
-	 * 
-	 * @param \GCalendar $gcal
-	 */
-	public function setCalendar(\GCalendar $gcal)
-	{
-		$this->gcal = $gcal;
-	}
-
-	/**
 	 * Get the next events
-	 * 
 	 * @param int $number Number of events to retrieve
 	 * @return bool|array Returns false on failure or an array containing the events informations on success
 	 */
@@ -48,6 +47,11 @@ class Manager {
 			$evts = $this->gcal->getEvents(\Config::get('google_calendar_id'), $number, date('Y-m-d'));
 		}
 		return $evts->data->items;
+	}
+
+	public function set_calendar($gcal)
+	{
+		$this->gcal = $gcal;
 	}
 
 }

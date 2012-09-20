@@ -1,11 +1,14 @@
 user:
   login:
     title: Connexion
-    success: Connecté
-    error: Erreur lors de la connexion
+    success: Vous êtes connecté !
+    error: Erreur de connexion. Vérifiez votre e-mail / mot de passe !
+    submit: Se connecter
   form:
-    add: Ajouter
+    add: Créer mon compte
     edit: Modifier
+    title: Création de compte
+    wait: Veuillez patienter...
   edit_password:
     title: Changer le mot de passe
     current_password: Mot de passe actuel
@@ -15,13 +18,13 @@ user:
     error: Hiiiin ! Vérifiez votre mot de passe actuel
   firstname: Prénom
   lastname: Nom
+  biography: Bio
   email: Adresse email
   password: Mot de passe
   twitter: Pseudo twitter
   company: Société
-  create_account: Créer un compte
   update_account: Mettre à jour le compte
-  save_success: Utilisateur enregistré
+  save_success: Votre compte a été créé, vous pouvez désormais vous loguer !
   update_success: Modifications enregistrées
   save_error: Erreur lors de l'enregistrement
   email_exists: Cet email existe déjà
@@ -33,10 +36,21 @@ admin:
     statistics: Statistiques
     coworkers: Coworkers
     settings: Paramètres
+    screenMode: Mode TV
   upgrade: Passer en admin
   downgrade: Révoquer les droits
   user_upgraded: :firstname :lastname est maintenant admin!
   user_downgraded: :firstname :lastname n'est plus admin !
+
+navigation:
+  checkin: Check-in
+  account:
+    create: Créer mon compte
+    edit: Modifier mon compte
+    admin: Administration
+  login: Connexion
+  logout: Déconnexion
+  admin: Admin
 
 checkin:
 
@@ -49,6 +63,7 @@ checkin:
     success: Votre passage a été enregistré
     error: Erreur lors de l'enregistrement de votre passage
     accountDoesntExistCreate: Cet email n'est pas enregistré. Créez un compte dès maintenant !
+    fullscreen: Lancer le mode plein écran
   doesnt_exist: Ce checkin n'existe pas
   killed:
     success: Checkin killed !
@@ -57,14 +72,27 @@ checkin:
     add_new: Ajouter un passage
     occupancy: Occupation
   stats:
-    from: Du
+    from: du
     to: au
     passages: passages
     passagesPerDay: passages / jour
     differentPeople: différentes personnes
+
+screen:
+  launchLabel: Lancer le mode TV
+  introText1: Depuis cette page, vous pouvez lancer le mode TV de Mustached Robot !
+  introText2: L'ensemble de vos modules de type TV s'afficheront tour à tour en plein écran.
+  calendar:
+    title: Prochainement à la Cantine
+  loading: Veuillez patienter...
 
 api:
     no_result: Aucun résultat
     no_one_here: Désolé il n'y a personne ici !
   404: Cette ressource n'existe pas
 
+general:
+  the: Le
+  at: à
+  from: de
+  hourS: h

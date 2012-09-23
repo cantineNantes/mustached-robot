@@ -1,3 +1,5 @@
+@import "bootstrap.less";
+
 body {
 	padding: 100px 0 40px 0;
 	background: #FAFCFE url('../img/gridNoise.png') repeat;
@@ -26,7 +28,7 @@ ul, ol {
 
 h1 {
 	font-weight: bold;
-	text-shadow:3px 3px 0 rgba(255,255,255);
+	text-shadow:3px 3px 0 rgba(255,255,255,1);
 	text-transform: uppercase;
 	font-size: 1.7em;
 	line-height: 4 * @baseLineHeight;
@@ -35,7 +37,7 @@ h1 {
 	}
 h2 {
 	font-weight: bold;
-	text-shadow:2px 2px 0 rgba(255,255,255);
+	text-shadow:2px 2px 0 rgba(255,255,255,1);
 	font-size: 1.7em;
 	line-height: 4 * @baseLineHeight;
 	color:@grayDarkPlus;
@@ -277,6 +279,7 @@ select {
 		display: none;
 	}
 	.tip {
+		
 		color:@grayLight;
 		text-shadow: 2px 2px 0px #fff;
 	}
@@ -342,7 +345,7 @@ select {
 		padding:10px 0px 15px 0px;
 		text-align: right;
 		.border-radius(0 0 4px 4px);
-		.box-shadow(0 !important);
+		.box-shadow(0);
 		border:0 !important;
 		li {
 			a {
@@ -366,6 +369,7 @@ select {
 		}
 	}
 }
+
 /* Gauge */
 .gauge {
 	display: block;
@@ -483,7 +487,7 @@ select {
 .autocomplete { border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
 .autocomplete .selected { background:#F0F0F0; }
 .autocomplete div { padding:2px 5px; white-space:nowrap; overflow:hidden; }
-².autocomplete strong { font-weight:normal; color:#3399FF; }
+.autocomplete strong { font-weight:normal; color:#3399FF; }
 
 /*!
  * jQuery UI CSS Framework 1.8.23
@@ -949,21 +953,15 @@ background-position: center center;
 width: 17px;
 height: 17px;
 }
-.ui-pnotify-title {
-	line-height: 17px;
-	min-height: 17px;
-}
-
-
-
 
 #screenContent {
 	display: none;
 	background: #111 !important;
 	.screen {
-		&:nth-child(2) { display: none;}
+		&:nth-child(2) { display: none; }
 	}
 }
+
 #screenContent.fullScreen {
 	display: block;
 	background: #111;
@@ -993,7 +991,7 @@ height: 17px;
 				color:@whiteTv;
 				font-size: 1.5em;
 				line-height: 200%;
-				.text-overflow(ellipsis);
+				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
 			}
@@ -1008,6 +1006,7 @@ height: 17px;
 .messageToHide {
 	display: none;
 }
+
 #loadingRobot {
 	display: none;
 	position: absolute;
@@ -1034,3 +1033,4 @@ height: 17px;
 		}
 	}
 }
+

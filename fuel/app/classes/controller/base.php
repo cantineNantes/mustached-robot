@@ -16,50 +16,27 @@ class Controller_Base extends Controller
 	public $data = array();
 	public $current_user;
 
+	
+
+
 	public function before()
 	{
+
+	
 		\Lang::load('front.php');
+		
+		\Casset::css('mustached.css');
 
-    	$less_files = array
-	    (
-	      DOCROOT.'assets/less/reset',
-	      DOCROOT.'assets/less/variables',
-	      DOCROOT.'assets/less/mixins',
-	      DOCROOT.'assets/less/scaffolding',
-	      DOCROOT.'assets/less/grid',
-	      DOCROOT.'assets/less/layouts',
-	      DOCROOT.'assets/less/type',
-	      DOCROOT.'assets/less/code',
-	      DOCROOT.'assets/less/forms',
-	      DOCROOT.'assets/less/tables',
-	      DOCROOT.'assets/less/sprites',
-	      DOCROOT.'assets/less/dropdowns',
-	      DOCROOT.'assets/less/wells',
-	      DOCROOT.'assets/less/component-animations',
-	      DOCROOT.'assets/less/close',
-	      DOCROOT.'assets/less/buttons',
-	      DOCROOT.'assets/less/button-groups',
-	      DOCROOT.'assets/less/alerts',
-	      DOCROOT.'assets/less/navs',
-	      DOCROOT.'assets/less/navbar',
-	      DOCROOT.'assets/less/breadcrumbs',
-	      DOCROOT.'assets/less/pagination',
-	      DOCROOT.'assets/less/pager',
-	      DOCROOT.'assets/less/utilities',
-	      DOCROOT.'assets/less/mustached',
-	      //DOCROOT.'assets/less/responsive',
-	      DOCROOT.'assets/less/responsive-utilities',
-	      DOCROOT.'assets/less/responsive-767px-max',
-	      DOCROOT.'assets/less/responsive-768px-979px',
-	      DOCROOT.'assets/less/responsive-1200px-min',
-	      DOCROOT.'assets/less/responsive-navbar',
-	      DOCROOT.'assets/less/mustached',
-	      DOCROOT.'assets/less/mustached',
-	      DOCROOT.'assets/less/mustached',
-
-	    );
-
-    	$this->data['stylesheet'] = \Less::compile($less_files);
+		\Casset::js('jquery-1.7.2.min.js');
+		\Casset::js('jquery.autocomplete-min.js');
+		\Casset::js('jquery-ui-1.8.23.custom.min.js');
+		\Casset::js('jquery.timeago.js');
+		\Casset::js('jquery.fullscreen.js');
+		\Casset::js('bootstrap.js');
+		\Casset::js('raphael-min.js');
+		\Casset::js('raphael_linechart.js');
+		\Casset::js('jquery.pnotify.min.js');
+		\Casset::js('common.js');
 
     	if($msg = \Session::get_flash('msg'))
         {
@@ -70,6 +47,7 @@ class Controller_Base extends Controller
         $this->data['fullscreen'] = \Session::get('fullscreen') ? \Session::get('fullscreen') : false;
 
         $this->data['current_user'] = $this->current_user;
+
 
 	}
 

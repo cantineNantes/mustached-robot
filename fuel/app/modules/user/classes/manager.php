@@ -69,13 +69,31 @@ class Manager
 		return \DB::select('users.*')->from('users')->order_by('created_at', $order)->execute()->as_array();		
 	}
 
+	/**
+	 * Return a user with the id given in parameter
+	 * 
+	 * @param  Int   $id     Id of the user
+	 * @return Array         Array containing the user information
+	 */
 	public function get_user($id)
 	{
 		return \DB::select()->from('users')->where('id', '=', $id)->execute()->current();
 	}
 
 	/**
+	 * Return a user with the email given in parameter
+	 * 
+	 * @param  String $email Email of the user to look for
+	 * @return Array         Array containing the user information
+	 */
+	public function get_user_from_email($email)
+	{
+		return \DB::select()->from('users')->where('email', '=', $email)->execute()->current();	
+	}
+
+	/**
 	 * Get a specitic user information with expanded datas from other tables
+	 * 
 	 * @param  Int 	 	$id     	Id of the user
 	 * @param  Array 	$params 	Array of params to expand (values : 'skills', 'company')
 	 * @return Array         		Array containing the user information

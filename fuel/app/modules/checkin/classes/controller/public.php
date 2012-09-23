@@ -25,7 +25,7 @@ class Controller_Public extends \Controller_Front
     }
 
     if(\Input::get('email'))
-    {
+    {     
       $email = urldecode(\Input::get('email'));
     }
 
@@ -37,11 +37,12 @@ class Controller_Public extends \Controller_Front
     {
         $result = $f->create_from_form($fieldset);
         if($result === true) {
+          
           $plugin = new Plugin();
-          $plugin->postCheckin();
+          $plugin->postCheckin(array('user' => $user, 'fieldset' => $fieldset));
 
           Message::flash_success('mustached.checkin.add.success');
-          \Response::redirect('checkin/public/add');
+          //\Response::redirect('checkin/public/add');
         }
         else
         {

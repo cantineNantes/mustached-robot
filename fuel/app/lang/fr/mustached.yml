@@ -96,3 +96,7 @@ general:
   at: à
   from: de
   hourS: h
+
+settings:
+  plugins:
+    title: Plugins

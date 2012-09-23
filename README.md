@@ -52,3 +52,35 @@ You can see the project status or report any bug on the [Github issues tracker](
 
 If you need help or if you want to talk about mustaches, you can do it on twitter or on this [Google Group](https://groups.google.com/forum/#!forum/mustached-robot).
 
+## Plugins
+
+-- Plugins are still under development --
+
+You can develop plugins for Mustached Robot. Ouh yeah. A plugin is an independant module which can interact at several strategic places of the application.
+
+With a plugin you can :
+
+ * Add anything you want on a few specific views
+ * Add form elements and trigger actions according to these elements on the application
+
+### Develop a plugin
+
+To create a new plugin, add a module in the "/fuel/app/modules" folder. According to the classes and their methods, you will be able to customize Mustached Robot.
+
+Here are the current classes you can use:
+
+* Config
+* Form - It allows you to add form elements on some form of the application.
+* Trigger - It allows you to do anything you want after a specific action has been done by the user (example: after a user has checked in, I want my plugin to tweet about it and send me a SMS).
+
+### Customizables modules
+
+#### Checkin
+
+* Configure the checkin form : addElementOnPublicCheckin($fieldname, $before_after)
+* Do something when a user checks in : postCheckin($fieldset)
+
+
+
+
+

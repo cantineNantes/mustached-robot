@@ -13,6 +13,7 @@ class Plugin {
 	 */
 	public function __construct()
 	{
+		// Todo: store the plugin_path in cache
 		$plugin_path = APPPATH.'modules'.DS;
 
 		$modules = array_keys(\File::read_dir($plugin_path, 1));
@@ -29,7 +30,6 @@ class Plugin {
 
 		}
 	}
-
 
 	/**
 	 * For each plugin, check if there is a postCheckin() function. 
@@ -57,5 +57,75 @@ class Plugin {
 		}
 
 	}
+
+	/**
+	 * buildMenu return the menu items of a menu
+	 * 
+	 * @param  String $type Type of menu ("public" or "admin")
+	 * @return Array 		Array of menu items
+	 */
+	public function buildMenu($type)
+	{
+		$menuItems = array();
+		foreach($this->plugins as $plugin)
+		{
+			\Module::load($plugin);
+			$object_name = "\\".ucfirst($plugin)."\Config";
+
+			$object = new $object_name;
+			if(method_exists($object, 'publicMenu'))
+			{
+				try 
+				{
+					$menuItems[] = $object->publicMenu();	
+				}
+				catch(Exception $e)
+				{
+
+					// Log the error and the plugin associated with it
+				}
+			}
+		}
+		return $menuItems;
+	}
+
+	/**
+	 * For each plugin, add a form element to a form. 
+	 *
+	 * This method checks the Form class of each plugins and checks if there is a method called "addElementOn".FormName
+	 * If the method exists, it is called and the form element is added on the given form.
+	 * 
+	 * @param  String $form_name Name of the form
+	 * @param  \Fieldset 		Fieldset on which to add the new form element
+	 * @return \Fieldset 		Fieldset
+	 */
+	public function addToForm($form_name, $fieldset)
+	{		
+		foreach($this->plugins as $plugin)
+		{
+			\Module::load($plugin);
+			$object_name = "\\".ucfirst($plugin)."\Form";
+
+			// Check if there is a addElementOnFormName
+			$object = new $object_name;
+			$method = 'addElementOn'.$form_name;
+
+			if(method_exists($object, $method))
+			{
+				try 
+				{
+					$p = $object->$method();
+					$method_add = 'add_'.$p['before_after'];
+					$fieldset->$method_add($p['name'], $p['label'], $p['attributes'], $p['rules'], $p['fieldname']);					
+				}
+				catch(Exception $e)
+				{
+					// Log the error and the plugin associated with it
+				}
+			}				
+		}
+		return $fieldset;
+	}
+
 
 }

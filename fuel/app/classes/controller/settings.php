@@ -1,28 +1,64 @@
 <?php
 
 use Mustached\Message;
+use Mustached\Plugin;
 
 class Controller_Settings extends \Controller_Admin
 {
 
-	public function action_plugins()
+	public function action_index()
 	{
-		\Module::load('twitter');
+		$p = new Plugin();
+		$this->data['plugins'] = $p->get_plugins();
+		return $this->_render('settings/settings');
+	}
 
-		$config = \Config::load('twitter::twitter', 'twitter');
+	/**
+	 * Display a form able to update the settings of a given plugin
+	 * @param  String $plugin Name of the plugin
+	 */
+	public function action_plugin($plugin)
+	{
+		$p = new Plugin();
+	
+		if(!$p->plugin_exists($plugin))
+		{
+			throw new HttpNotFoundException;
+		}
+		
+		\Module::load($plugin);
+		\Lang::load($plugin.'::'.$plugin.'.yml', $plugin);
 
-		$fieldset = \Fieldset::forge('twitter');
+		$config = \Config::load($plugin.'::'.$plugin, $plugin);
+	
+		$fieldset = \Fieldset::forge($plugin);
 
 		foreach($config as $key => $value)
 		{
-			$fieldset->add($key, $key, array('type' => $value['type']));
+			$fieldset->add($key, __($plugin.'.'.$value['label']), array('type' => $value['type'], 'value' => $value['value']));
 		}
 
-		
+		$fieldset->add('submit',
+		   '',
+		   array('type' => 'submit', 'value' => __('mustached.settings.plugins.update'), 
+		   'class' => 'btn btn-large btn-primary')
+		);	
 
-		$this->data['config'] = $config;
+		if (\Input::method() == 'POST')
+		{
+			foreach ($config as $key => $value) {
+				\Config::set($plugin.'.'.$key.'.value', $fieldset->input($key));	
+			}
 
-		return $this->_render('plugins');
+			\Config::save($plugin.'::'.$plugin, $plugin);
+
+			$fieldset->repopulate();
+
+		}
+
+		$this->data['form'] = $fieldset->form()->build();
+
+		return $this->_render('settings/plugin');
 	}
 
 }

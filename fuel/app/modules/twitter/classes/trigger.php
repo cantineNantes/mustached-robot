@@ -23,14 +23,28 @@ class Trigger
 			
 			if($fields['twitter'])
 			{
+				include('vendor/twitter-php/library/twitter.class.php');
+
 				$um = new \User\Manager;
 				$user = $um->get_user_from_email($fields['email']);
 
 				$c = new \Checkin\Manager;
 				$reason = $c->get_reason($fields['reason']);
 
-				$twitter = empty($user['twitter']) ? '' : '(@'.$user['twitter'].')';
-				//echo __('twitter.tweet', array('firstname' => $user['firstname'], 'lastname' => $user['lastname'], 'pseudo' => $twitter, 'reason' => $reason));
+				$twitter_name = empty($user['twitter']) ? '' : '(@'.$user['twitter'].')';
+
+				$config = \Config::load('twitter::twitter', 'twitter');
+
+				try 
+				{
+					$twitter = new \Twitter(\Config::get('twitter.consumerKey.value'), \Config::get('twitter.consumerSecret.value'), \Config::get('twitter.accessToken.value'), \Config::get('twitter.accessTokenSecret.value'));
+					$twitter->send(__('twitter.tweet', array('firstname' => $user['firstname'], 'lastname' => $user['lastname'], 'pseudo' => $twitter_name, 'reason' => $reason)));	
+				}
+				catch(Exception $e)
+				{
+					// Log the error
+				}
+
 			}
 			else 
 			{

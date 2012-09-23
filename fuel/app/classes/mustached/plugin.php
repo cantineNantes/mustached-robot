@@ -127,5 +127,30 @@ class Plugin {
 		return $fieldset;
 	}
 
+	public function buildSettings()
+	{
+		foreach($this->plugins as $plugin)
+		{
+			\Module::load($plugin);
+			\Lang::load($plugin.'::'.$plugin.'.yml', $plugin);
+
+		}
+
+	}
+
+	/**
+	 * Return installed plugins
+	 * @return Array Array of the plugins name
+	 */
+	public function get_plugins()
+	{
+		return $this->plugins;
+	}
+
+	public function plugin_exists($plugin)
+	{
+		return (in_array($plugin, $this->plugins)) ? true : false;
+	}
+
 
 }

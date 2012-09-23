@@ -98,5 +98,7 @@ general:
   hourS: h
 
 settings:
+  title: Paramètres
   plugins:
     title: Plugins
+    update: Mettre à jour

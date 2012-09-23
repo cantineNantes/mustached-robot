@@ -74,18 +74,6 @@ class Manager
 					->execute()->as_array();
 	}
 
-
-	/**
-	 * Return the checkins in a given timeframe
-	 * @param  String $start  Start date (format yyyy-mm-dd)
-	 * @param  String $end    End date (format yyyy-mm-dd)
-	 * @return Array  		  Associative array of checkins
-	 */
-	public function get_checkins($start, $end)
-	{
-		return \DB::select()->from('checkins')->where('created_at', '>=', $start)->where('created_at', '<=', $end)->execute()->as_array();
-	}
-
 	/**
 	 * Return the checkins in a given timeframe and their associated user
 	 * @param  $start String Start date (format yyyy-mm-dd)
@@ -126,6 +114,18 @@ class Manager
 		
 		return $leaders;
 
+	}
+
+	public function get_reasons()
+	{
+		$reasons = array('id', 'name', 'sentence');
+		$r = \DB::select_array($reasons)->from('reasons')->order_by('order', 'asc')->execute()->as_array();
+	}
+
+	public function get_reason($id)
+	{
+		$reason = array('id', 'name', 'sentence');
+		$r = \DB::select('id', 'name', 'sentence')->from('reasons')->where('id', '=', $id)->execute()->current();
 	}
 
 

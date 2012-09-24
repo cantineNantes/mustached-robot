@@ -213,8 +213,7 @@ return array(
 			'orm',
 			'auth',
 			'parser',
-			'casset',
-			'less'
+			'casset'
 		),
 
 		/**

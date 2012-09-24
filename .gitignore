@@ -8,3 +8,4 @@ fuel/app/logs/!.gitkeep
 public/assets/css/*-*.css
 fuel/app/config/development/db.php
 fuel/app/config/test/db.php
+1/*

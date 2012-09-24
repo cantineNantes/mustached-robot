@@ -30,7 +30,9 @@ class Plugin {
 	}
 
 	/**
-	 * Generic action for plugins
+	 * Generic action for plugins : for each plugin, check if there is a $method() in the $class
+	 * If so, execute the method.
+	 * 
 	 * @param  String $class  Class name
 	 * @param  String $method Method name
 	 * @param  Array  $params Array of params
@@ -57,31 +59,14 @@ class Plugin {
 			}
 		}
 	}
+	
 	/**
 	 * For each plugin, check if there is a postCheckin() function. 
 	 * If so, the action is called, wathever it is.
 	 */
 	public function postCheckin($params = array())
 	{
-		foreach($this->plugins as $plugin)
-		{
-			\Module::load($plugin);
-			$object_name = "\\".ucfirst($plugin)."\Trigger";
-
-			$object = new $object_name;
-			if(method_exists($object, 'postCheckin'))
-			{
-				try 
-				{
-					$object->postCheckin($params);	
-				}
-				catch(Exception $e)
-				{
-					// Log the error and the plugin associated with it
-				}
-			}
-		}
-
+		$this->pluginAction('Trigger', 'postCheckin', $params);
 	}
 
 	/**

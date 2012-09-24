@@ -309,7 +309,7 @@ class File
 
 		if ( ! is_dir($basepath) or ! is_writable($basepath))
 		{
-			throw new \InvalidPathException('Invalid basepath, cannot update a file at this location.');
+			throw new \InvalidPathException('Invalid basepath '.$basepath.', cannot update a file at this location.');
 		}
 
 		if ( ! $file = static::open_file(@fopen($new_file, 'w'), true, $area) )

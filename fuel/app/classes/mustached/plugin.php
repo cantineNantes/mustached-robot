@@ -2,7 +2,6 @@
 
 namespace Mustached;
 
-
 class Plugin {
 
 	private $plugins = array(); // list of plugins installed on the app (in the modules folder)
@@ -27,10 +26,37 @@ class Plugin {
 			{
 				$this->plugins[] = $module;
 			}
-
 		}
 	}
 
+	/**
+	 * Generic action for plugins
+	 * @param  String $class  Class name
+	 * @param  String $method Method name
+	 * @param  Array  $params Array of params
+	 * @return [type]         [description]
+	 */
+	public function pluginAction($class, $method, $params)
+	{
+		foreach($this->plugins as $plugin)
+		{
+			\Module::load($plugin);
+			$object_name = "\\".ucfirst($plugin)."\\".ucfirst($class);
+
+			$object = new $object_name;
+			if(method_exists($object, $method))
+			{
+				try 
+				{
+					$object->$method($params);						
+				}
+				catch(Exception $e)
+				{
+					// Log the error and the plugin associated with it
+				}
+			}
+		}
+	}
 	/**
 	 * For each plugin, check if there is a postCheckin() function. 
 	 * If so, the action is called, wathever it is.
@@ -127,16 +153,53 @@ class Plugin {
 		return $fieldset;
 	}
 
-	public function buildSettings()
+	/**
+	 * Build the settings form of a plugin
+	 * @param  String $plugin Plugin name
+	 * @return \Fieldset      Fieldset
+	 */
+	public function buildSettingsForm($plugin)
 	{
-		foreach($this->plugins as $plugin)
-		{
-			\Module::load($plugin);
-			\Lang::load($plugin.'::'.$plugin.'.yml', $plugin);
 
+		$config = \Config::get($plugin);
+	
+		$fieldset = \Fieldset::forge($plugin);
+
+		foreach($config as $key => $value)
+		{
+			$fieldset->add($key, __($plugin.'.'.$value['label']), array('type' => $value['type'], 'value' => $value['value']));
 		}
 
+		$fieldset->add('submit',
+		   '',
+		   array('type' => 'submit', 'value' => __('mustached.settings.plugins.update'), 
+		   'class' => 'btn btn-large btn-primary')
+		);	
+
+		return $fieldset;
+
 	}
+
+
+	/**
+	 * Save the settings of a plugin in the plugin config file.
+	 * @param  String    $plugin   Plugin name
+	 * @param  \Fieldset $fieldset Fieldset
+	 * @return Bool                True if the config was saved, false if an error occured
+	 */
+	public function saveSettingsFromForm($plugin, $fieldset)
+	{
+
+		$config = \Config::get($plugin);
+
+		foreach ($config as $key => $value) {
+			\Config::set($plugin.'.'.$key.'.value', $fieldset->input($key));		
+		}
+
+		return \Config::save($plugin.'::'.$plugin, $plugin);
+		
+	}
+
 
 	/**
 	 * Return installed plugins
@@ -147,9 +210,24 @@ class Plugin {
 		return $this->plugins;
 	}
 
+	/**
+	 * Checks wether a plugin exists or not
+	 * @param  String $plugin Plugin name
+	 * @return Bool 
+	 */
 	public function plugin_exists($plugin)
 	{
 		return (in_array($plugin, $this->plugins)) ? true : false;
+	}
+
+	/**
+	 * Retirn the full path of a plugin
+	 * @param  String $plugin
+	 * @return String         
+	 */
+	public function get_path($plugin)
+	{
+		return APPPATH.'modules/'.$plugin;
 	}
 
 

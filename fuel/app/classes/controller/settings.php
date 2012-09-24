@@ -19,44 +19,34 @@ class Controller_Settings extends \Controller_Admin
 	 */
 	public function action_plugin($plugin)
 	{
+		\Module::load($plugin);
+		\Lang::load($plugin.'::'.$plugin.'.yml', $plugin);
+		\Config::load($plugin.'::'.$plugin, $plugin);
+
 		$p = new Plugin();
-	
+
 		if(!$p->plugin_exists($plugin))
 		{
 			throw new HttpNotFoundException;
 		}
 		
-		\Module::load($plugin);
-		\Lang::load($plugin.'::'.$plugin.'.yml', $plugin);
+		$fieldset = $p->buildSettingsForm($plugin);
 
-		$config = \Config::load($plugin.'::'.$plugin, $plugin);
-	
-		$fieldset = \Fieldset::forge($plugin);
-
-		foreach($config as $key => $value)
+		if ( ! is_dir($p->get_path($plugin).'/config') or ! is_writable($p->get_path($plugin).'/config'))
 		{
-			$fieldset->add($key, __($plugin.'.'.$value['label']), array('type' => $value['type'], 'value' => $value['value']));
+			$this->data['msg'] = Message::error(__('mustached.settings.directoryNotWritable', array('dir' => $p->get_path($plugin).'/config')));
 		}
-
-		$fieldset->add('submit',
-		   '',
-		   array('type' => 'submit', 'value' => __('mustached.settings.plugins.update'), 
-		   'class' => 'btn btn-large btn-primary')
-		);	
 
 		if (\Input::method() == 'POST')
 		{
-			foreach ($config as $key => $value) {
-				\Config::set($plugin.'.'.$key.'.value', $fieldset->input($key));	
-			}
-
-			\Config::save($plugin.'::'.$plugin, $plugin);
-
+			$res = $p->saveSettingsFromForm($plugin, $fieldset);
 			$fieldset->repopulate();
-
+			$this->data['msg'] = Message::success(__('mustached.settings.saved'));
 		}
 
 		$this->data['form'] = $fieldset->form()->build();
+		$this->data['plugin'] = $plugin;
+
 
 		return $this->_render('settings/plugin');
 	}

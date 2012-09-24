@@ -28,7 +28,7 @@ return array(
 	|	Default: xml
 	|
 	*/
-	'default_format' => 'json',
+	'default_format' => 'xml',
 
 	/*
 	| Name for the password protected REST API displayed on login dialogs
@@ -36,7 +36,7 @@ return array(
 	|	E.g: My Secret REST API
 	|
 	*/
-	'realm' => 'Mustached Robot API',
+	'realm' => 'REST API',
 
 	/*
 	| Is login required and if so, which type of login?
@@ -44,7 +44,7 @@ return array(
 	|	'' = no login required, 'basic' = unsecure login, 'digest' = more secure login
 	|
 	*/
-	'auth' => 'basic',
+	'auth' => '',
 
 	/*
 	| array of usernames and passwords for login

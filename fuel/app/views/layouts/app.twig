@@ -11,8 +11,6 @@
 
     {{ render_css() }}
 
-    <link href="http://mustached.fuel/assets/css/autoSuggest.css" rel="stylesheet">
-
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,23 +63,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <link href="http://mustached.fuel/assets/css/autoSuggest.css" rel="stylesheet">
-
     {{ render_js() }}
 
-
-    {# 
-    {{ asset_js('jquery-1.7.2.min.js') }}
-    {{ asset_js('jquery.autocomplete-min.js') }}
-    {{ asset_js('jquery-ui-1.8.23.custom.min.js') }}
-    {{ asset_js('jquery.timeago.js') }}
-    {{ asset_js('jquery.fullscreen.js') }}
-    {{ asset_js('bootstrap.js') }}
-    {{ asset_js('raphael-min.js') }}
-    {{ asset_js('raphael_linechart.js') }}
-    {{ asset_js('jquery.pnotify.min.js') }}
-    {{ asset_js('common.js') }}
-    #}
     {% block js %}{% endblock %}
   </body>
 </html>

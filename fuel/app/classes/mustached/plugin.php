@@ -5,7 +5,7 @@ namespace Mustached;
 class Plugin {
 
 	private $plugins = array(); // list of plugins installed on the app (in the modules folder)
-	private $regular_modules = array('checkin', 'calendar', 'user', 'install'); // list of the core module of the app (aka "not the plugins")
+	private $regular_modules = array('checkin', 'calendar', 'user', 'test', 'install'); // list of the core module of the app (aka "not the plugins")
 
 	/**
 	 * Instanciate the plugins array.
@@ -36,68 +36,32 @@ class Plugin {
 	 * @param  String $class  Class name
 	 * @param  String $method Method name
 	 * @param  Array  $params Array of params
-	 * @return [type]         [description]
+	 * @return Array          Array of the return values of each plugin
 	 */
-	public function pluginAction($class, $method, $params)
+	public function pluginAction($class, $method, $params = null)
 	{
+		$return = array();
 		foreach($this->plugins as $plugin)
 		{
 			\Module::load($plugin);
 			$object_name = "\\".ucfirst($plugin)."\\".ucfirst($class);
 
 			$object = new $object_name;
+			
 			if(method_exists($object, $method))
 			{
 				try 
 				{
-					$object->$method($params);						
+					$return[$plugin] = $object->$method($params);						
 				}
 				catch(Exception $e)
 				{
+					$return[$plugin] = array('error' => $e->getMessage());
 					// Log the error and the plugin associated with it
 				}
 			}
 		}
-	}
-	
-	/**
-	 * For each plugin, check if there is a postCheckin() function. 
-	 * If so, the action is called, wathever it is.
-	 */
-	public function postCheckin($params = array())
-	{
-		$this->pluginAction('Trigger', 'postCheckin', $params);
-	}
-
-	/**
-	 * buildMenu return the menu items of a menu
-	 * 
-	 * @param  String $type Type of menu ("public" or "admin")
-	 * @return Array 		Array of menu items
-	 */
-	public function buildMenu($type)
-	{
-		$menuItems = array();
-		foreach($this->plugins as $plugin)
-		{
-			\Module::load($plugin);
-			$object_name = "\\".ucfirst($plugin)."\Config";
-
-			$object = new $object_name;
-			if(method_exists($object, 'publicMenu'))
-			{
-				try 
-				{
-					$menuItems[] = $object->publicMenu();	
-				}
-				catch(Exception $e)
-				{
-
-					// Log the error and the plugin associated with it
-				}
-			}
-		}
-		return $menuItems;
+		return $return;
 	}
 
 	/**
@@ -193,6 +157,15 @@ class Plugin {
 	public function get_plugins()
 	{
 		return $this->plugins;
+	}
+
+	/**
+	 * Set the installed plugins
+	 * @param array $plugins Array of the installed plugins
+	 */
+	public function set_plugins($plugins = array())
+	{
+		$this->plugins = $plugins;
 	}
 
 	/**

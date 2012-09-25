@@ -1,6 +1,6 @@
 <?php
 
-namespace Twitter;
+namespace Test;
 
 class Form
 {
@@ -12,9 +12,7 @@ class Form
 	 */
 	public function addElementOnPublicCheckin()
 	{					
-		\Lang::load('twitter::twitter.yml', 'twitter');
-		return array('before_after' => 'after', 'name' => 'twitter', 'label' => __('twitter.checkbox_label'), 'attributes' => array('type' => 'checkbox', 'value' => true), 'rules' => array(), 'fieldname' => 'reason');
+		return array('before_after' => 'before', 'name' => 'test_name_field', 'label' => __('twitter.checkbox_label'), 'attributes' => array('type' => 'checkbox', 'value' => true), 'rules' => array(), 'fieldname' => $fieldname);
 	}
-	
 
 }

@@ -42,8 +42,10 @@ class Trigger
 				}
 				catch(Exception $e)
 				{
-					// Log the error
+									
 				}
+
+				return true;
 
 			}
 			else 

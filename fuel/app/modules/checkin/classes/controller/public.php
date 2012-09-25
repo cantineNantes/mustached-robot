@@ -39,10 +39,10 @@ class Controller_Public extends \Controller_Front
         if($result === true) {
           
           $plugin = new Plugin();
-          $plugin->postCheckin(array('user' => $user, 'fieldset' => $fieldset));
+          $this->pluginAction('Trigger', 'postCheckin', array('user' => $user, 'fieldset' => $fieldset));
 
           Message::flash_success('mustached.checkin.add.success');
-          //\Response::redirect('checkin/public/add');
+          \Response::redirect('checkin/public/add');
         }
         else
         {

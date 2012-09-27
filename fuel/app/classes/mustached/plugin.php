@@ -91,7 +91,7 @@ class Plugin {
 				{
 					$p = $object->$method();
 					$method_add = 'add_'.$p['before_after'];
-					$fieldset->$method_add($p['name'], $p['label'], $p['attributes'], $p['rules'], $p['fieldname']);					
+					$fieldset->$method_add($p['name'], $p['label'], $p['attributes'], $p['rules'], $p['fieldname']);                    
 				}
 				catch(Exception $e)
 				{

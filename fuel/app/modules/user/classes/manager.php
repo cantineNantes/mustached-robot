@@ -156,7 +156,6 @@ class Manager
 					->where('checkins.killed', '=', '0')
 					->where('checkins.created_at', '>=', date('Y-m-d'))
 					->where('checkins.user_id', '=', $user_id)
-					->where('reason_id', '=', '1')
 					->execute();
 
 		return (count($res) > 0) ? true : false ;

@@ -63,15 +63,10 @@ class Form
           	}
           	else
           	{
-				$checkin = new Model_Checkin;
-				$checkin->user = $user;
-				$checkin->reason = Model_Reason::find($fields['reason']);
-				$checkin->count = 1;
-				$checkin->public = 1;
-				$checkin->killed = 0;
-				$checkin->save();
+          		$m = new Manager;
+          		return $m->add_checkin($user, Model_Reason::find($fields['reason']));
 			}
-			return true;
+			
 		}
 		else {
 			return __('mustached.checkin.add.error');

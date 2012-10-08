@@ -33,6 +33,7 @@ class Controller_Public extends \Controller_Front
 
   	$this->data['form'] = $fieldset->form()->build();
 
+
   	if (\Input::method() == 'POST')
     {
         $result = $f->create_from_form($fieldset);

@@ -39,6 +39,38 @@ class Manager
 		return \DB::select()->from('checkins')->where('created_at', '>=', $start)->where('created_at', '<=', $end)->execute()->as_array();
 	}
 
+
+
+	/**
+	 * Add a checkin if the user is not already there for coworking.
+	 * 
+	 * @param  \User\Model_User      $user
+	 * @param  \Checkin\Model_Reason  $reason 
+	 * @return  mixed Returns true on success, error message (or language key) on error
+	 */
+
+	public function add_checkin($user, $reason)
+	{
+		$um = new \User\Manager;
+
+		if(!$um->is_user_here($user->id))
+		{
+			$checkin = new Model_Checkin;
+			$checkin->user = $user;
+			$checkin->reason = $reason;
+			$checkin->count = 1;
+			$checkin->public = 1;
+			$checkin->killed = 0;
+			return ($checkin->save()) ? true : 'Error';		
+		}
+		else
+		{
+			return 'mustached.checkin.add.alreadyThere';
+		}		
+	
+	}
+
+
 	/**
 	 * Return the checkins in a given timeframe and their associated user
 	 * @param  $start String Start date (format yyyy-mm-dd)

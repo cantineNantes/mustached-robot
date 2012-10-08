@@ -145,6 +145,24 @@ class Manager
 	}
 
 	/**
+	 * Checks wether a user is here or not
+	 * @param  int  $user_id
+	 * @return boolean
+	 */
+	public function is_user_here($user_id)
+	{
+		$res = \DB::select('checkins.id')
+					->from('checkins')				
+					->where('checkins.killed', '=', '0')
+					->where('checkins.created_at', '>=', date('Y-m-d'))
+					->where('checkins.user_id', '=', $user_id)
+					->where('reason_id', '=', '1')
+					->execute();
+
+		return (count($res) > 0) ? true : false ;
+	}
+
+	/**
      * Save the user information in session
      * @param string $email     Email of the user
      * @param string $password  Password of the user

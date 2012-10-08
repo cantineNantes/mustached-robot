@@ -53,7 +53,6 @@ navigation:
   admin: Admin
 
 checkin:
-
   fields:
     public: Afficher publiquement votre passage
     reason: Quelle est la raison de votre venue aujourd'hui ?
@@ -62,6 +61,7 @@ checkin:
     submit: Enregistrer mon passage
     success: Votre passage a été enregistré
     error: Erreur lors de l'enregistrement de votre passage
+    alreadyThere: Votre passage pour aujourd'hui est déjà enregistré !
     accountDoesntExistCreate: Cet email n'est pas enregistré. Créez un compte dès maintenant !
     fullscreen: Lancer le mode plein écran
   doesnt_exist: Ce checkin n'existe pas

@@ -5,7 +5,8 @@ fuel/app/cache/twig/*
 fuel/app/cache/twig/!.gitkeep
 fuel/app/logs/*
 fuel/app/logs/!.gitkeep
-public/assets/css/*-*.css
+public/assets/cache/*.css
+public/assets/cache/*.js
 fuel/app/config/development/db.php
 fuel/app/config/test/db.php
 1/*

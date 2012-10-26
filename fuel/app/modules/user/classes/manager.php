@@ -153,6 +153,12 @@ class Manager
 
 	}
 
+
+	/**
+	 * Get users in the coworking space
+	 * @param  int $reason Reason why the coworker is here (use 1 for coworking)
+	 * @return array       Array of associative users
+	 */
 	public function get_users_here($reason = null)
 	{
 		$qb = \DB::select('users.*', array('checkins.created_at', 'since'))->from('users')->join('checkins', 'right')->on('checkins.user_id', '=', 'users.id')->where('checkins.killed', '=', '0')->where('checkins.created_at', '>=', date('Y-m-d'))->where('checkins.public', '=', '1');
@@ -212,6 +218,10 @@ class Manager
 		return \DB::select()->from('companies')->where('id', '=', $id)->execute()->as_array();
 	}
 
+	/**
+	 * Return the number of occupied seats in the coworking space
+	 * @return int Number of occupied seats
+	 */
 	public function get_occupied_seats_count()
 	{
 		return \DB::select('users.id')

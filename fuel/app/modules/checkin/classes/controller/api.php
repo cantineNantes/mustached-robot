@@ -10,6 +10,7 @@ class Controller_Api extends \Controller_Api
 
 	public function before()
 	{
+		parent::before();
 		$this->m = new Manager;
 	}
 

@@ -12,9 +12,20 @@ class Controller_Api extends \Controller_Rest
 	 * @return Array $result  The filtered Array of associative arrays
 	 */
 	protected function filter_array($items, $return) {
-		foreach($items as $item) {
-      		$result[] = \Arr::filter_keys($item, $this->return);
-    	}
+
+		// If the items is an array of arrays
+		if(is_array($items[0]))
+		{
+			foreach($items as $item) 
+			{
+					$result[] = \Arr::filter_keys($item, $this->return);	
+			}			
+		}
+		else
+		{
+			$result[] = \Arr::filter_keys($items, $this->return);	
+		}
+
     	return $result;
 	}
 

@@ -12,9 +12,14 @@ class Controller_Api extends \Controller_Api
 
 	public function before()
 	{
+		
+
 		\Module::load('checkin');
 		$this->cm = new \Checkin\Manager;
 		$this->um = new Manager;
+
+		parent::before();
+
 	}
 
 	public function get_users()
@@ -23,13 +28,13 @@ class Controller_Api extends \Controller_Api
 	}
 
 	public function get_user($id) {
-
 		if (\Input::get('expand'))
 		{
 			$this->response($this->filter_array($this->um->get_user_expand($id, \Input::get('expand')), $this->return));	
 		}
 		else 
 		{
+			//$this->response($this->um->get_user($id));
 			$this->response($this->filter_array($this->um->get_user($id), $this->return));
 		}
 	}

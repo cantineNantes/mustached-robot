@@ -1,6 +1,7 @@
 <?php
 
 namespace Calendar;
+
 use Mustached\Message;
 
 class Controller_Calendar extends \Controller_Admin
@@ -20,7 +21,10 @@ class Controller_Calendar extends \Controller_Admin
 		{
 			$this->data['msg'] = Message::error('calendar.authentication_error');
 		}
+
 		return $this->_render('public');
 	}
+
+
 
 }

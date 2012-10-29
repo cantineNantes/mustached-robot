@@ -35,6 +35,8 @@ return array(
 
 	/**** ADMIN ROUTING ****/
 	'admin'                   => 'checkin/admin',
+	'admin/settings'          => 'settings',
+	'admin/settings/plugin/(:any)'  => 'settings/plugin/$1',
 	'admin/(:segment)'        => '$1/admin',
 	'admin/(:segment)/(:any)' => '$1/admin/$2',
 

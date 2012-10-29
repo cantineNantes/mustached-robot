@@ -52,3 +52,69 @@ You can see the project status or report any bug on the [Github issues tracker](
 
 If you need help or if you want to talk about mustaches, you can do it on twitter or on this [Google Group](https://groups.google.com/forum/#!forum/mustached-robot).
 
+## Plugins
+
+-- Plugins are still under development --
+
+You can develop plugins for Mustached Robot. Ouh yeah. A plugin is an independant module which can interact at several strategic places of the application.
+
+With a plugin you can :
+
+ * Add anything you want on a few specific views
+ * Add form elements and trigger actions according to these elements on the application
+
+### Develop a plugin
+
+To create a new plugin, add a module in the "/fuel/app/modules" folder. According to the classes and their methods, you will be able to customize Mustached Robot.
+
+A plugin called "twitter" is shown in the modules folder.
+
+Here are the current classes you can use:
+
+* Form - It allows you to add form elements on some form of the application.
+* Trigger - It allows you to do anything you want after a specific action has been done by the user (example: after a user has checked in, I want my plugin to tweet about it and send me a SMS).
+
+#### Language
+
+All the language strings must be stored in the "language" folder of the plugin, following FuelPHP convention. 
+We use .yml by convention.
+
+#### Configuration
+
+You can configure your plugin by creating a "config" folder in your module and a .php file with the same name as your plugin. This config file will automatically generate a settings form for the administrators of the coworking space.
+
+Example of a file location (for a plugin called twitter) : ```/modules/twitter/config/twitter.php```.
+Here is an example of a config file :
+
+```
+'consumerKey' => 
+	array(
+		'value' => '',
+		'type' => 'text',
+		'label' => 'settings.consumerKey',
+	),
+'consumerSecret' => 
+	array(
+		'value' => '',
+		'type' => 'text',
+		'label' => 'settings.consumerSecret',
+	),
+``` 
+
+In this example, the keys ('consumerKey' and 'consumerSecret') are the settings name, the label is the label that will be displayed to the administrator of the config form. The 'type' is the type of the value, used to display the field type in the form (see [FuelPHP form type](http://docs.fuelphp.com/classes/form.html)) The 'value' will be updated when the administrator submits the form (you can add default values there). 
+
+### Customizables forms
+
+#### The checkin form
+
+If you want to configure the checkin form, create a "Form" class in your module and add the method ```addElementOnPublicCheckin()```
+
+By default, the new element(s) will be added after the last field. You can override this settings by using the two parameters (the first is the name of the element on the current form, the second is the position -- 'before' or after' -- of your new field relatively to the first parameter.
+
+### Customizable actions
+
+#### Do something when user checks in
+
+If you want to do something when a user checks in, create a "Trigger" class in your module, and add the method ```postCheckin()```
+
+This method send one argument $options with a 'fieldset' key containing the fields submitted by the user on the checkin form (if you have previously configured the checkin form, the datas added on the form by your plugin will be also available, see the twitter plugin example for reference).

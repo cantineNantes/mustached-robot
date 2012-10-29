@@ -1,0 +1,7 @@
+checkbox_label: Publier sur twitter
+tweet: :firstname :lastname :pseudo est à la cantine !
+settings:
+  consumerKey: Consumer Key
+  consumerSecret: Consumer Secret
+  accessToken: Access Token
+  accessTokenSecret: Access Token Secret

@@ -532,6 +532,7 @@ class Fieldset_Field
 
 	protected function template($build_field)
 	{
+
 		$form = $this->fieldset()->form();
 
 		$required_mark = $this->get_attribute('required', null) ? $form->get_config('required_mark', null) : null;
@@ -565,7 +566,19 @@ class Fieldset_Field
 			$build_field = implode(' ', $build_field);
 		}
 
-		$template = $this->template ?: $form->get_config('field_template', "\t\t<tr>\n\t\t\t<td class=\"{error_class}\">{label}{required}</td>\n\t\t\t<td class=\"{error_class}\">{field} {description} {error_msg}</td>\n\t\t</tr>\n");
+		// Adding a templating extension by field type. Custom extension by @dzey.
+		switch ($this->get_attribute('type', null))
+		{
+			case "checkbox":
+				$template = $form->get_config('field_checkbox_template', "\t\t<tr>\n\t\t\t<td class=\"{error_class}\">{label}{required}</td>\n\t\t\t<td class=\"{error_class}\">{field} {description} {error_msg}</td>\n\t\t</tr>\n");
+			break;
+			default:
+				$template = $this->template ?: $form->get_config('field_template', "\t\t<tr>\n\t\t\t<td class=\"{error_class}\">{label}{required}</td>\n\t\t\t<td class=\"{error_class}\">{field} {description} {error_msg}</td>\n\t\t</tr>\n");
+			break;
+		}
+
+		// $template = $this->template ?: $form->get_config('field_template', "\t\t<tr>\n\t\t\t<td class=\"{error_class}\">{label}{required}</td>\n\t\t\t<td class=\"{error_class}\">{field} {description} {error_msg}</td>\n\t\t</tr>\n");
+
 		$template = str_replace(array('{label}', '{required}', '{field}', '{error_msg}', '{error_class}', '{description}'),
 			array($label, $required_mark, $build_field, $error_msg, $error_class, $this->description),
 			$template);

@@ -1,6 +1,6 @@
-# Testing FuelPHP
+# Testing Mustached Robot
 
-FuelPHP uses [PHPUnit](https://github.com/sebastianbergmann/phpunit/) for it's Unit Testing needs. It must be installed for the tests to run.
+Mustached Robot uses [PHPUnit](https://github.com/sebastianbergmann/phpunit/) for it's Unit Testing needs. It must be installed for the tests to run.
 
 **NOTE: No code will be accepted without tests written.**
 
@@ -10,15 +10,9 @@ Running the unit tests is as simple as navigating to the root install folder on 
 
     $ php oil test
 
-That's it! You can also tell it specific groups (which we will get into in minute) to run. For example to run only the core tests:
+That's it! You can also tell it specific groups (which we will get into in minute) to run. For example to run only the App tests (exluding the FuelPHP tests):
 
-    $ php oil test --group=Core
-
-As you can see we've wrapped the phpunit command with our own Oil utility which will in time become more and more useful. If you wish to get right at the phpunit tests manually you can point it to our .xml configuration file:
-
-	$ phpunit -c fuel/core/phpunit.xml --group Core
-
-This may break or change in future versions so it's suggested you stick with using Oil for your testing.
+    $ php oil test --group=App
 
 ## Writing Tests
 
@@ -27,8 +21,9 @@ This may break or change in future versions so it's suggested you stick with usi
 All tests are to go in the **tests** folders inside their respective parent folder.  For instance:
 
 * App tests go in *fuel/app/tests*
-* Core tests go in *fuel/core/tests*
 * Package tests go in *fuel/packages/package_name/tests*
+* Module tests go in *fuel/modules/module_name/tests*
+
 
 ### File / Class Naming
 
@@ -49,7 +44,7 @@ Some example names:
 
 ### Test Grouping
 
-All tests inside the **core** folder must be in the **core** group.  A classes test's should also be grouped together under the name of the class.
+All tests inside the **app** folder must be in the **app** group.  A classes test's should also be grouped together under the name of the class.
 
 Here is an example of a core class test with proper DocBlocks:
 
@@ -72,20 +67,15 @@ Here is an example of a core class test with proper DocBlocks:
     	}
     }
 
-All App tests should be in the **app** group.
+All Plugins tests should be in the **Plugin** group.
 
 ### Namespaces
-
-All **core** tests should be in the **Fuel\Core** namespace.  This is so that we are sure we are testing the core classes,
-not any extensions that may be in *app*.
 
 App tests can be in any namespace.
 
 ### What class do I extend?
 
 All tests should extend the **Fuel\Core\TestCase** class.
-
-**NOTE: if you are in the Fuel\Core namespace you can leave off the Fuel\Core namespace and just extend **TestCase**.
 
 ## Example
 

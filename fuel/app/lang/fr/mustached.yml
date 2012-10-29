@@ -96,3 +96,11 @@ general:
   at: à
   from: de
   hourS: h
+
+settings:
+  title: Paramètres
+  directoryNotWritable: Le répertoire :dir doit être créé et être ouvert en écriture
+  saved: Paramètres sauvegardés !
+  plugins:
+    title: Plugins
+    update: Mettre à jour

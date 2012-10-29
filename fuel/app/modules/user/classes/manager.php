@@ -69,13 +69,31 @@ class Manager
 		return \DB::select('users.*')->from('users')->order_by('created_at', $order)->execute()->as_array();		
 	}
 
+	/**
+	 * Return a user with the id given in parameter
+	 * 
+	 * @param  Int   $id     Id of the user
+	 * @return Array         Array containing the user information
+	 */
 	public function get_user($id)
 	{
 		return \DB::select()->from('users')->where('id', '=', $id)->execute()->current();
 	}
 
 	/**
+	 * Return a user with the email given in parameter
+	 * 
+	 * @param  String $email Email of the user to look for
+	 * @return Array         Array containing the user information
+	 */
+	public function get_user_from_email($email)
+	{
+		return \DB::select()->from('users')->where('email', '=', $email)->execute()->current();	
+	}
+
+	/**
 	 * Get a specitic user information with expanded datas from other tables
+	 * 
 	 * @param  Int 	 	$id     	Id of the user
 	 * @param  Array 	$params 	Array of params to expand (values : 'skills', 'company')
 	 * @return Array         		Array containing the user information
@@ -135,6 +153,12 @@ class Manager
 
 	}
 
+
+	/**
+	 * Get users in the coworking space
+	 * @param  int $reason Reason why the coworker is here (use 1 for coworking)
+	 * @return array       Array of associative users
+	 */
 	public function get_users_here($reason = null)
 	{
 		$qb = \DB::select('users.*', array('checkins.created_at', 'since'))->from('users')->join('checkins', 'right')->on('checkins.user_id', '=', 'users.id')->where('checkins.killed', '=', '0')->where('checkins.created_at', '>=', date('Y-m-d'))->where('checkins.public', '=', '1');
@@ -211,6 +235,10 @@ class Manager
 		return \DB::select()->from('companies')->where('id', '=', $id)->execute()->as_array();
 	}
 
+	/**
+	 * Return the number of occupied seats in the coworking space
+	 * @return int Number of occupied seats
+	 */
 	public function get_occupied_seats_count()
 	{
 		return \DB::select('users.id')

@@ -1,0 +1,17 @@
+{% extends "layouts/app.twig" %}
+
+{% block content %}
+
+<h1>{{ lang('mustached.settings.title') }}</h1>
+
+{% if plugins %}
+<h2>{{ lang('mustached.settings.plugins.title') }}
+	
+<ul>
+	{% for plugin in plugins %}
+		<li><a href="{{ url('settings/plugin/'~plugin) }}">{{ plugin }}</a></li>
+	{% endfor %}	
+</ul>
+{% endif %}
+
+{% endblock %}

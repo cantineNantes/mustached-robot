@@ -70,6 +70,16 @@ class Test_Manager extends \TestCase
 		$this->assertInternalType('int', $return);
 	}
 
+	/**
+	 * @group DB_Cnx
+	 */
+	public function test_with_company_creates_user()
+	{
+		$this->user['company'] = 'DYB';
+		$return = $this->manager->create_user($this->user);
+		$this->assertInternalType('int', $return);
+	}
+
 	/*----------------------------------------------
      *
      * TEST UPDATE USER

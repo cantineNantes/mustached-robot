@@ -93,9 +93,10 @@ class Manager
 	 * Return a list of the users who have the most checkins in a given timeframe
 	 * @param  $start String Start date (format yyyy-mm-dd)
 	 * @param  $end   String End date (format yyyy-mm-dd)
+	 * @param  $limit int    Limit the number of user returned
 	 * @return        Array  Associative array of users         
 	 */
-	public function get_leaders($start, $end)
+	public function get_leaders($start, $end, $limit = 10)
 	{
 		
 		$leaders = \DB::select('users.email', 'users.firstname', 'users.lastname', array(\DB::expr('count(users.id)'), 'checkin_number'))
@@ -104,6 +105,7 @@ class Manager
 							->on('users.id', '=', 'checkins.user_id')
 							->where('checkins.created_at', '>=', $start)
 							->where('checkins.created_at', '<=', $end)
+							->limit($limit)
 							->group_by('users.email')
 							->order_by('checkin_number', 'desc')
 							->execute()->as_array();

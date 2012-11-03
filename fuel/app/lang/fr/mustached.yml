@@ -64,6 +64,15 @@ checkin:
     alreadyThere: Votre passage pour aujourd'hui est déjà enregistré !
     accountDoesntExistCreate: Cet email n'est pas enregistré. Créez un compte dès maintenant !
     fullscreen: Lancer le mode plein écran
+  geolocation:
+    wait: Géolocalisation en cours
+    error: 
+      compatible: Votre navigateur n'est pas compatible HTML5, c'est obligatoire pour enregistrer son passage. What a shame!
+      timeout: La demande de géolocalisation a pris trop de temps...
+      permission: Vous devez autoriser la géolocalisation pour enregistrer votre passage
+      unavailable: La position n’a pu être déterminée
+      tooFar: Désolé, vous êtes apparemment trop loin pour enregistrer votre passage !
+      unknown: Erreur lors de la géolocalisation
   doesnt_exist: Ce checkin n'existe pas
   killed:
     success: Checkin killed !

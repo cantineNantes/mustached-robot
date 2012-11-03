@@ -3,12 +3,39 @@
 {% block content %}
 
 <div class="row-fluid" id="loginScreen">
-	<div class="span12">
+	<div class="span12">				
 		<img src="{{ url('/assets/img/custom/coworkingLogo.png') }}" class="coworkingLogo" alt=""/>
 		<h2 class="light">{{ lang('mustached.checkin.add.title') }}</h2>
-		{{ form }}
+		{% if geolocation %}
+		<div id="geolocationLoader" data-latitude={{ latitude }} data-longitude={{ longitude }} data-accuracy={{ accuracy }}>
+			<p>{{ lang('mustached.checkin.geolocation.wait') }}</p>
+		</div>
+		<div id="locationError" style="display:none" 
+						data-compatible="{{ lang('mustached.checkin.geolocation.error.compatible') }}"
+						data-timeout="{{ lang('mustached.checkin.geolocation.error.timeout') }}"
+						data-permission="{{ lang('mustached.checkin.geolocation.error.permission') }}"
+						data-unavailable="{{ lang('mustached.checkin.geolocation.error.unavailable') }}"
+						data-unknown="{{ lang('mustached.checkin.geolocation.error.unknown') }}"
+						data-toofar="{{ lang('mustached.checkin.geolocation.error.tooFar') }}">
+			<p>{{ lang('mustached.checkin.geolocation.unknown') }}</p>
+		</div>
+		{% endif %}
+		<div id="checkinForm"{% if geolocation %} style="display:none"{% endif %}>
+			{{ form }}
+		</div>
 		{% if current_user.group == 100 %} <div class="tip">(Basculez votre navigateur en plein écran pour activer le mode Desk)</div> {% endif %}
 	</div>
 </div>
 
+
+<div id="infoposition">
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+	{% if geolocation %}
+		<script type="text/javascript" src="assets/modules/checkin/js/geolocate.js"></script>
+	{% endif %}
 {% endblock %}

@@ -51,6 +51,19 @@ class Controller_Public extends \Controller_Front
         }
   	}
 
+    if(\Config::get('mustached.geolocation.active')) 
+    {
+      $this->data['geolocation'] = true;
+      $this->data['latitude'] = \Config::get('mustached.geolocation.latitude');
+      $this->data['longitude'] = \Config::get('mustached.geolocation.longitude');
+      $this->data['accuracy'] = \Config::get('mustached.geolocation.accuracy');
+    }
+    else 
+    {
+      $this->data['geolocation'] = false;
+    }
+
+
     return $this->_render('add');
 
 	}

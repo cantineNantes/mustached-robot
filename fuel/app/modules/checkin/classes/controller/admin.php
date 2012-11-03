@@ -68,8 +68,8 @@ class Controller_Admin extends \Controller_Admin
 
 	/**
 	 * Show statistics about the checkins
-	 * @param string (yyyy-mm-dd) $start Start of the analytics range (optionnal,  default = 30 days from nom)
-	 * @param string (yyyy-mm-dd) $end   End of the analytucs range (optionnal, default = today)
+	 * @param string (yyyy-mm-dd) $start Start of the analytics range (optionnal,  default = 30 days from now)
+	 * @param string (yyyy-mm-dd) $end   End of the analytics range (optionnal, default = today)
 	 */
 	public function action_stats($start = null, $end = null)
 	{
@@ -79,15 +79,12 @@ class Controller_Admin extends \Controller_Admin
 		if(!$end)     $end   = date('Y-m-d');
 		if(!$start)   $start = date_sub(new \DateTime($end), new \DateInterval('P30D'))->format('Y-m-d');
 
-		// 
-		$end_compute = date_add(new \DateTime($end), new \DateInterval('P30D'))->format('Y-m-d');
-
-		$checkins = $m->get_checkins_and_users($start, $end_compute);		
+		$checkins = $m->get_checkins_and_users($start, $end);		
 
 		$users         = array();
     	$days          = array();
     	$checkinperday = array();
-    	$leaders       = $m->get_leaders($start, $end_compute);
+    	$leaders       = $m->get_leaders($start, $end);
 
     	foreach($checkins as $checkin) {
     		$checkin_date = date('Y-m-d',strtotime($checkin->created_at));
@@ -99,18 +96,18 @@ class Controller_Admin extends \Controller_Admin
     		} 		
 
     		// Compute the number of different days
-    		if(!in_array($checkin->created_at, $days))
+    		if(!in_array($checkin_date, $days))
     		{
-    			$days[]  = $checkin->created_at;
-    		}
+    			$days[]  = $checkin_date;
+    		}    		
 
-    		// Compute the number of logs for each day of the range
+    		// Compute the number of checkins for each day of the range
 			$checkinperday[$checkin_date]++;
 
     	}
 
     	// Add empty dates
-    	$interval = \Date::range_to_array(strtotime($start), strtotime($end_compute), $interval = '+1 Day');
+    	$interval = \Date::range_to_array(strtotime($start), strtotime($end), $interval = '+1 Day');
     	foreach($interval as $date)
     	{
     		if(!array_key_exists($date->format('mysql_date'), $checkinperday))
@@ -133,6 +130,10 @@ class Controller_Admin extends \Controller_Admin
 
     	$this->data['checkins'] = $checkinperday;
     	$this->data['leaders']  = $leaders;
+
+    	$startDay = new \DateTime($start);
+    	$this->data['different_days'] = $startDay->diff(new \DateTime($end))->format('%a')+1;
+    	
 
     	return $this->_render('stats');
 	}

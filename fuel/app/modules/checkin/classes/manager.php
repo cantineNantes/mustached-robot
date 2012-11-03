@@ -114,6 +114,10 @@ class Manager
 	 */
 	public function get_checkins_and_users($start, $end)
 	{
+
+		// Add 1 day to the end date so the mysql returned date match to the initial $end value
+		$end = date_add(new \DateTime($end), new \DateInterval('P1D'))->format('Y-m-d');
+
 		return Model_Checkin::find('all', array(
 				'related'  => array('user'),							
 				'order_by' => array('created_at' => 'desc'),
@@ -133,7 +137,9 @@ class Manager
 	 */
 	public function get_leaders($start, $end, $limit = 10)
 	{
-		
+		// Add 1 day to the end date so the mysql returned date match to the initial $end value
+		$end = date_add(new \DateTime($end), new \DateInterval('P1D'))->format('Y-m-d');
+
 		$leaders = \DB::select('users.email', 'users.firstname', 'users.lastname', array(\DB::expr('count(users.id)'), 'checkin_number'))
 							->from('users')
 							->join('checkins')

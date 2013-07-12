@@ -526,7 +526,7 @@ html{
 #header nav{
 	width: 100%;
 	display: block;
-	background: #2a2a2a url(../img/v-split.png) repeat-x;
+	background: #2a2a2a url(/) repeat-x;
 	font-size: 14px;
 	line-height: 18px;
 	position: relative;
@@ -600,7 +600,7 @@ ol{
 	display: table-cell;
 	width: 20%;
 	margin: 20px 0px;
-	background: url(../img/h-split.png) repeat-y right -7px;
+	background: url(/) repeat-y right -7px;
 	padding: 0px 10px 0px 0px;
 	margin-left: -10px;
 }
